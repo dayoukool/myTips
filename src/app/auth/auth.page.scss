@@ -1,0 +1,53 @@
+.header-logo {
+  text-align: center;
+  max-height: 34px;
+
+  img {
+    max-height: 34px;
+  }
+}
+
+h1 {
+  margin-top: 30px;
+  font-weight: 300;
+  font-size: 1.6em;
+
+  img {
+    margin: 20px auto;
+    max-height: 125px;
+    max-width: 60%;
+  }
+}
+
+.login-zone,
+.guest-zone {
+  p {
+    font-size: 1.2em;
+    font-weight: 300;
+    margin-bottom: 5px;
+  }
+}
+
+.login-zone {
+  margin-top: 16px;
+  padding: 10px 16px 30px 16px;
+  background: var(--ion-color-light);
+
+  ion-item {
+    --background: var(--ion-color-light);
+  }
+
+  ion-button {
+    margin-top: 30px;
+  }
+}
+
+.guest-zone {
+  margin-top: 36px;
+  padding-bottom: 40px;
+
+  ion-button {
+    margin-top: 20px;
+    font-size: 12px;
+  }
+}

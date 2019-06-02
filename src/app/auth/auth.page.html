@@ -1,0 +1,66 @@
+<ion-content>
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col no-padding size-md="6" offset-md="3">
+        <h1 text-center>
+          Bienvenue sur votre site <br>
+          <img src="assets/images/itce.png" text-center alt="logo de IT-CE" />
+        </h1>
+      </ion-col>
+    </ion-row>
+
+    <form>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3">
+          <ion-item
+            lines="none"
+            padding-horizontal>
+            <ion-label position="floating">Je sélectionne mon site</ion-label>
+            <ion-select
+              [ngModel]="'75'"
+              name="location-select"
+              (ngModelChange)="onChangeSite($event)">
+              <ion-select-option value="13">Aix-en-Provence</ion-select-option>
+              <ion-select-option value="35">Rennes</ion-select-option>
+              <ion-select-option value="75">Paris</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col no-padding size-md="6" offset-md="3">
+          <div class="login-zone" text-center>
+
+            <p>Je suis un collaborateur IT-CE</p>
+            <ion-item>
+              <ion-label position="floating">E-mail</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">Mot de passe</ion-label>
+              <ion-input type="password"></ion-input>
+            </ion-item>
+
+            <ion-button
+              shape="round"
+              margin-top
+              type="submit"
+              (click)="onLogin()">Me connecter</ion-button>
+          </div>
+
+          <div class="guest-zone" text-center>
+            <p>Je suis invité sur un site</p>
+            <ion-button
+              shape="round"
+              class="guest-button"
+              color="tertiary"
+              (click)="onLogin()">Accès invité</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
+
+</ion-content>
