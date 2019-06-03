@@ -31,9 +31,19 @@
       "id": "1",
       "questionAnswers": [{
         "id": "1",
-        "question": "question 1?",
         "questionType": "starScored",
-        "maxScore": "5"  
+        "key": "question1",
+        "label": "Avez vous déja utilisé Jira?",
+        "value": 1,
+        "required": true,
+        "order": 3,
+        "max":4,
+        "options": [
+              "jamais",
+              "deux trois fois",
+              "tous les jours",
+              "je suis Jira"
+            ]  
       }]
     }
   }

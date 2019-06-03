@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { BarRatingModule } from "ngx-bar-rating";
 import { MaterialModule } from './material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,7 +30,8 @@ import { DynamicFormQuestionComponent  } from './dynamicForms/dynamic-form-quest
     AppRoutingModule ,
     BrowserAnimationsModule,
     StarRatingModule.forRoot(), 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BarRatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
