@@ -18,7 +18,7 @@
         "lastName": "lastName1"
       }
     ],
-    "level": 3,
+    "level": 4,
     "shortDescription": "short Description",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "associatedPhoto": "http://www.geeklogics.in/wp-content/uploads/2018/07/5c96780e71d7a057def8c865ac8d31896c8eeb5f.jpg",
@@ -29,22 +29,34 @@
     "date": "2019-06-01 10:00:00",
     "sessionEval": {
       "id": "1",
-      "questionAnswers": [{
-        "id": "1",
-        "questionType": "starScored",
-        "key": "question1",
-        "label": "Avez vous déja utilisé Jira?",
-        "value": 1,
-        "required": true,
-        "order": 3,
-        "max":4,
-        "options": [
-              "jamais",
-              "deux trois fois",
-              "tous les jours",
-              "je suis Jira"
-            ]  
-      }]
+      "questionAnswers": {
+        "globalQuestionType": "starScored",
+        "globalDefaultValue": 1,
+        "globalAnswerList": ["newbie", "j'ai vu faire", "je pourrais le faire", "les yeux fermés"],
+        "questionList": [
+            {"label":"Savoir mettre en place le framework de test (Karma, Jasmine, angular-cli)"},
+            {"label":"Maitriser la structure d'un test unitaire avec karma (before, after, describe, it)"},
+            {"label":"Utiliser les assertions de Jasmine"},
+            {"label":"Déclarer le jeu de données"},
+            {"label":"Tester l'existence d'une propriété du composant"},
+            {"label":"Tester l'affichage par le DOM d'une propriété"},
+            {"label":"Tester une fonction (exemple: un reducer)"},
+            {"label":"Tester un service avec injection de dépendance"},
+            {"label":"Tester une méthode privée"},
+            {"label":"Tester une requête HTTP"},
+            {"label":"Mocker la méthode d'un objet"},
+            {"label":"Tester une méthode qui fait appel à un timer"},
+            {"label":"Savoir exécuter les tests unitaires existants sur mon poste de développement"},
+            {"label":"Savoir exécuter les tests unitaires en intégration continue (Jenkins)"},
+            {"label":"Savoir comment récupérer le taux de couverture de code par les tests unitaires"},
+            {"label":"Comprendre l'intérêt des Tests Unitaires"},
+            {"label":"Savoir ce qu'il faut tester et ce qu'il ne faut pas tester unitairement"},
+            {"label":"Savoir choisir son jeu de données de test"},
+            {"label":"Quel niveau global estimez-vous avoir sur la compétence transmise ?"}
+            
+
+        ]
+      }
     }
   }
 }
