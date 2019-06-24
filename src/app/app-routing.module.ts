@@ -2,15 +2,16 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 import { SessionSummaryComponent } from './sessions/sessionSummary/session-summary.component';
+import { SessionsComponent } from './sessions/sessions.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'sessionSummary',
+    redirectTo: 'sessions',
     pathMatch: 'full'
   },
   {
-    path: 'sessionSummary',
-    component: SessionSummaryComponent
+    path: 'sessions',
+    component: SessionsComponent
     // canLoad: [AuthGuard]
   }
 ];

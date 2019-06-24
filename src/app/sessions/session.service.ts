@@ -9,7 +9,11 @@ export class SessionService {
 
   constructor() { }
 
-  public getSession() : Session{
-    return new Session().deserialize(sessionData.session);
+  public getSessions() : Session[]{
+    let retSessions : Session[] = [];
+    sessionData.sessions.forEach(sess => {
+      retSessions.push(new Session().deserialize(sess));
+    });
+    return retSessions;
   }
 }

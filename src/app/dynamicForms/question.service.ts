@@ -4,7 +4,6 @@ import { QuestionBase }     from './question-base';
 import { TextboxQuestion }  from './question-textbox';
 import { DropdownQuestion } from './question-dropdown';
 import { StarratedQuestion } from './question-starrated';
-import * as sessionData from '../sessions/data/sessions.json';
 
 
 @Injectable()
@@ -36,13 +35,13 @@ export class QuestionService {
 
   // TODO: get from a remote source of question metadata
   // TODO: make asynchronous
-  getQuestions() {
+  getQuestions(sessionData) {
     let questions: QuestionBase<any>[] = [];
-    console.log(sessionData.session);
-    let globalQuestionType = sessionData.session.sessionEval.questionAnswers.globalQuestionType;
-    let globalAnswerList = sessionData.session.sessionEval.questionAnswers.globalAnswerList;
-    let globalDefaultValue = sessionData.session.sessionEval.questionAnswers.globalDefaultValue;
-    sessionData.session.sessionEval.questionAnswers.questionList.forEach((quest, key) => {
+    console.log(sessionData);
+    let globalQuestionType = sessionData.sessionEval.questionAnswers.globalQuestionType;
+    let globalAnswerList = sessionData.sessionEval.questionAnswers.globalAnswerList;
+    let globalDefaultValue = sessionData.sessionEval.questionAnswers.globalDefaultValue;
+    sessionData.sessionEval.questionAnswers.questionList.forEach((quest, key) => {
       questions.push(this.questionFactory(quest,globalQuestionType, globalAnswerList, globalDefaultValue, key ));
       console.log(this.questionFactory(quest,globalQuestionType, globalAnswerList, globalDefaultValue, key ));
     });

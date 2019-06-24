@@ -13,6 +13,7 @@ import { SessionLearnersSummaryComponent } from './sessions/sessionSummary/sessi
 import { StarRatingModule } from 'angular-star-rating';
 import { DynamicFormComponent  } from './dynamicForms/dynamic-form.component';
 import { DynamicFormQuestionComponent  } from './dynamicForms/dynamic-form-question.component';
+import { SessionsComponent } from './sessions/sessions.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { DynamicFormQuestionComponent  } from './dynamicForms/dynamic-form-quest
     SessionDetailComponent,
     SessionLearnersSummaryComponent,
     DynamicFormComponent,
-    DynamicFormQuestionComponent
+    DynamicFormQuestionComponent,
+    SessionsComponent
   ],
   imports: [
     MaterialModule,
