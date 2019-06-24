@@ -7,10 +7,9 @@
       "node"
     ],
     "resolveJsonModule": true,
-    "esModuleInterop": true 
+    "esModuleInterop": true
   },
   "files": [
-    "test.ts",
     "polyfills.ts"
   ],
   "include": [
