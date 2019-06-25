@@ -14,6 +14,7 @@ import { StarRatingModule } from 'angular-star-rating';
 import { DynamicFormComponent  } from './dynamicForms/dynamic-form.component';
 import { DynamicFormQuestionComponent  } from './dynamicForms/dynamic-form-question.component';
 import { SessionsComponent } from './sessions/sessions.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -31,9 +32,10 @@ import { SessionsComponent } from './sessions/sessions.component';
     BrowserModule,
     AppRoutingModule ,
     BrowserAnimationsModule,
-    StarRatingModule.forRoot(), 
+    StarRatingModule.forRoot(),
     ReactiveFormsModule,
-    BarRatingModule
+    BarRatingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

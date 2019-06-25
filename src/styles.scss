@@ -1,8 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~css-star-rating/scss/star-rating';
+//@import '~css-star-rating/scss/star-rating';
 @import '~ngx-bar-rating/themes/br-default-theme' ;
 @import '~ngx-bar-rating/themes/br-movie-theme';
 @import '~ngx-bar-rating/themes/br-vertical-theme';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
