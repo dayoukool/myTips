@@ -2,7 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SessionService } from '../../sessions/session.service';
 import { Session } from 'src/app/core/models/session.model';
 import { QuestionBase } from '../../dynamicForms/question-base';
-import { QuestionService } from '../../dynamicForms/question.service'
+import { QuestionService } from '../../dynamicForms/question.service';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 
 
 @Component({
@@ -17,7 +19,7 @@ export class SessionSummaryComponent implements OnInit {
 
   constructor(private sessionService: SessionService, private questionService: QuestionService) {
   }
-  
+
   ngOnInit() {
     this.questions = this.questionService.getQuestions(this.session);
   }

@@ -7,7 +7,7 @@
         <ngb-rating max=5 [readonly]="true" [(rate)]="session.level"></ngb-rating>
       </mat-card-subtitle>
       <mat-card-subtitle>
-          {{session.date | date:'hh:mm, EEEE d MMMM y'}}
+          {{session.date | date:'hh:mm, EEEE d MMMM y':undefined :"fr"}}
       </mat-card-subtitle>
   </mat-card-header>
   <mat-tab-group style="min-height: 65vh;max-height: 65vh;">
