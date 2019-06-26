@@ -12,11 +12,12 @@ export class Session implements Deserializable {
     public associatedMedia: MediaDeviceKind;
     public maxFollowers: number;
     public minFollowers: number;
+    public learners: learners;
     public type: string;
     public date: string;
     public sessionEval: SessionEval;
-    
-    
+
+
     deserialize(input: any): this {
         this.tipser = new Tipser().deserialize(input.tipser);
         this.followers = input.followers.map(foll =>{
@@ -34,6 +35,16 @@ export class SessionEval implements Deserializable {
         Object.assign(this, input);
         return this;
     }
+}
+export class learners implements Deserializable {
+  public name: string;
+  public firstname: string;
+  public img : string;
+
+  deserialize(input: any): this {
+      Object.assign(this, input);
+      return this;
+  }
 }
 export class QuestionAnswer implements Deserializable {
     public id: string;

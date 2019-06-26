@@ -16,12 +16,13 @@ import localeFr from '@angular/common/locales/fr';
 export class SessionSummaryComponent implements OnInit {
   @Input() session: Session;
   public questions:  QuestionBase<any>[];
-
+  public learners;
   constructor(private sessionService: SessionService, private questionService: QuestionService) {
   }
 
   ngOnInit() {
     this.questions = this.questionService.getQuestions(this.session);
+    this.learners=this.session.learners;
   }
 
 }

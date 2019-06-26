@@ -17,6 +17,8 @@ import { SessionsComponent } from './sessions/sessions.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -37,7 +39,9 @@ registerLocaleData(localeFr, 'fr');
     StarRatingModule.forRoot(),
     ReactiveFormsModule,
     BarRatingModule,
-    NgbModule
+    NgbModule,
+    MDBBootstrapModule.forRoot(),
+    MatCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]
