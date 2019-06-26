@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SessionSummaryComponent } from './session-summary.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('SessionSummaryComponent', () => {
   let component: SessionSummaryComponent;
@@ -8,7 +9,8 @@ describe('SessionSummaryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SessionSummaryComponent ]
+      declarations: [ SessionSummaryComponent ],
+      imports: [RouterTestingModule],
     })
     .compileComponents();
   }));
