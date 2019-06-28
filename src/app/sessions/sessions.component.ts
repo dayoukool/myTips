@@ -12,8 +12,21 @@ export class SessionsComponent implements OnInit {
 
   constructor(public sessionService : SessionService) { }
 
+  slides: any = [[]];
+  chunk(arr, chunkSize) {
+    let R = [];
+    for (let i = 0, len = arr.length; i < len; i += chunkSize) {
+      R.push(arr.slice(i, i + chunkSize));
+    }
+    return R;
+  }
+
   ngOnInit() {
     this.sessions = this.sessionService.getSessions();
+    console.log("erreur");
+    console.log(this.sessions);
+    this.slides = this.chunk(this.sessions, 3);
+    console.log(this.slides);
   }
 
 }

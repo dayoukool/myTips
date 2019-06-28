@@ -40,6 +40,7 @@ export class learners implements Deserializable {
   public name: string;
   public firstname: string;
   public img : string;
+  public job:string;
 
   deserialize(input: any): this {
       Object.assign(this, input);

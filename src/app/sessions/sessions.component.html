@@ -1,3 +1,7 @@
 <div class="cardContainer">
-  <app-session-summary *ngFor="let sess of sessions; let i = index" [session]="sess"></app-session-summary>
+    <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"[animation]="'slide'" [interval]="'false'">
+      <mdb-carousel-item *ngFor="let item of slides; let i = index">
+        <app-session-summary [ngClass]="{'d-none d-md-block': cardIndex !== 0}" *ngFor="let sess of sessions; let cardIndex = index" [session]="sess"></app-session-summary>
+    </mdb-carousel-item>
+  </mdb-carousel>
 </div>

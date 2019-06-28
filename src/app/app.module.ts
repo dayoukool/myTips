@@ -19,6 +19,8 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -41,7 +43,9 @@ registerLocaleData(localeFr, 'fr');
     BarRatingModule,
     NgbModule,
     MDBBootstrapModule.forRoot(),
-    MatCarouselModule
+    MatCarouselModule,
+    MatDividerModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
