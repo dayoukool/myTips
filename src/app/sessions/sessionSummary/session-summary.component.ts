@@ -21,6 +21,7 @@ export class SessionSummaryComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("card = ",this.session);
     this.questions = this.questionService.getQuestions(this.session);
     this.learners=this.session.learners;
   }

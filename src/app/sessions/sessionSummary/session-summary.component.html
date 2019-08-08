@@ -1,40 +1,35 @@
-<mat-card class="example-card">
-  <mat-card-header>
-
-      <img style="width:60px;height:60px;" mat-card-avatar src="{{session.tipser.avatar}}">
-      <mat-card-title>{{session.shortDescription}}</mat-card-title>
-      <mat-card-subtitle>
-        <ngb-rating max=5 [readonly]="true" [(rate)]="session.level"></ngb-rating>
-      </mat-card-subtitle>
-      <mat-card-subtitle>
-          {{session.date | date:'HH:mm, EEEE d MMMM y':undefined :"fr"}}
-      </mat-card-subtitle>
-  </mat-card-header>
-  <mat-tab-group style="min-height: 65vh;max-height: 65vh;">
-    <mat-tab label="Description">
-      <img style="width:100%" src="{{session.associatedPhoto}}" alt="Photo of a Shiba Inu">
-      <mat-card-content style="text-align: justify">
-        <p>
-          {{session.description}}
-        </p>
-      </mat-card-content>
-    </mat-tab>
-    <mat-tab label="Teste toi">
-      <app-dynamic-form [questions]="questions"></app-dynamic-form>
-    </mat-tab>
-    <mat-tab label="Déja inscrits">
-        <mat-list >
-            <mat-list-item *ngFor="let learner of learners; let i=index">
-                <img style="height:100%" src="{{learner.img}}" alt="Photo of a Shiba Inu">
-                <h2 matLine>{{learner.firstname}} {{learner.name}}</h2>
-                <p matLine>{{learner.job}}</p>
-                <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
-            </mat-list-item>
-        </mat-list>
-    </mat-tab>
-  </mat-tab-group>
-
-  <mat-card-actions>
-    <button mat-button>S'INSCRIRE</button>
-  </mat-card-actions>
-</mat-card>
+<mdb-card class="my-1">
+  <mdb-card-body>
+    <mdb-card-title>
+        <img style="width:60px;height:60px;" mat-card-avatar src="{{session.tipser.avatar}}">
+      <h4>{{session.shortDescription}}</h4>
+      <h5>Sujet: {{session.topic}}</h5>
+      <h6>{{session.date | date:'HH:mm, EEEE d MMMM y':undefined :"fr"}}</h6>
+    </mdb-card-title>
+    <h6><ngb-rating max=5 [readonly]="true" [(rate)]="session.level"></ngb-rating></h6>
+    <mat-tab-group style="min-height: 65vh;max-height: 65vh;">
+        <mat-tab label="Description">
+            <img style="width:100%" src="{{session.associatedPhoto}}" alt="Photo of a Shiba Inu">
+            <mat-card-content style="text-align: justify">
+              <p>
+                {{session.description}}
+              </p>
+            </mat-card-content>
+        </mat-tab>
+        <mat-tab label="Teste toi">
+          <app-dynamic-form [questions]="questions"></app-dynamic-form>
+        </mat-tab>
+        <mat-tab label="Déja inscrits">
+            <mat-list >
+                <mat-list-item *ngFor="let learner of learners; let i=index">
+                    <img style="height:100%" src="{{learner.img}}" alt="Photo of a Shiba Inu">
+                    <h2 matLine>{{learner.firstname}} {{learner.name}}</h2>
+                    <p matLine>{{learner.job}}</p>
+                    <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+                </mat-list-item>
+            </mat-list>
+          </mat-tab>
+      </mat-tab-group>
+    <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>S'inscrire</a>
+  </mdb-card-body>
+</mdb-card>

@@ -1,7 +1,9 @@
-<div class="cardContainer">
-    <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"[animation]="'slide'" [interval]="'false'">
-      <mdb-carousel-item *ngFor="let item of slides; let i = index">
-        <app-session-summary [ngClass]="{'d-none d-md-block': cardIndex !== 0}" *ngFor="let sess of sessions; let cardIndex = index" [session]="sess"></app-session-summary>
-    </mdb-carousel-item>
-  </mdb-carousel>
+
+<app-filter></app-filter>
+<div class="">
+  <div class="carousel-manual-item" *ngFor="let item of slides; let i = index ">
+          <div class="col-md-4" [ngClass]="{'d-none d-md-block': cardIndex !== 0}" *ngFor="let card of item; let cardIndex = index">
+              <app-session-summary  [session]="card"></app-session-summary>
+          </div>
+  </div>
 </div>

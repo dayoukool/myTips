@@ -20,9 +20,10 @@
       }
     ],
     "level": 4,
+    "topic":"Jira",
     "shortDescription": "short Description",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "associatedPhoto": "http://www.geeklogics.in/wp-content/uploads/2018/07/5c96780e71d7a057def8c865ac8d31896c8eeb5f.jpg",
+    "associatedPhoto": "https://www.sitepen.com/blog/wp-content/uploads/2017/09/blog.jpg",
     "associatedMedia": "MediaDeviceKind",
     "maxFollowers": 4,
     "minFollowers": 3,
@@ -31,13 +32,13 @@
       "name":"Doe",
       "firstname":"Jhon",
       "img":"https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png",
-      "job":"dev"
+      "job":"Développeur"
     },
     {
       "name":"Smith",
       "firstname":"Jhon",
       "img":"https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png",
-      "job":"chef de projet"
+      "job":"Chef de projet"
     }
   ],
     "type": "closeCoaching",
@@ -130,9 +131,10 @@
       }
     ],
     "level": 3,
+    "topic":"Confluence",
     "shortDescription": "short Description",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "associatedPhoto": "http://www.geeklogics.in/wp-content/uploads/2018/07/5c96780e71d7a057def8c865ac8d31896c8eeb5f.jpg",
+    "associatedPhoto": "https://www.sitepen.com/blog/wp-content/uploads/2017/09/blog.jpg",
     "associatedMedia": "MediaDeviceKind",
     "maxFollowers": 4,
     "minFollowers": 3,
@@ -240,6 +242,7 @@
       }
     ],
     "level": 1,
+    "topic":"Test auto",
     "shortDescription": "Bien démarrer avec jira",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "associatedPhoto": "https://www.supinfo.com/articles/resources/164203/578/0.png",
@@ -298,6 +301,7 @@
       }
     ],
     "level": 2,
+    "topic":"Jira",
     "shortDescription": "Optimiser mon utilisation de jira au quotidien",
     "description": "Amélioler mes tableaux Jira aller plus loin dans la génération des rapports utilisés des filtres avancés en JQL",
     "associatedPhoto": "https://www.supinfo.com/articles/resources/164203/578/0.png",
@@ -359,6 +363,7 @@
       }
     ],
     "level": 4,
+    "topic":"Jira",
     "shortDescription": "Jira, Confluence & Tempo : Comment bien faire",
     "description": "lien entre jira et confluence, création de demandes depuis confluence, exigence & cas d'utilisation",
     "associatedPhoto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJOLLeQ3HX-kxltlRMorazby3-WLFuODTJNPmIbxc7xkw6ZmzOw",
@@ -418,6 +423,7 @@
       }
     ],
     "level": 4,
+    "topic":"Jira",
     "shortDescription": "Jira, Confluence & Tempo : Comment bien faire",
     "description": "lien entre jira et confluence, création de demandes depuis confluence, exigence & cas d'utilisation",
     "associatedPhoto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJOLLeQ3HX-kxltlRMorazby3-WLFuODTJNPmIbxc7xkw6ZmzOw",
@@ -479,6 +485,7 @@
       }
     ],
     "level": 5,
+    "topic":"Jira",
     "shortDescription": "Visualisation en multi-projet dans jira",
     "description": "visualiser des demandes de différents projets, faire du reporting, multiprojet, etre plus performant, dans l agestion et la consolidation des inofmations en multi-pojet, introdution aux plugins bigPicture te portfolio",
     "associatedPhoto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIJOLLeQ3HX-kxltlRMorazby3-WLFuODTJNPmIbxc7xkw6ZmzOw",

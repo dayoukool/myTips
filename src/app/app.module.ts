@@ -21,6 +21,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
+import { HeaderComponent } from './header/header.component';
+import { FilterComponent } from './filter/filter.component';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -31,7 +33,9 @@ registerLocaleData(localeFr, 'fr');
     SessionLearnersSummaryComponent,
     DynamicFormComponent,
     DynamicFormQuestionComponent,
-    SessionsComponent
+    SessionsComponent,
+    HeaderComponent,
+    FilterComponent
   ],
   imports: [
     MaterialModule,

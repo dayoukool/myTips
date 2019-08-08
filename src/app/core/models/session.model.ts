@@ -6,6 +6,7 @@ export class Session implements Deserializable {
     public tipser: Tipser;
     public followers: Follower[];
     public level: number;
+    public topic: string;
     public shortDescription: string;
     public description: string;
     public associatedPhoto: string;
