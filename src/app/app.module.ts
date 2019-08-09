@@ -23,6 +23,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import { HeaderComponent } from './header/header.component';
 import { FilterComponent } from './filter/filter.component';
+import { TopicFiltersPipe } from './Pipe/topic-filters.pipe';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -35,7 +37,8 @@ registerLocaleData(localeFr, 'fr');
     DynamicFormQuestionComponent,
     SessionsComponent,
     HeaderComponent,
-    FilterComponent
+    FilterComponent,
+    TopicFiltersPipe
   ],
   imports: [
     MaterialModule,
@@ -49,7 +52,8 @@ registerLocaleData(localeFr, 'fr');
     MDBBootstrapModule.forRoot(),
     MatCarouselModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
