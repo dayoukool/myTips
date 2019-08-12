@@ -1,3 +1,16 @@
-<mat-checkbox [(ngModel)]="Jira">Jira</mat-checkbox>
+<mat-form-field>
+  <mat-select placeholder="Sujets" [formControl]="topics" multiple >
+    <mat-select-trigger>
+      {{topics.value ? topics.value[0] : ''}}
+      <span *ngIf="topics.value?.length > 1" class="example-additional-selection">
+        (+{{topics.value.length - 1}} {{topics.value?.length === 2 ? 'other' : 'others'}})
+      </span>
+    </mat-select-trigger>
+    <mat-option *ngFor="let topic of topicList" [value]="topic">{{topic}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+
 
 <!-- ajouter un sélecteur de chiffre pour le nombre de sessions affichées -->

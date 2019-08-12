@@ -1,8 +1,24 @@
 
-<app-filter></app-filter>
+<mat-form-field>
+  <mat-select placeholder="Sujets" [formControl]="topics" multiple >
+    <mat-select-trigger>
+      {{topics.value ? topics.value[0] : ''}}
+      <span *ngIf="topics.value?.length > 1" class="example-additional-selection">
+        (+{{topics.value.length - 1}} {{topics.value?.length === 2 ? 'autre' : 'autres'}})
+      </span>
+    </mat-select-trigger>
+    <mat-option *ngFor="let topic of topicList" [value]="topic">{{topic}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field>
+  <mat-select placeholder="Nombre de session" [formControl]="numberOfCard">
+    <mat-option>None</mat-option>
+    <mat-option *ngFor="let pageNumber of numbers" [value]="pageNumber">{{pageNumber}}</mat-option>
+  </mat-select>
+</mat-form-field>
 <div class="">
-  <div class="carousel-manual-item" *ngFor="let item of slides; let i = index ">
-          <div class="col-md-4" [ngClass]="{'d-none d-md-block': cardIndex !== 0}" *ngFor="let card of item; let cardIndex = index">
+  <div class="carousel-manual-item" *ngFor="let item of slides | topicFilters : topics.value | numbersOfCardFilters : numberOfCard.value">
+          <div class="col-md-4" [ngClass]="{'d-none d-md-block': cardIndex !== 0}" *ngFor="let card of item">
               <app-session-summary  [session]="card"></app-session-summary>
           </div>
   </div>

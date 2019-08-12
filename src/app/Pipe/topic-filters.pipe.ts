@@ -9,16 +9,32 @@ import { Session } from '../core/models/session.model';
 export class TopicFiltersPipe implements PipeTransform {
   public session: Session[];
   public cards: Session[];
-  
+  public slides: any;
+
+
 
   constructor(private Sessions: SessionsComponent, private sessionService: SessionService) {
 
   }
-  transform(Topics: []): any {
+  transform(Slides: Session[], Topics: []): any {
+    console.log('Slides :');
+    console.log(Slides);
+    console.log('topics :');
+    console.log(Topics);
+      if (!Slides || !Topics || Topics.find(top=> top == 'All') || Topics.length == 0  ){
+        console.log('on filtre pas');
+        return Slides;
+      }
     this.cards = this.sessionService.getSessions();
-    return this.cards.filter((el) => {
+    console.log('on filtre');
+    console.log(this.cards.filter((el) => {
+      return Topics.find(top => top == el.topic) !== undefined;
+    }));
+    this.cards = this.cards.filter((el) => {
       return Topics.find(top => top == el.topic) !== undefined;
     });
+    console.log(this.slides=this.cards);
+    return this.slides=this.cards;
   }
 
 }

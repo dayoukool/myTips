@@ -3,7 +3,7 @@ import { SessionService } from './session.service';
 import { Session } from '../core/models/session.model';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Options, LabelType } from 'ng5-slider';
-
+import {FormControl} from '@angular/forms';
 @Component({
   selector: 'app-sessions',
   templateUrl: './sessions.component.html',
@@ -21,6 +21,10 @@ export class SessionsComponent implements OnInit {
   public minValue: number = 0;
   public maxValue: number = 50;
   public numberSlide: number = 3;
+  topics = new FormControl();
+  topicList: string[] = ['Jira','Confluence','Test auto','All'];
+  numberOfCard = new FormControl();
+  numbers: number[] = [1,2,3,4,5];
   public options: Options = {
     floor: 0,
     ceil: 100,
@@ -39,7 +43,7 @@ export class SessionsComponent implements OnInit {
 
   ngOnInit() {
     this.cards = this.sessionService.getSessions();
-    this.slides = this.getSlides(this.numberSlide);
+    this.slides = this.cards;
     console.log(this.slides);
     console.log(this.cards);
     this.date = new Date();

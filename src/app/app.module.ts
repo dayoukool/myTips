@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BarRatingModule } from "ngx-bar-rating";
 import { MaterialModule } from './material.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +24,8 @@ import { HeaderComponent } from './header/header.component';
 import { FilterComponent } from './filter/filter.component';
 import { TopicFiltersPipe } from './Pipe/topic-filters.pipe';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
+import { NumbersOfCardFiltersPipe } from './Pipe/numbers-of-card-filters.pipe';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -38,7 +39,8 @@ registerLocaleData(localeFr, 'fr');
     SessionsComponent,
     HeaderComponent,
     FilterComponent,
-    TopicFiltersPipe
+    TopicFiltersPipe,
+    NumbersOfCardFiltersPipe
   ],
   imports: [
     MaterialModule,
@@ -53,7 +55,9 @@ registerLocaleData(localeFr, 'fr');
     MatCarouselModule,
     MatDividerModule,
     MatListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    FormsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
