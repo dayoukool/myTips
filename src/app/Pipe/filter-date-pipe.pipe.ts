@@ -31,9 +31,7 @@ export class FilterDatePipePipe implements PipeTransform {
     console.log('dates :');
     console.log(this.minDate);
     console.log(this.maxDate);
-    console.log(Slides.filter((el)=>{ console.log(new Date(el.date) <= this.maxDate && new Date(el.date) >= this.minDate) }
-    ));
-    Slides = Slides.filter((el)=>{ new Date(el.date) <= this.maxDate && new Date(el.date) >= this.minDate }
+    Slides = Slides.filter((el)=>{ return new Date(el.date) <= this.maxDate && new Date(el.date) >= this.minDate }
     );
     console.log(Slides);
     return Slides;
