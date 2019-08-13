@@ -26,6 +26,9 @@ import { TopicFiltersPipe } from './Pipe/topic-filters.pipe';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import { NumbersOfCardFiltersPipe } from './Pipe/numbers-of-card-filters.pipe';
+import { LevelPipePipe } from './Pipe/level-pipe.pipe';
+import { Ng5SliderModule } from 'ng5-slider';
+import { FilterDatePipePipe } from './Pipe/filter-date-pipe.pipe';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -40,7 +43,9 @@ registerLocaleData(localeFr, 'fr');
     HeaderComponent,
     FilterComponent,
     TopicFiltersPipe,
-    NumbersOfCardFiltersPipe
+    NumbersOfCardFiltersPipe,
+    LevelPipePipe,
+    FilterDatePipePipe
   ],
   imports: [
     MaterialModule,
@@ -57,7 +62,8 @@ registerLocaleData(localeFr, 'fr');
     MatListModule,
     MatCheckboxModule,
     FormsModule,
-    MatSelectModule
+    MatSelectModule,
+    Ng5SliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -15,7 +15,7 @@ export class Session implements Deserializable {
     public minFollowers: number;
     public learners: learners;
     public type: string;
-    public date: string;
+    public date: Date;
     public sessionEval: SessionEval;
 
 

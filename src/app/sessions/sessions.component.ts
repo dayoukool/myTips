@@ -25,6 +25,8 @@ export class SessionsComponent implements OnInit {
   topicList: string[] = ['Jira','Confluence','Test auto','All'];
   numberOfCard = new FormControl();
   numbers: number[] = [1,2,3,4,5];
+  levels = new FormControl();
+  levelList: number[] = [1,2,3,4,5];
   public options: Options = {
     floor: 0,
     ceil: 100,
