@@ -34,11 +34,11 @@ export class SessionsComponent implements OnInit {
       switch (label) {
         case LabelType.Low:
           //renvoie la date après calcul au format FR
-          return '<b>Date</b> ' + this.addDate(value).toLocaleString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+          return  this.addDate(value).toLocaleString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
         case LabelType.High:
-          return '<b>Date</b> ' + this.addDate(value).toLocaleString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+          return  this.addDate(value).toLocaleString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
         default:
-          return '<b>Date</b> ' + this.addDate(value).toLocaleString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+          return this.addDate(value).toLocaleString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
       }
     }
   };

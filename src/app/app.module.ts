@@ -10,25 +10,26 @@ import { SessionSummaryComponent } from './sessions/sessionSummary/session-summa
 import { SessionDetailComponent } from './sessions/sessionSummary/sessionDetail/session-detail.component';
 import { SessionLearnersSummaryComponent } from './sessions/sessionSummary/sessionLearners/session-learners-summary.component';
 import { StarRatingModule } from 'angular-star-rating';
-import { DynamicFormComponent  } from './dynamicForms/dynamic-form.component';
-import { DynamicFormQuestionComponent  } from './dynamicForms/dynamic-form-question.component';
+import { DynamicFormComponent } from './dynamicForms/dynamic-form.component';
+import { DynamicFormQuestionComponent } from './dynamicForms/dynamic-form-question.component';
 import { SessionsComponent } from './sessions/sessions.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 import { HeaderComponent } from './header/header.component';
 import { FilterComponent } from './filter/filter.component';
 import { TopicFiltersPipe } from './Pipe/topic-filters.pipe';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatSelectModule} from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
 import { NumbersOfCardFiltersPipe } from './Pipe/numbers-of-card-filters.pipe';
 import { LevelPipePipe } from './Pipe/level-pipe.pipe';
 import { Ng5SliderModule } from 'ng5-slider';
 import { FilterDatePipePipe } from './Pipe/filter-date-pipe.pipe';
+import { NumberOfResearchPipePipe } from './Pipe/number-of-research-pipe.pipe';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -45,12 +46,13 @@ registerLocaleData(localeFr, 'fr');
     TopicFiltersPipe,
     NumbersOfCardFiltersPipe,
     LevelPipePipe,
-    FilterDatePipePipe
+    FilterDatePipePipe,
+    NumberOfResearchPipePipe
   ],
   imports: [
     MaterialModule,
     BrowserModule,
-    AppRoutingModule ,
+    AppRoutingModule,
     BrowserAnimationsModule,
     StarRatingModule.forRoot(),
     ReactiveFormsModule,
