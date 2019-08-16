@@ -38,8 +38,8 @@ export class SessionsComponent implements OnInit {
         case LabelType.High:
           return  this.addDate(value).toLocaleString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
         default:
-          return this.addDate(value).toLocaleString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
-      }
+          return  this.addDate(value).toLocaleString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+      };
     }
   };
 
