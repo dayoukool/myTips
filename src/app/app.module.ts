@@ -32,6 +32,8 @@ import { FilterDatePipePipe } from './Pipe/filter-date-pipe.pipe';
 import { NumberOfResearchPipePipe } from './Pipe/number-of-research-pipe.pipe';
 import { CardSessionsComponent } from './sessions/card-sessions/card-sessions.component';
 import { ProfilComponent } from './profil/profil.component';
+import { CreateProfilComponent } from './create-profil/create-profil.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -51,7 +53,8 @@ registerLocaleData(localeFr, 'fr');
     FilterDatePipePipe,
     NumberOfResearchPipePipe,
     CardSessionsComponent,
-    ProfilComponent
+    ProfilComponent,
+    CreateProfilComponent
   ],
   imports: [
     MaterialModule,
@@ -69,7 +72,8 @@ registerLocaleData(localeFr, 'fr');
     MatCheckboxModule,
     FormsModule,
     MatSelectModule,
-    Ng5SliderModule
+    Ng5SliderModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

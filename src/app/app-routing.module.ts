@@ -4,6 +4,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { SessionSummaryComponent } from './sessions/sessionSummary/session-summary.component';
 import { SessionsComponent } from './sessions/sessions.component';
 import { ProfilComponent } from './profil/profil.component';
+import { CreateProfilComponent } from './create-profil/create-profil.component';
 const routes: Routes = [
   {
     path: '',
@@ -18,6 +19,11 @@ const routes: Routes = [
   {
     path: 'profil',
     component: ProfilComponent
+    // canLoad: [AuthGuard]
+  },
+  {
+    path: 'createProfil',
+    component: CreateProfilComponent
     // canLoad: [AuthGuard]
   }
 ];
