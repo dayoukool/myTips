@@ -1,0 +1,45 @@
+<div class="example-container">
+  <mat-card>
+    <div class="row">
+      <div class="col-md-4 offset-md-2">
+        <img mat-card-lg-image src="{{user.default.avatar}}">
+        <br>
+        <br>
+        <form>
+          <div class="form-group">
+            <label for="exampleFormControlFile1">Photo de profil</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+          </div>
+        </form>
+      </div>
+      <div class="col-md-3 offset-md-3">
+        <mat-list>
+          <mat-list-item>
+            <mat-form-field>
+              <input matInput placeholder="Nom" value="{{user.default.firstName}}" required>
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-form-field>
+              <input matInput placeholder="Prénom" value="{{user.default.lastName}}" required>
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-form-field>
+              <input matInput placeholder="Email" value="{{user.default.email}}" [formControl]="email" required>
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <div class="col-md-3 offset-md-9">
+        <mat-card-actions>
+          <button mat-button class="green">Sauvegarder</button>
+          <button mat-button class="red">Annuler</button>
+        </mat-card-actions>
+      </div>
+    </div>
+  </mat-card>
+</div>

@@ -37,6 +37,7 @@
     "ng5-slider": "^1.2.4",
     "ngx-bar-rating": "^1.1.0",
     "nodesass": "0.0.2-security",
+    "python": "0.0.4",
     "rxjs": "6.5.2",
     "slick-carousel": "^1.8.1",
     "tslib": "^1.10.0",

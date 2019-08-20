@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 import { SessionSummaryComponent } from './sessions/sessionSummary/session-summary.component';
 import { SessionsComponent } from './sessions/sessions.component';
+import { ProfilComponent } from './profil/profil.component';
 const routes: Routes = [
   {
     path: '',
@@ -12,6 +13,11 @@ const routes: Routes = [
   {
     path: 'sessions',
     component: SessionsComponent
+    // canLoad: [AuthGuard]
+  },
+  {
+    path: 'profil',
+    component: ProfilComponent
     // canLoad: [AuthGuard]
   }
 ];

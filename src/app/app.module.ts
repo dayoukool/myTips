@@ -31,6 +31,7 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { FilterDatePipePipe } from './Pipe/filter-date-pipe.pipe';
 import { NumberOfResearchPipePipe } from './Pipe/number-of-research-pipe.pipe';
 import { CardSessionsComponent } from './sessions/card-sessions/card-sessions.component';
+import { ProfilComponent } from './profil/profil.component';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -49,7 +50,8 @@ registerLocaleData(localeFr, 'fr');
     LevelPipePipe,
     FilterDatePipePipe,
     NumberOfResearchPipePipe,
-    CardSessionsComponent
+    CardSessionsComponent,
+    ProfilComponent
   ],
   imports: [
     MaterialModule,
