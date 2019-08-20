@@ -34,6 +34,7 @@ import { CardSessionsComponent } from './sessions/card-sessions/card-sessions.co
 import { ProfilComponent } from './profil/profil.component';
 import { CreateProfilComponent } from './create-profil/create-profil.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { CreateSessionComponent } from './create-session/create-session.component';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -54,7 +55,8 @@ registerLocaleData(localeFr, 'fr');
     NumberOfResearchPipePipe,
     CardSessionsComponent,
     ProfilComponent,
-    CreateProfilComponent
+    CreateProfilComponent,
+    CreateSessionComponent
   ],
   imports: [
     MaterialModule,
