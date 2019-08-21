@@ -35,6 +35,10 @@ import { ProfilComponent } from './profil/profil.component';
 import { CreateProfilComponent } from './create-profil/create-profil.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { CreateSessionComponent } from './create-session/create-session.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -75,9 +79,12 @@ registerLocaleData(localeFr, 'fr');
     FormsModule,
     MatSelectModule,
     Ng5SliderModule,
-    MatStepperModule
+    MatStepperModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatAutocompleteModule
   ],
-  providers: [],
+  providers: [MatNativeDateModule, MatDatepickerModule,{provide: MAT_DATE_LOCALE, useValue: 'fr'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

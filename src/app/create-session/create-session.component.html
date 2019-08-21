@@ -1,1 +1,79 @@
 <p>create-session works!</p>
+<div class="create">
+  <mat-vertical-stepper linear #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Titre Session</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Titre" formControlName="firstCtrl" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Sujet" aria-label="Sujet" [matAutocomplete]="auto" [formControl]="stateCtrl" formControlName="SecondCtrl" required>
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let sujet of Sujets | async" [value]="sujet.name">
+                <img class="example-option-img" aria-hidden [src]="sujet.flag" height="25">
+                <span> {{sujet.name}}</span>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Suivant</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Date et heure de la session</ng-template>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Date de la session" formControlName="secondCtrl"
+            required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Retour</button>
+          <button mat-button matStepperNext>Suivant</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Photo de profil</ng-template>
+        <img mat-card-lg-image src="" alt="photo de profil">
+        <br>
+        <label for="exampleFormControlFile1">Photo de profil</label>
+        <input type="file" class="form-control-file" id="exampleFormControlFile1" formControlName="thirdCtrl" required>
+        <div>
+          <button mat-button matStepperPrevious>Retour</button>
+          <button mat-button matStepperNext>Suivant</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="fourthFormGroup">
+      <form [formGroup]="fourthFormGroup">
+        <ng-template matStepLabel>Mot de passe</ng-template>
+        <mat-form-field>
+          <input matInput type="password" placeholder="Mot de passe" formControlName="fourthCtrl" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput type="password" placeholder=" confirmation Mot de passe" formControlName="fifthCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Retour</button>
+          <button mat-button matStepperNext>Suivant</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Finalisation</ng-template>
+      Dernière étape
+      <div>
+        <button mat-button matStepperPrevious>Retour</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button (click)="send()">Créer</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</div>
