@@ -1,7 +1,7 @@
 <p>create-session works!</p>
 <div class="create">
   <mat-vertical-stepper linear #stepper>
-    <mat-step [stepControl]="firstFormGroup">
+    <mat-step [stepControl]="firstFormGroup" color="red">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Titre Session</ng-template>
         <mat-form-field>
@@ -9,14 +9,15 @@
         </mat-form-field>
         <br>
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="Sujet" aria-label="Sujet" [matAutocomplete]="auto" [formControl]="stateCtrl" required>
-            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let sujet of Sujets | async" [value]="sujet.name">
-                <img class="example-option-img" aria-hidden [src]="sujet.flag" height="25">
-                <span> {{sujet.name}}</span>
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
+          <input matInput placeholder="Sujet" aria-label="Sujet" [matAutocomplete]="auto" [formControl]="topicCtrl" formControlName="sujetCtrl"
+            required>
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let sujet of Sujets | async" [value]="sujet.name">
+              <img class="example-option-img" aria-hidden [src]="sujet.flag" height="25">
+              <span> {{sujet.name}}</span>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
         <div>
           <button mat-button matStepperNext>Suivant</button>
         </div>
@@ -40,10 +41,9 @@
     <mat-step [stepControl]="thirdFormGroup">
       <form [formGroup]="thirdFormGroup">
         <ng-template matStepLabel>Description de la session</ng-template>
-        <img mat-card-lg-image src="" alt="photo de profil">
-        <br>
-        <label for="exampleFormControlFile1">Photo de profil</label>
-        <input type="file" class="form-control-file" id="exampleFormControlFile1" formControlName="thirdCtrl" required>
+        <mat-form-field>
+            <textarea matInput placeholder="Description" formControlName="thirdCtrl" required></textarea>
+          </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Retour</button>
           <button mat-button matStepperNext>Suivant</button>
@@ -53,13 +53,8 @@
     <mat-step [stepControl]="fourthFormGroup">
       <form [formGroup]="fourthFormGroup">
         <ng-template matStepLabel>Niveau de difficulté</ng-template>
-        <mat-form-field>
-          <input matInput type="password" placeholder="Mot de passe" formControlName="fourthCtrl" required>
-        </mat-form-field>
+        <ngb-rating max=5 [(rate)]="currentRate" formControlName="fourthCtrl" required></ngb-rating><span>: {{currentRate}}</span>
         <br>
-        <mat-form-field>
-          <input matInput type="password" placeholder=" confirmation Mot de passe" formControlName="fifthCtrl" required>
-        </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Retour</button>
           <button mat-button matStepperNext>Suivant</button>

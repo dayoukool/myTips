@@ -15,13 +15,14 @@ export interface Sujet {
   styleUrls: ['./create-session.component.sass']
 })
 export class CreateSessionComponent implements OnInit {
-
+  currentRate: number = 0;
   firstFormGroup: FormGroup;
+  sujetCtrl: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
 
-  stateCtrl = new FormControl();
+  topicCtrl = new FormControl();
   Sujets: Observable<Sujet[]>;
 
   sujets: Sujet[] = [
@@ -41,7 +42,7 @@ export class CreateSessionComponent implements OnInit {
       flag: 'https://d585tldpucybw.cloudfront.net/sfimages/default-source/default-album/intellimap-the-visual-element-mapper.png?sfvrsn=a51b47d9_1'
     }
   ];
-  constructor(private _formBuilder: FormBuilder) {this.Sujets = this.stateCtrl.valueChanges
+  constructor(private _formBuilder: FormBuilder) {this.Sujets = this.topicCtrl.valueChanges
     .pipe(
       startWith(''),
       map(sujet => sujet ? this._filterSujets(sujet) : this.sujets.slice())
@@ -50,7 +51,8 @@ export class CreateSessionComponent implements OnInit {
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+      firstCtrl: ['', Validators.required],
+      sujetCtrl: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', [Validators.required]]
@@ -59,13 +61,15 @@ export class CreateSessionComponent implements OnInit {
       thirdCtrl: ['', Validators.required]
     });
     this.fourthFormGroup = this._formBuilder.group({
-      fourthCtrl: ['', Validators.required],
-      fifthCtrl: ['', Validators.required]
+      fourthCtrl: ['', Validators.required]
     });
   }
   private _filterSujets(value: string): Sujet[] {
     const filterValue = value.toLowerCase();
 
     return this.sujets.filter(sujet => sujet.name.toLowerCase().indexOf(filterValue) === 0);
+  }
+  private send(){
+    console.log(this.firstFormGroup.value);
   }
 }
