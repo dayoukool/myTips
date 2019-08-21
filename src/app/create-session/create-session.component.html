@@ -9,7 +9,7 @@
         </mat-form-field>
         <br>
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="Sujet" aria-label="Sujet" [matAutocomplete]="auto" [formControl]="stateCtrl" formControlName="SecondCtrl" required>
+            <input matInput placeholder="Sujet" aria-label="Sujet" [matAutocomplete]="auto" [formControl]="stateCtrl" required>
             <mat-autocomplete #auto="matAutocomplete">
               <mat-option *ngFor="let sujet of Sujets | async" [value]="sujet.name">
                 <img class="example-option-img" aria-hidden [src]="sujet.flag" height="25">
@@ -39,7 +39,7 @@
     </mat-step>
     <mat-step [stepControl]="thirdFormGroup">
       <form [formGroup]="thirdFormGroup">
-        <ng-template matStepLabel>Photo de profil</ng-template>
+        <ng-template matStepLabel>Description de la session</ng-template>
         <img mat-card-lg-image src="" alt="photo de profil">
         <br>
         <label for="exampleFormControlFile1">Photo de profil</label>
@@ -52,7 +52,7 @@
     </mat-step>
     <mat-step [stepControl]="fourthFormGroup">
       <form [formGroup]="fourthFormGroup">
-        <ng-template matStepLabel>Mot de passe</ng-template>
+        <ng-template matStepLabel>Niveau de difficulté</ng-template>
         <mat-form-field>
           <input matInput type="password" placeholder="Mot de passe" formControlName="fourthCtrl" required>
         </mat-form-field>
