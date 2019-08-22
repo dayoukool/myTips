@@ -39,7 +39,7 @@
     <div class="carousel-manual-item"
       *ngFor="let item of (slides | topicFilters : topics.value | levelPipe : levels.value | filterDatePipe : minValue : maxValue | numberOfResearchPipe | numbersOfCardFilters : numberOfCard.value)">
       <div class="col-md-4" [ngClass]="{'d-none d-md-block': cardIndex !== 0}" *ngFor="let card of item">
-        <app-card-sessions [session]="card"></app-card-sessions>
+        <app-session-summary [session]="card"></app-session-summary>
       </div>
     </div>
   </div>

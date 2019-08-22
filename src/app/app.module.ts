@@ -39,6 +39,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MySessionComponent } from './my-session/my-session.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -60,7 +62,9 @@ registerLocaleData(localeFr, 'fr');
     CardSessionsComponent,
     ProfilComponent,
     CreateProfilComponent,
-    CreateSessionComponent
+    CreateSessionComponent,
+    MySessionComponent,
+    PageNotFoundComponent
   ],
   imports: [
     MaterialModule,

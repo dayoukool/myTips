@@ -1,6 +1,6 @@
 <p>create-session works!</p>
-<div class="create">
-  <mat-vertical-stepper background-color="secondary" linear #stepper>
+<div class="create alternative">
+  <mat-vertical-stepper linear #stepper>
     <mat-step [stepControl]="firstFormGroup" color="red">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Titre Session</ng-template>
@@ -10,7 +10,7 @@
         <br>
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Sujet" aria-label="Sujet" [matAutocomplete]="auto" [formControl]="topicCtrl" formControlName="sujetCtrl"
-            required>
+            >
           <mat-autocomplete #auto="matAutocomplete">
             <mat-option *ngFor="let sujet of Sujets | async" [value]="sujet.name">
               <img class="example-option-img" aria-hidden [src]="sujet.flag" height="25">

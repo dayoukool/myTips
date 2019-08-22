@@ -17,7 +17,6 @@ export interface Sujet {
 export class CreateSessionComponent implements OnInit {
   currentRate: number = 0;
   firstFormGroup: FormGroup;
-  sujetCtrl: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
@@ -52,10 +51,10 @@ export class CreateSessionComponent implements OnInit {
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required],
-      sujetCtrl: ['', Validators.required]
+      sujetCtrl: ['']
     });
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', [Validators.required]]
+      secondCtrl: ['', Validators.required]
     });
     this.thirdFormGroup = this._formBuilder.group({
       thirdCtrl: ['', Validators.required]
@@ -71,5 +70,8 @@ export class CreateSessionComponent implements OnInit {
   }
   private send(){
     console.log(this.firstFormGroup.value);
+    console.log(this.secondFormGroup.value);
+    console.log(this.thirdFormGroup.value);
+    console.log(this.fourthFormGroup.value);
   }
 }

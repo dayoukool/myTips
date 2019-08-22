@@ -6,6 +6,8 @@ import { SessionsComponent } from './sessions/sessions.component';
 import { ProfilComponent } from './profil/profil.component';
 import { CreateProfilComponent } from './create-profil/create-profil.component';
 import { CreateSessionComponent } from './create-session/create-session.component';
+import { MySessionComponent } from './my-session/my-session.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -15,7 +17,14 @@ const routes: Routes = [
   },
   {
     path: 'sessions',
-    component: SessionsComponent
+    component: SessionsComponent,
+    children: [
+      {
+        path: 'detailView',
+        component: SessionSummaryComponent
+        // canLoad: [AuthGuard]
+      },
+    ]
     // canLoad: [AuthGuard]
   },
   {
@@ -32,7 +41,13 @@ const routes: Routes = [
     path: 'createSession',
     component: CreateSessionComponent
     // canLoad: [AuthGuard]
-  }
+  },
+  {
+    path: 'mySession',
+    component: MySessionComponent
+    // canLoad: [AuthGuard]
+  },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

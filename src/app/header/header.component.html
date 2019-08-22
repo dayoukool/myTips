@@ -7,8 +7,9 @@
       class="img-fluid rounded-circle z-depth-0 header_image">
     <button mat-button [matMenuTriggerFor]="menu">Menu</button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>Item 1</button>
-      <button mat-menu-item>Item 2</button>
+      <button mat-menu-item routerLink="sessions">Rejoindre une session</button>
+      <button mat-menu-item routerLink="mySession">Mes Sessions</button>
+      <button mat-menu-item routerLink="createSession">Créer une session</button>
     </mat-menu>
   </div>
   <div class="flex-spacer"></div>
@@ -16,11 +17,11 @@
     <button mat-icon-button>
       <mat-icon>notifications_active</mat-icon>
     </button>
-    <button mat-icon-button class="profil" [matMenuTriggerFor]="profil">
+    <button mat-icon-button class="profil" [matMenuTriggerFor]="profil" >
       <mat-icon>person</mat-icon>
     </button>
     <mat-menu #profil="matMenu">
-      <button mat-menu-item>Modifier son profil <mat-icon>create</mat-icon></button>
+      <button mat-menu-item routerLink="profil">Modifier son profil <mat-icon>create</mat-icon></button>
       <button mat-menu-item>Déconnexion <mat-icon>close</mat-icon></button>
     </mat-menu>
   </div>
