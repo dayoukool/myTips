@@ -1,0 +1,19 @@
+<!--/.Navbar-->
+<mat-toolbar class="nav-bar-bottom" color="primary">
+  <div class="menuDebut">
+    <button mat-button routerLink="">Menu</button>
+  </div>
+  <div class="flex-spacer"></div>
+  <div class="menuFin">
+    <button mat-icon-button>
+      <mat-icon>notifications_active</mat-icon>
+    </button>
+    <button mat-icon-button class="profil" [matMenuTriggerFor]="profil" >
+      <mat-icon>person</mat-icon>
+    </button>
+    <mat-menu #profil="matMenu">
+      <button mat-menu-item routerLink="profil">Modifier son profil <mat-icon>create</mat-icon></button>
+      <button mat-menu-item>Déconnexion <mat-icon>close</mat-icon></button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

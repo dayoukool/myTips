@@ -41,6 +41,7 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MySessionComponent } from './my-session/my-session.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FooterComponent } from './footer/footer.component';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -64,7 +65,8 @@ registerLocaleData(localeFr, 'fr');
     CreateProfilComponent,
     CreateSessionComponent,
     MySessionComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FooterComponent
   ],
   imports: [
     MaterialModule,
