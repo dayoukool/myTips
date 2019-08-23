@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-profil',
@@ -13,7 +13,7 @@ export class CreateProfilComponent implements OnInit {
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -30,5 +30,11 @@ export class CreateProfilComponent implements OnInit {
       fourthCtrl: ['', Validators.required],
       fifthCtrl: ['', Validators.required]
     });
+  }
+  send(){
+    console.log(this.firstFormGroup.value);
+    console.log(this.secondFormGroup.value);
+    console.log(this.thirdFormGroup.value);
+    console.log(this.fourthFormGroup.value);
   }
 }

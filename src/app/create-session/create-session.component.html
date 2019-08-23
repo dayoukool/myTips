@@ -9,14 +9,13 @@
         </mat-form-field>
         <br>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Sujet" aria-label="Sujet" [matAutocomplete]="auto" [formControl]="topicCtrl" formControlName="sujetCtrl"
-            >
-          <mat-autocomplete #auto="matAutocomplete">
+          <mat-label>Sujet</mat-label>
+          <mat-select formControlName="sujetCtrl" required>
             <mat-option *ngFor="let sujet of Sujets | async" [value]="sujet.name">
               <img class="example-option-img" aria-hidden [src]="sujet.flag" height="25">
-              <span> {{sujet.name}}</span>
+              {{sujet.name}}
             </mat-option>
-          </mat-autocomplete>
+          </mat-select>
         </mat-form-field>
         <div>
           <button mat-button matStepperNext>Suivant</button>
@@ -42,8 +41,8 @@
       <form [formGroup]="thirdFormGroup">
         <ng-template matStepLabel>Description de la session</ng-template>
         <mat-form-field>
-            <textarea matInput placeholder="Description" formControlName="thirdCtrl" required></textarea>
-          </mat-form-field>
+          <textarea matInput placeholder="Description" formControlName="thirdCtrl" required></textarea>
+        </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Retour</button>
           <button mat-button matStepperNext>Suivant</button>
@@ -53,7 +52,8 @@
     <mat-step [stepControl]="fourthFormGroup">
       <form [formGroup]="fourthFormGroup">
         <ng-template matStepLabel>Niveau de difficulté</ng-template>
-        <ngb-rating max=5 [(rate)]="currentRate" formControlName="fourthCtrl" required></ngb-rating><span>: {{currentRate}}</span>
+        <ngb-rating max=5 [(rate)]="currentRate" formControlName="fourthCtrl" required></ngb-rating><span>:
+          {{currentRate}}</span>
         <br>
         <div>
           <button mat-button matStepperPrevious>Retour</button>
