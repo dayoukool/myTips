@@ -18,7 +18,7 @@ export class NumberOfResearchPipePipe implements PipeTransform {
 
   }
   transform(Slides: Session[]): any {
-    this.numberOfResult = ""+Slides.length+"" ;
+    this.numberOfResult = ""+Slides.length+" résultat(s)";
     console.log(Slides);
     console.log(this.numberOfResult);
     document.getElementById('result').setAttribute("value",this.numberOfResult);
