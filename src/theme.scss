@@ -4,7 +4,7 @@
 $my-app-primary: mat-palette($mat-red, 900);
 $my-app-secondary: mat-palette($mat-purple, 800);
 $my-app-accent: mat-palette($mat-purple, 800);
-$my-app-warn: mat-palette($mat-deep-orange);
+$my-app-warn: mat-palette($mat-amber);
 
 $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 
@@ -12,7 +12,7 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 
 $alt-primary: mat-palette($mat-purple, 800);
 $alt-accent: mat-palette($mat-red, 900);
-$alt-warn: mat-palette($mat-deep-orange);
+$alt-warn: mat-palette($mat-amber);
 $alt-theme: mat-light-theme($alt-primary, $alt-accent, $alt-warn);
 
 .alternative {
