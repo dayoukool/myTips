@@ -33,14 +33,24 @@ export class CardSessionsComponent implements OnInit {
   openDialog() {
     console.log('session =', this.session);
     console.log('session =', this.session.level);
-    this.dialog.open(SessionDetail, {
+    const dialogRef = this.dialog.open(SessionDetail, {
       width: '90%',
-      height: '90%',
+      height: '100%',
       data: {
         session: this.session,
         learners: this.learners,
         questions: this.questions
       }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      result = !result;
+      if (result === true) {
+        console.log('la modal a été fermé et tu es inscrit');
+      }
+      else {
+        console.log('la modal a été fermé et tu es désinscrit');
+      }
+      this.session.inscrit = result;
     });
   }
   ngOnInit() {
@@ -48,10 +58,6 @@ export class CardSessionsComponent implements OnInit {
     this.questions = this.questionService.getQuestions(this.session);
     this.learners = this.session.learners;
   }
-  subscription(inscrit: boolean) {
 
-    this.session.inscrit = !inscrit;
-    console.log(this.session.inscrit);
-  }
 }
 

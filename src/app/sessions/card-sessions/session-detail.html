@@ -35,9 +35,9 @@
       </mat-tab-group>
       <div mat-dialog-actions>
         <button mat-raised-button (click)="onNoClick()">Retour</button>
-        <button mat-raised-button *ngIf="data.session.inscrit == false" (click)="subscription(data.session.inscrit)"
+        <button mat-raised-button *ngIf="data.session.inscrit == false" [mat-dialog-close]="data.session.inscrit"
           color="primary">S'inscrire</button>
-        <button mat-raised-button *ngIf="data.session.inscrit == true" color="accent" (click)="subscription(data.session.inscrit)">Se
+        <button mat-raised-button *ngIf="data.session.inscrit == true" color="accent" [mat-dialog-close]="data.session.inscrit">Se
           désinscrire</button>
       </div>
     </mdb-card-body>
