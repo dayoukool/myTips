@@ -17,6 +17,7 @@ export class Session implements Deserializable {
     public type: string;
     public date: Date;
     public sessionEval: SessionEval;
+    public inscrit: boolean;
 
 
     deserialize(input: any): this {

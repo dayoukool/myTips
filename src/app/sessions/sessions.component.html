@@ -31,7 +31,7 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Nombre de résultat" disabled id="result">
+      <input matInput placeholder="" disabled id="result">
     </mat-form-field>
     <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
   </div>
@@ -39,7 +39,7 @@
     <div class="carousel-manual-item"
       *ngFor="let item of (slides | topicFilters : topics.value | levelPipe : levels.value | filterDatePipe : minValue : maxValue | numberOfResearchPipe | numbersOfCardFilters : numberOfCard.value)">
       <div class="col-md-4" [ngClass]="{'d-none d-md-block': cardIndex !== 0}" *ngFor="let card of item">
-        <app-session-summary [session]="card"></app-session-summary>
+        <app-card-sessions [session]="card"></app-card-sessions>
       </div>
     </div>
   </div>

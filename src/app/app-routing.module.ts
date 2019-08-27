@@ -47,7 +47,15 @@ const routes: Routes = [
     component: MySessionComponent
     // canLoad: [AuthGuard]
   },
-  { path: '**', component: PageNotFoundComponent }
+  {
+    path: '**',
+    redirectTo: 'Error_404',
+    pathMatch: 'full'
+  },
+  {
+    path: 'Error_404',
+    component: PageNotFoundComponent
+  }
 ];
 
 @NgModule({

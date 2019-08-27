@@ -1,0 +1,45 @@
+<div class="alternative">
+  <mdb-card class="my-1">
+    <mdb-card-body>
+      <mdb-card-title>
+        <img style="width:60px;height:60px;" mat-card-avatar src="{{data.session.tipser.avatar}}">
+        <h4>{{data.session.shortDescription}}</h4>
+        <h5>Sujet: {{data.session.topic}}</h5>
+        <h6>{{data.session.date | date:'HH:mm, EEEE d MMMM y':undefined :"fr"}}</h6>
+      </mdb-card-title>
+      <h6>
+        <ngb-rating max=5 [readonly]="true" [(rate)]="data.session.level"></ngb-rating>
+      </h6>
+      <mat-tab-group style="min-height: 65vh;max-height: 65vh;">
+        <mat-tab label="Description">
+          <img style="width:100%" src="{{data.session.associatedPhoto}}" alt="Photo of a Shiba Inu">
+          <mat-card-content style="text-align: justify">
+            <p>
+              {{data.session.description}}
+            </p>
+          </mat-card-content>
+        </mat-tab>
+        <mat-tab label="Teste toi">
+          <app-dynamic-form [questions]="data.questions"></app-dynamic-form>
+        </mat-tab>
+        <mat-tab label="Déja inscrits">
+          <mat-list>
+            <mat-list-item *ngFor="let learner of data.learners; let i=index">
+              <img style="height:100%" src="{{learner.img}}" alt="Photo of a Shiba Inu">
+              <h2 matLine>{{learner.firstname}} {{learner.name}}</h2>
+              <p matLine>{{learner.job}}</p>
+              <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+            </mat-list-item>
+          </mat-list>
+        </mat-tab>
+      </mat-tab-group>
+      <div mat-dialog-actions>
+        <button mat-raised-button (click)="onNoClick()">Retour</button>
+        <button mat-raised-button *ngIf="data.session.inscrit == false" (click)="subscription(data.session.inscrit)"
+          color="primary">S'inscrire</button>
+        <button mat-raised-button *ngIf="data.session.inscrit == true" color="accent" (click)="subscription(data.session.inscrit)">Se
+          désinscrire</button>
+      </div>
+    </mdb-card-body>
+  </mdb-card>
+</div>

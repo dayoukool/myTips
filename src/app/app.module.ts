@@ -30,18 +30,19 @@ import { LevelPipePipe } from './Pipe/level-pipe.pipe';
 import { Ng5SliderModule } from 'ng5-slider';
 import { FilterDatePipePipe } from './Pipe/filter-date-pipe.pipe';
 import { NumberOfResearchPipePipe } from './Pipe/number-of-research-pipe.pipe';
-import { CardSessionsComponent } from './sessions/card-sessions/card-sessions.component';
+import { CardSessionsComponent, SessionDetail } from './sessions/card-sessions/card-sessions.component';
 import { ProfilComponent } from './profil/profil.component';
 import { CreateProfilComponent } from './create-profil/create-profil.component';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
 import { CreateSessionComponent } from './create-session/create-session.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MySessionComponent } from './my-session/my-session.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FooterComponent } from './footer/footer.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -66,7 +67,8 @@ registerLocaleData(localeFr, 'fr');
     CreateSessionComponent,
     MySessionComponent,
     PageNotFoundComponent,
-    FooterComponent
+    FooterComponent,
+    SessionDetail
   ],
   imports: [
     MaterialModule,
@@ -88,9 +90,13 @@ registerLocaleData(localeFr, 'fr');
     MatStepperModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatDialogModule
   ],
-  providers: [MatNativeDateModule, MatDatepickerModule,{provide: MAT_DATE_LOCALE, useValue: 'fr'}],
+  entryComponents: [
+    SessionDetail
+  ],
+  providers: [MatNativeDateModule, MatDatepickerModule, { provide: MAT_DATE_LOCALE, useValue: 'fr' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-<mat-card class="example-card">
+<mat-card class="example-card alternative">
   <mat-card-header>
   </mat-card-header>
   <img mat-card-image src="{{session.associatedPhoto}}" alt="Photo of tipser">
@@ -16,6 +16,6 @@
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button routerLink="detailView">Plus d'informtaions</button>
+    <button mat-raised-button color="primary" (click)="openDialog()">Plus d'informtaions</button>
   </mat-card-actions>
 </mat-card>
