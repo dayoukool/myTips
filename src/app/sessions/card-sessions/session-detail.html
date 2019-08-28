@@ -8,7 +8,7 @@
         <h6>{{data.session.date | date:'HH:mm, EEEE d MMMM y':undefined :"fr"}}</h6>
       </div>
       <h6>
-        <ngb-rating max=5 [readonly]="true" [(rate)]="data.session.level"></ngb-rating>
+        <ngb-rating max=3 [readonly]="true" [(rate)]="data.session.level"></ngb-rating>
       </h6>
       <mat-tab-group cdkFocusInitial style="min-height: 65vh;max-height: 65vh;">
         <mat-tab label="Description">

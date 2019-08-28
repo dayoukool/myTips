@@ -8,13 +8,20 @@ import { CreateProfilComponent } from './create-profil/create-profil.component';
 import { CreateSessionComponent } from './create-session/create-session.component';
 import { MySessionComponent } from './my-session/my-session.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SujetComponent } from './sujet/sujet.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'sessions',
+    redirectTo: 'sujets',
     pathMatch: 'full'
   },
+
+  {
+    path: 'sujets',
+    component: SujetComponent,
+  },
+
   {
     path: 'sessions',
     component: SessionsComponent,

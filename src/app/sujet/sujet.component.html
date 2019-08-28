@@ -1,0 +1,30 @@
+<div class="sujet alternative">
+  <div class="filtres">
+    <mat-form-field>
+      <mat-label>Sujet</mat-label>
+      <mat-select [formControl]="sujetCtrl">
+        <mat-option [value]="Tous">Tous</mat-option>
+        <mat-option *ngFor="let sujet of Sujets" [value]="sujet.sujet">
+          <img class="example-option-img" aria-hidden [src]="sujet.img" height="25">
+          {{sujet.sujet}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Offres learning Factory:</h1>
+    </div>
+    <div class="carousel-manual-item col-md-3 offset-1" *ngFor="let item of (Sujets | topicFilters : sujetCtrl.value)">
+      <button mat-raised-button matTooltip="Cliquez moi!">
+        <img src="{{item.img}}" alt="Photo of sujet">
+        <div>
+          <h4>{{item.sujet}}</h4>
+          <p>
+            Description du sujet
+          </p>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>

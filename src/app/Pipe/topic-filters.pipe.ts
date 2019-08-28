@@ -1,40 +1,33 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SessionsComponent } from 'src/app/sessions/sessions.component';
-import { SessionService } from 'src/app/sessions/session.service';
-import { Session } from '../core/models/session.model';
+import { SujetComponent } from 'src/app/sujet/sujet.component';
+import { SujetService } from 'src/app/sujet/sujet.service';
+import { Sujet } from '../core/models/sujet.model';
 
 @Pipe({
   name: 'topicFilters'
 })
 export class TopicFiltersPipe implements PipeTransform {
-  public session: Session[];
-  public cards: Session[];
-  public slides: any;
+  public sujets: Sujet[];
 
 
 
-  constructor(private Sessions: SessionsComponent, private sessionService: SessionService) {
+
+  constructor(private Sujets: SujetComponent, private sujetService: SujetService) {
 
   }
-  transform(Slides: Session[], Topics: []): any {
+  transform(Slides: Sujet[], Topic: string): Sujet[] {
     console.log('Slides :');
     console.log(Slides);
-    console.log('topics :');
-    console.log(Topics);
-      if (!Slides || !Topics || Topics.find(top=> top == 'All') || Topics.length == 0  ){
-        console.log('on filtre pas');
-        return Slides;
-      }
-    this.cards = this.sessionService.getSessions();
+    console.log('topic :');
+    console.log(Topic);
+    if (!Slides || !Topic || Topic == 'Tous') {
+      console.log('on filtre pas');
+      return Slides;
+    }
+    this.sujets = this.sujetService.getSujet();
     console.log('on filtre');
-    console.log(this.cards.filter((el) => {
-      return Topics.find(top => top == el.topic) !== undefined;
-    }));
-    this.cards = this.cards.filter((el) => {
-      return Topics.find(top => top == el.topic) !== undefined;
-    });
-    console.log(this.slides=this.cards);
-    return this.slides=this.cards;
+    console.log(this.sujets.filter(el => el.sujet === Topic));
+    return this.sujets.filter(el => el.sujet === Topic);
   }
 
 }

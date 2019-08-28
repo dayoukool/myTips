@@ -43,6 +43,8 @@ import { MySessionComponent } from './my-session/my-session.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FooterComponent } from './footer/footer.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SujetComponent } from './sujet/sujet.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -68,7 +70,8 @@ registerLocaleData(localeFr, 'fr');
     MySessionComponent,
     PageNotFoundComponent,
     FooterComponent,
-    SessionDetail
+    SessionDetail,
+    SujetComponent
   ],
   imports: [
     MaterialModule,
@@ -91,7 +94,8 @@ registerLocaleData(localeFr, 'fr');
     MatDatepickerModule,
     MatNativeDateModule,
     MatAutocompleteModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
   ],
   entryComponents: [
     SessionDetail
