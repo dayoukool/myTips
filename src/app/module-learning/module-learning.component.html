@@ -1,0 +1,17 @@
+<div class="module alternative">
+  <div class="filtres">
+    <mat-form-field>
+      <mat-select placeholder="Niveau" [formControl]="levels">
+        <mat-option [value]="0">Tous</mat-option>
+        <mat-option *ngFor="let level of levelList" [value]="level">
+          <ngb-rating max=3 [readonly]="true" [(rate)]="level"></ngb-rating>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="">
+    <div class="carousel-manual-item col-md-3 offset-1" *ngFor="let item of (Modules | levelPipe : levels.value )">
+      {{item.sujet}}
+    </div>
+  </div>
+</div>

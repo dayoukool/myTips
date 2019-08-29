@@ -9,6 +9,7 @@ import { CreateSessionComponent } from './create-session/create-session.componen
 import { MySessionComponent } from './my-session/my-session.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SujetComponent } from './sujet/sujet.component';
+import { ModuleLearningComponent } from './module-learning/module-learning.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,11 @@ const routes: Routes = [
     path: 'sujets',
     component: SujetComponent,
   },
-
+  {
+    path: 'sujets/:sujet',
+    component: ModuleLearningComponent
+    // canLoad: [AuthGuard]
+  },
   {
     path: 'sessions',
     component: SessionsComponent,

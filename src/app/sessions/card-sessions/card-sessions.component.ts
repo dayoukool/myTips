@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
-import { SessionService } from '../../sessions/session.service';
+import { SessionService } from '../session.service';
 import { Session } from 'src/app/core/models/session.model';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { QuestionService } from 'src/app/dynamicForms/question.service';

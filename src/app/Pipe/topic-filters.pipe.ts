@@ -1,8 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SujetComponent } from 'src/app/sujet/sujet.component';
-import { SujetService } from 'src/app/sujet/sujet.service';
 import { Sujet } from '../core/models/sujet.model';
 
+/**
+ * @description Pipe qui filtre les sujets
+ */
 @Pipe({
   name: 'topicFilters'
 })
@@ -12,9 +13,16 @@ export class TopicFiltersPipe implements PipeTransform {
 
 
 
-  constructor(private Sujets: SujetComponent, private sujetService: SujetService) {
+  constructor() {
 
   }
+  /**
+   * @description Ce pipe filtre les sujets
+   * @param Slides Tableau de sujet à trier de type sujet
+   *
+   * @param Topic  Sujet sélectionné par l'utilisateur de type string
+   * @returns Renvoie un tableau de Sujet
+   */
   transform(Slides: Sujet[], Topic: string): Sujet[] {
     console.log('Slides :');
     console.log(Slides);
@@ -24,10 +32,10 @@ export class TopicFiltersPipe implements PipeTransform {
       console.log('on filtre pas');
       return Slides;
     }
-    this.sujets = this.sujetService.getSujet();
+
     console.log('on filtre');
-    console.log(this.sujets.filter(el => el.sujet === Topic));
-    return this.sujets.filter(el => el.sujet === Topic);
+    console.log(Slides.filter(el => el.sujet === Topic));
+    return Slides.filter(el => el.sujet === Topic);
   }
 
 }

@@ -45,6 +45,8 @@ import { FooterComponent } from './footer/footer.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SujetComponent } from './sujet/sujet.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ModuleLearningComponent } from './module-learning/module-learning.component';
+import { CardModuleComponent } from './card-module/card-module.component';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -71,7 +73,9 @@ registerLocaleData(localeFr, 'fr');
     PageNotFoundComponent,
     FooterComponent,
     SessionDetail,
-    SujetComponent
+    SujetComponent,
+    ModuleLearningComponent,
+    CardModuleComponent
   ],
   imports: [
     MaterialModule,

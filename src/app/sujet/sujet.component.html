@@ -16,7 +16,7 @@
       <h1>Offres learning Factory:</h1>
     </div>
     <div class="carousel-manual-item col-md-3 offset-1" *ngFor="let item of (Sujets | topicFilters : sujetCtrl.value)">
-      <button mat-raised-button matTooltip="Cliquez moi!">
+      <button mat-raised-button matTooltip="Cliquez moi!" (click)="goToModule(item.sujet)">
         <img src="{{item.img}}" alt="Photo of sujet">
         <div>
           <h4>{{item.sujet}}</h4>
