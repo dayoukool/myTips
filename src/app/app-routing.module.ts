@@ -10,6 +10,7 @@ import { MySessionComponent } from './my-session/my-session.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SujetComponent } from './sujet/sujet.component';
 import { ModuleLearningComponent } from './module-learning/module-learning.component';
+import { DetailModuleComponent } from './module-learning/detail-module/detail-module.component';
 
 const routes: Routes = [
   {
@@ -24,8 +25,14 @@ const routes: Routes = [
   },
   {
     path: 'sujets/:sujet',
-    component: ModuleLearningComponent
+    component: ModuleLearningComponent,
+
+
     // canLoad: [AuthGuard]
+  },
+  {
+    path: 'sujets/:sujet/detail/:id',
+    component: DetailModuleComponent
   },
   {
     path: 'sessions',

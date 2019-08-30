@@ -47,6 +47,7 @@ import { SujetComponent } from './sujet/sujet.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ModuleLearningComponent } from './module-learning/module-learning.component';
 import { CardModuleComponent } from './card-module/card-module.component';
+import { DetailModuleComponent } from './module-learning/detail-module/detail-module.component';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -75,7 +76,8 @@ registerLocaleData(localeFr, 'fr');
     SessionDetail,
     SujetComponent,
     ModuleLearningComponent,
-    CardModuleComponent
+    CardModuleComponent,
+    DetailModuleComponent
   ],
   imports: [
     MaterialModule,
