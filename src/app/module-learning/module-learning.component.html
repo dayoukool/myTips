@@ -1,9 +1,10 @@
 <div class="module alternative">
   <div class="filtres" *ngIf="Modules.length != 0; else elseTemplate">
-    <div>
-      <mat-form-field>
+    <div class="container-fluid">
+      <button mat-raised-button class="col-md-1 offset-3" [routerLink]="['../']" color="primary">Retour</button>
+      <mat-form-field class="offset-4">
         <mat-select placeholder="Niveau" [formControl]="levels">
-          <mat-select-trigger>
+          <mat-select-trigger color="primary">
             <ngb-rating max=3 [readonly]="true" [(rate)]="levels.value"></ngb-rating>
           </mat-select-trigger>
           <mat-option [value]="">Tous</mat-option>
@@ -14,7 +15,7 @@
       </mat-form-field>
     </div>
     <div class="row">
-      <div class="carousel-manual-item col-md-3 offset-1" *ngFor="let item of (Modules | levelPipe : levels.value )">
+      <div class="carousel-manual-item col-md-4" *ngFor="let item of (Modules | levelPipe : levels.value )">
         <app-card-module [module]="item"></app-card-module>
       </div>
     </div>

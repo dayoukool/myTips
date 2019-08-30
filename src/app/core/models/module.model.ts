@@ -3,6 +3,7 @@ import { Deserializable } from './deserializable.model';
 
 export class Module implements Deserializable {
     public id: string;
+    public titre: string;
     public sujet: string;
     public img: string;
     public level: number;
