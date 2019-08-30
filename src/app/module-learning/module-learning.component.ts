@@ -28,5 +28,6 @@ export class ModuleLearningComponent implements OnInit {
     console.log(this.sujet);
     this.Modules = this.selectModule(this.sujet);
     console.log(this.Modules);
+    console.log(this.levelList);
   }
 }

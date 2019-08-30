@@ -1,17 +1,31 @@
 <div class="module alternative">
-  <div class="filtres">
-    <mat-form-field>
-      <mat-select placeholder="Niveau" [formControl]="levels">
-        <mat-option [value]="0">Tous</mat-option>
-        <mat-option *ngFor="let level of levelList" [value]="level">
-          <ngb-rating max=3 [readonly]="true" [(rate)]="level"></ngb-rating>
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div class="">
-    <div class="carousel-manual-item col-md-3 offset-1" *ngFor="let item of (Modules | levelPipe : levels.value )">
-      {{item.sujet}}
+  <div class="filtres" *ngIf="Modules.length != 0; else elseTemplate">
+    <div>
+      <mat-form-field>
+        <mat-select placeholder="Niveau" [formControl]="levels">
+          <mat-select-trigger>
+            <ngb-rating max=3 [readonly]="true" [(rate)]="levels.value"></ngb-rating>
+          </mat-select-trigger>
+          <mat-option [value]="">Tous</mat-option>
+          <mat-option *ngFor="let level of levelList" [value]="level">
+            <ngb-rating max=3 [readonly]="true" [(rate)]="level"></ngb-rating>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <div class="carousel-manual-item col-md-3 offset-1" *ngFor="let item of (Modules | levelPipe : levels.value )">
+        <app-card-module [module]="item"></app-card-module>
+      </div>
     </div>
   </div>
+
+  <ng-template #elseTemplate>
+    <div>
+      il n'existe pas encore de module pour ce sujet.
+      <button mat-raised-button [routerLink]="['../']" color="primary">Retour</button>
+    </div>
+  </ng-template>
+
+
 </div>

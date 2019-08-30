@@ -1,1 +1,14 @@
-<p>card-module works!</p>
+<mat-card class="example-card alternative">
+  <img mat-card-image src="{{module.img}}" alt="Photo of tipser">
+  <mat-card-content>
+    <h4>
+      <ngb-rating max=3 [readonly]="true" [(rate)]="module.level"></ngb-rating>
+    </h4>
+    <p>
+      {{module.description}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="openDialog()">Choisir</button>
+  </mat-card-actions>
+</mat-card>
