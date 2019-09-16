@@ -36,13 +36,7 @@
             <mat-list>
               <mat-list-item *ngFor="let session of Module.sessions, last as last">
               <!-- <mat-list-item *ngFor="let session of (Module.sessions| filterDatePipe: date_debut.value: date_fin.value), last as last"> -->
-                <div class="col" >
-                  <h6>{{session.date | date:'HH:mm, EEEE d MMMM y':undefined :"fr"}}</h6>
-                </div>
-                <div class="col">
-                  <button mat-raised-button color="primary" (click)="openDialog()">Plus
-                    d'informtaions</button>
-                </div>
+                <app-card-sessions [session]="session"></app-card-sessions>
                 <mat-divider *ngIf="!last"></mat-divider>
               </mat-list-item>
             </mat-list>
