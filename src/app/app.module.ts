@@ -47,7 +47,7 @@ import { SujetComponent } from './sujet/sujet.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ModuleLearningComponent } from './module-learning/module-learning.component';
 import { CardModuleComponent } from './card-module/card-module.component';
-import { DetailModuleComponent } from './module-learning/detail-module/detail-module.component';
+import { DetailModuleComponent, SessionModal } from './module-learning/detail-module/detail-module.component';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -77,7 +77,8 @@ registerLocaleData(localeFr, 'fr');
     SujetComponent,
     ModuleLearningComponent,
     CardModuleComponent,
-    DetailModuleComponent
+    DetailModuleComponent,
+    SessionModal
   ],
   imports: [
     MaterialModule,
@@ -104,7 +105,7 @@ registerLocaleData(localeFr, 'fr');
     MatTooltipModule
   ],
   entryComponents: [
-    SessionDetail
+    SessionModal
   ],
   providers: [MatNativeDateModule, MatDatepickerModule, { provide: MAT_DATE_LOCALE, useValue: 'fr' }],
   bootstrap: [AppComponent]

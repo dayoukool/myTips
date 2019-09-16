@@ -69,8 +69,6 @@
             {
               "label": "Quel niveau global estimez-vous avoir sur la compétence transmise ?"
             }
-
-
           ]
         }
       },
@@ -93,7 +91,7 @@
               "lastName": "lastName1"
             }
           ],
-          "shortDescription": "Introduction à l'automatisation des tests",
+          "shortDescription": "Introduction Jira",
           "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           "associatedPhoto": "https://www.alteliostechnologygroup.com/wp-content/uploads/2018/02/Fiche-me%CC%81tier-inge%CC%81-test.jpg",
           "associatedMedia": "MediaDeviceKind",
@@ -156,6 +154,48 @@
           ],
           "type": "closeCoaching",
           "date": "2019-09-01 10:00:00",
+          "inscrit": false
+        },
+        {
+          "tipser": {
+            "id": "s00000",
+            "avatar": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png",
+            "firstName": "firstName",
+            "lastName": "lastName",
+            "popularity": 5
+          },
+          "followers": [{
+              "id": "s00001",
+              "firstName": "firstName",
+              "lastName": "lastName"
+            },
+            {
+              "id": "s00002",
+              "firstName": "firstName1",
+              "lastName": "lastName1"
+            }
+          ],
+          "shortDescription": "Bien démarrer avec Confluence ",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+          "associatedPhoto": "http://seekvectorlogo.com/wp-content/uploads/2019/04/confluence-vector-logo.png",
+          "associatedMedia": "MediaDeviceKind",
+          "maxFollowers": 4,
+          "minFollowers": 3,
+          "learners": [{
+              "name": "Doe",
+              "firstname": "Jhon",
+              "img": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png",
+              "job": "dev"
+            },
+            {
+              "name": "Smith",
+              "firstname": "Jhon",
+              "img": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png",
+              "job": "chef de projet"
+            }
+          ],
+          "type": "closeCoaching",
+          "date": "2019-09-16 10:00:00",
           "inscrit": false
         }
       ]

@@ -9,29 +9,29 @@ import { Session } from '../core/models/session.model';
 export class FilterDatePipePipe implements PipeTransform {
   public session: Session[];
   public slides: any;
-  public minDate: Date;
-  public maxDate: Date;
+  public minValue: Date;
+  public maxValue: Date;
 
-  constructor(private Sessions: SessionsComponent, private sessionService: SessionService) {
+  constructor() {
 
   }
-  transform(Slides: Session[], minValue:number, maxValue:number ): any {
+  transform(Slides: Session[], minValue: Date, maxValue: Date): any {
     console.log('Slides :');
     console.log(Slides);
     console.log('minValue :');
     console.log(minValue);
     console.log(maxValue);
-      if (!Slides ){
-        console.log('on filtre pas');
-        return Slides;
-      }
+    if (!Slides) {
+      console.log('on filtre pas');
+      return Slides;
+    }
     console.log('on filtre');
-    this.minDate = this.Sessions.addDate(minValue);
-    this.maxDate = this.Sessions.addDate(maxValue);
     console.log('dates :');
-    console.log(this.minDate);
-    console.log(this.maxDate);
-    Slides = Slides.filter((el)=>{ return new Date(el.date) <= this.maxDate && new Date(el.date) >= this.minDate }
+    Slides = Slides.filter((el) => {
+      console.log(new Date(el.date));
+      console.log(new Date(el.date) <= this.maxValue && new Date(el.date) >= this.minValue);
+      return new Date(el.date) <= this.maxValue && new Date(el.date) >= this.minValue
+    }
     );
     console.log(Slides);
     return Slides;
