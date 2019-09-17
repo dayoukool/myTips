@@ -38,6 +38,7 @@ export class QuestionService {
   getQuestions(modulData) {
     let questions: QuestionBase<any>[] = [];
     console.log(modulData);
+
     let globalQuestionType = modulData.modulEval.questionAnswers.globalQuestionType;
     let globalAnswerList = modulData.modulEval.questionAnswers.globalAnswerList;
     let globalDefaultValue = modulData.modulEval.questionAnswers.globalDefaultValue;
