@@ -2,20 +2,23 @@
   <div class="my-1">
     <div>
       <div>
-        <img style="width:60px;height:60px;" mat-card-avatar src="{{data.session.tipser.avatar}}">
         <h4>{{data.session.shortDescription}}</h4>
-        <h6>{{data.session.date | date:'HH:mm, EEEE d MMMM y':undefined :"fr"}}</h6>
+        <h5>{{data.session.date | date:'HH:mm, EEEE d MMMM y':undefined :"fr"}}</h5>
       </div>
-      <mat-tab-group cdkFocusInitial style="min-height: 65vh;max-height: 65vh;">
-        <mat-tab label="Description">
+      <div class="row contenu">
+        <div class="col">
           <img style="width:100%" src="{{data.session.associatedPhoto}}" alt="Photo of a Shiba Inu">
           <mat-card-content style="text-align: justify">
             <p>
               {{data.session.description}}
             </p>
+            <h6>La session sera animée par: {{data.session.tipser.firstName}} {{data.session.tipser.lastName}} <img style="width:60px;height:60px;" mat-card-avatar src="{{data.session.tipser.avatar}}"></h6>
           </mat-card-content>
-        </mat-tab>
-        <mat-tab label="Déja inscrits">
+        </div>
+        <div class="col-1">
+        </div>
+        <div label="Déja inscrits" class="col">
+          <h3>Liste des participants:</h3>
           <mat-list>
             <mat-list-item *ngFor="let learner of data.learners; let i=index">
               <img style="height:100%" src="{{learner.img}}" alt="Photo of a Shiba Inu">
@@ -24,9 +27,9 @@
               <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
             </mat-list-item>
           </mat-list>
-        </mat-tab>
-      </mat-tab-group>
-      <div mat-dialog-actions>
+        </div>
+      </div>
+      <div mat-dialog-actions class="col">
         <button mat-raised-button (click)="onNoClick()">Retour</button>
         <button mat-raised-button *ngIf="data.session.inscrit == false" [mat-dialog-close]="data.session.inscrit"
           color="primary">S'inscrire</button>

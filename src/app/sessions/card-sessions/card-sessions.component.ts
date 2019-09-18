@@ -7,6 +7,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 @Component({
   selector: 'SessionDetail',
   templateUrl: './session-detail.html',
+  styleUrls: ['./card-sessions.component.sass']
 })
 export class SessionDetail {
 
