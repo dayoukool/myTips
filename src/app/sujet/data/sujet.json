@@ -1,11 +1,11 @@
 {
   "sujets": [{
     "sujet": "Confluence",
-    "img": "https://seeklogo.com/images/C/confluence-logo-D9B07137C2-seeklogo.com.png",
+    "img": "../../assets/images/Confluence/RGB/SVG/Mark/Mark/Blue/confluence-mark-gradient-blue.svg",
     "id": "1"
   }, {
     "sujet": "Jira",
-    "img": "https://cdn.worldvectorlogo.com/logos/jira-1.svg",
+    "img": "../../assets/images/Jira/RGB/SVG/Mark/Mark/Blue/jira-mark-gradient-blue.svg",
     "id": "2"
   }, {
     "sujet": "Test Auto",
