@@ -22,7 +22,7 @@
         <div class="row sessions">
           <div class="col-md-6 filters">
             <h5>Filtres :</h5>
-            <mat-form-field>
+            <mat-form-field class="dateSelector">
               <input matInput [matDatepicker]="debut" placeholder="Date de début" [formControl]="date_debut">
               <mat-datepicker-toggle matSuffix [for]="debut"></mat-datepicker-toggle>
               <mat-datepicker #debut></mat-datepicker>
@@ -37,7 +37,7 @@
           <div class="col-md-6">
             <div *ngIf="Module.sessions != 0; else elseTemplate">
               <h4>Liste des sessions</h4>
-              <mat-list>
+              <mat-list class="listSessions">
                 <mat-list-item *ngFor="let session of Module.sessions, last as last">
                   <!-- <mat-list-item *ngFor="let session of (Module.sessions| filterDatePipe: date_debut.value: date_fin.value), last as last"> -->
                   <app-card-sessions [session]="session" class="col"></app-card-sessions>
