@@ -32,8 +32,8 @@ export class CardSessionsComponent implements OnInit {
     console.log('session =', this.session);
     console.log('session =', this.session.level);
     const dialogRef = this.dialog.open(SessionDetail, {
-      width: '90%',
-      height: '100%',
+      width: '75%',
+      height: '60%',
       data: {
         session: this.session,
         learners: this.learners,
