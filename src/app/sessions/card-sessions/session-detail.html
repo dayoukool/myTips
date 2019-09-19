@@ -21,7 +21,7 @@
         <div label="Déja inscrits" class="col-4">
           <h3>Liste des participants:</h3>
           <mat-list class="listParticipants">
-            <mat-list-item *ngFor="let learner of data.learners; let i=index">
+            <mat-list-item *ngFor="let learner of data.learners; last as last">
               <img style="height:100%" src="{{learner.img}}" alt="Photo of a Shiba Inu">
               <h2 matLine>{{learner.firstname}} {{learner.name}}</h2>
               <p matLine>{{learner.job}}</p>
