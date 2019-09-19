@@ -6,7 +6,7 @@
         <h5>{{data.session.date | date:'HH:mm, EEEE d MMMM y':undefined :"fr"}}</h5>
       </div>
       <div class="row contenu">
-        <div class="col">
+        <div class="col-4 offset-1">
           <img style="width:100%" src="{{data.session.associatedPhoto}}" alt="Photo of a Shiba Inu">
           <mat-card-content style="text-align: justify">
             <p>
@@ -15,11 +15,11 @@
             <h6>La session sera animée par: {{data.session.tipser.firstName}} {{data.session.tipser.lastName}} <img style="width:60px;height:60px;" mat-card-avatar src="{{data.session.tipser.avatar}}"></h6>
           </mat-card-content>
         </div>
-        <div class="col-1">
+        <div class="col-2">
         </div>
-        <div label="Déja inscrits" class="col">
+        <div label="Déja inscrits" class="col-4">
           <h3>Liste des participants:</h3>
-          <mat-list>
+          <mat-list class="listParticipants">
             <mat-list-item *ngFor="let learner of data.learners; let i=index">
               <img style="height:100%" src="{{learner.img}}" alt="Photo of a Shiba Inu">
               <h2 matLine>{{learner.firstname}} {{learner.name}}</h2>
