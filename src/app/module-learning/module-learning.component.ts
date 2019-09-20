@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Module } from '@core/models/module.model';
 import { ModuleService } from './module.service';
 import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-module-learning',

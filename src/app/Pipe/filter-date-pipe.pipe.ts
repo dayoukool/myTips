@@ -28,9 +28,11 @@ export class FilterDatePipePipe implements PipeTransform {
     console.log('on filtre');
     console.log('dates :');
     Slides = Slides.filter((el) => {
+      console.log(el.date);
       console.log(new Date(el.date));
-      console.log(new Date(el.date) <= this.maxValue && new Date(el.date) >= this.minValue);
-      return new Date(el.date) <= this.maxValue && new Date(el.date) >= this.minValue
+      el.date = new Date(el.date);
+      console.log(el.date <= this.maxValue && el.date >= this.minValue);
+      return el.date <= this.maxValue && el.date >= this.minValue;
     }
     );
     console.log(Slides);
