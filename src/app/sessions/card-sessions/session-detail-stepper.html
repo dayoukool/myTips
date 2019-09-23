@@ -89,12 +89,12 @@
           </div>
         </form>
       </mat-step>
-      <mat-step [stepControl]="testFormGroup">
-        <form [formGroup]="testFormGroup">
+      <mat-step>
+        <form >
           <ng-template matStepLabel>Remplir le test</ng-template>
           <app-dynamic-form [questions]="questions"></app-dynamic-form>
           <div>
-            <button mat-raised-button matStepperPrevious>Retour</button>
+            <button mat-raised-button class="col-1 offset-1" (click)="stepper.reset()">Reset</button>
             <button mat-raised-button matStepperNext>Suivant</button>
           </div>
         </form>
@@ -113,8 +113,7 @@
           </div>
           <br>
           <div class="row">
-              <button mat-raised-button matStepperPrevious class="col-1">Retour</button>
-              <button mat-raised-button class="col-1 offset-1" (click)="stepper.reset()">Reset</button>
+              <button mat-raised-button matStepperPrevious class="col-1">Retour au test</button>
               <button mat-raised-button class="col-1 offset-1" [mat-dialog-close]="true" color="primary">S'inscrire</button>
           </div>
         </div>

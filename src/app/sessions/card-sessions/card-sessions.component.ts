@@ -44,9 +44,6 @@ export class CardSessionsComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      // result = !result;
-      console.log('result = !result', result);
       if (result === true) {
         console.log('la modal a été fermé et tu es inscrit');
         this.session.inscrit = result;
