@@ -2,13 +2,13 @@
   <div class="filtres" *ngIf="Modules.length != 0; else elseTemplate">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-1">
-          <button mat-raised-button [routerLink]="['../']" class="col-1" color="primary">Retour</button>
+        <div class="col-md-1">
+          <button mat-raised-button [routerLink]="['../']"  color="primary">Retour</button>
         </div>
         <div class="col-md-1">
             <button mat-button [routerLink]="['/sujets']">{{sujet}}</button>
         </div>
-        <mat-form-field class="col-md-2 offset-2">
+        <mat-form-field class="col-md-2 offset-3">
           <mat-select placeholder="Niveau" [formControl]="levels">
             <mat-select-trigger color="primary">
               <ngb-rating max=3 [readonly]="true" [(rate)]="levels.value"></ngb-rating>
