@@ -30,7 +30,6 @@ export class CardSessionsComponent implements OnInit {
 
   openDialog() {
     console.log('session =', this.session);
-    console.log('session =', this.session.level);
     const dialogRef = this.dialog.open(SessionDetail, {
       width: '75%',
       height: '60%',
@@ -41,14 +40,19 @@ export class CardSessionsComponent implements OnInit {
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      result = !result;
+      console.log(result);
+      // result = !result;
+      console.log('result = !result', result);
       if (result === true) {
         console.log('la modal a été fermé et tu es inscrit');
-      }
-      else {
+        this.session.inscrit = result;
+      } else if (result === false) {
         console.log('la modal a été fermé et tu es désinscrit');
+        this.session.inscrit = result;
+      } else {
+        console.log('tu as fermé la modal sans cliqué sur un bouton, rien n\'a changé');
       }
-      this.session.inscrit = result;
+
     });
   }
   ngOnInit() {

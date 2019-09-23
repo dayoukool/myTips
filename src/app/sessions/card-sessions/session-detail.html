@@ -33,10 +33,10 @@
 
       <div mat-dialog-actions class="col-2 offset-5 controlBouton">
         <button mat-raised-button (click)="onNoClick()">Retour</button>
-        <button mat-raised-button *ngIf="data.session.inscrit == false" [mat-dialog-close]="data.session.inscrit"
+        <button mat-raised-button *ngIf="data.session.inscrit == false" [mat-dialog-close]="true"
           color="primary">S'inscrire</button>
         <button mat-raised-button *ngIf="data.session.inscrit == true" color="accent"
-          [mat-dialog-close]="data.session.inscrit">Se
+          [mat-dialog-close]="false">Se
           désinscrire</button>
       </div>
     </div>
