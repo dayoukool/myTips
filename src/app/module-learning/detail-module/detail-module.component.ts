@@ -38,7 +38,7 @@ export class DetailModuleComponent implements OnInit {
     // console.log(this.idModule);
     this.Module = this.selectModuleById(this.idModule);
     console.log(this.Module);
-    this.questions = this.questionService.getQuestions(this.Module);
+    // this.questions = this.questionService.getQuestions(this.Module);
   }
 
 

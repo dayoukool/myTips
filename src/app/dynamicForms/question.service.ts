@@ -39,10 +39,10 @@ export class QuestionService {
     let questions: QuestionBase<any>[] = [];
     console.log(modulData);
 
-    let globalQuestionType = modulData.modulEval.questionAnswers.globalQuestionType;
-    let globalAnswerList = modulData.modulEval.questionAnswers.globalAnswerList;
-    let globalDefaultValue = modulData.modulEval.questionAnswers.globalDefaultValue;
-    modulData.modulEval.questionAnswers.questionList.forEach((quest, key) => {
+    let globalQuestionType = modulData.sessionEval.questionAnswers.globalQuestionType;
+    let globalAnswerList = modulData.sessionEval.questionAnswers.globalAnswerList;
+    let globalDefaultValue = modulData.sessionEval.questionAnswers.globalDefaultValue;
+    modulData.sessionEval.questionAnswers.questionList.forEach((quest, key) => {
       questions.push(this.questionFactory(quest, globalQuestionType, globalAnswerList, globalDefaultValue, key));
       console.log(this.questionFactory(quest, globalQuestionType, globalAnswerList, globalDefaultValue, key));
     });

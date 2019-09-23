@@ -76,8 +76,8 @@
           "tipser": {
             "id": "s00000",
             "avatar": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png",
-            "firstName": "firstName",
-            "lastName": "lastName",
+            "firstName": "Jhon",
+            "lastName": "Jhon",
             "popularity": 5
           },
           "followers": [{
@@ -91,7 +91,119 @@
               "lastName": "lastName1"
             }
           ],
-          "shortDescription": "Introduction Jira",
+          "level": 1,
+          "topic": "Jira",
+          "shortDescription": "Introduction à Jira",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+          "associatedPhoto": "https://www.alteliostechnologygroup.com/wp-content/uploads/2018/02/Fiche-me%CC%81tier-inge%CC%81-test.jpg",
+          "associatedMedia": "MediaDeviceKind",
+          "maxFollowers": 4,
+          "minFollowers": 3,
+          "learners": [{
+              "name": "Doe",
+              "firstname": "Jhon",
+              "img": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png",
+              "job": "Développeur"
+            },
+            {
+              "name": "Smith",
+              "firstname": "Jhon",
+              "img": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png",
+              "job": "Chef de projet"
+            }
+          ],
+          "type": "closeCoaching",
+          "date": "2019-09-25 10:00:00",
+          "sessionEval": {
+            "id": "1",
+            "questionAnswers": {
+              "globalQuestionType": "starScored",
+              "globalDefaultValue": 1,
+              "globalAnswerList": ["newbie", "j'ai vu faire", "je pourrais le faire", "les yeux fermés"],
+              "questionList": [{
+                  "label": "Savoir mettre en place le framework de test (Karma, Jasmine, angular-cli)"
+                },
+                {
+                  "label": "Maitriser la structure d'un test unitaire avec karma (before, after, describe, it)"
+                },
+                {
+                  "label": "Utiliser les assertions de Jasmine"
+                },
+                {
+                  "label": "Déclarer le jeu de données"
+                },
+                {
+                  "label": "Tester l'existence d'une propriété du composant"
+                },
+                {
+                  "label": "Tester l'affichage par le DOM d'une propriété"
+                },
+                {
+                  "label": "Tester une fonction (exemple: un reducer)"
+                },
+                {
+                  "label": "Tester un service avec injection de dépendance"
+                },
+                {
+                  "label": "Tester une méthode privée"
+                },
+                {
+                  "label": "Tester une requête HTTP"
+                },
+                {
+                  "label": "Mocker la méthode d'un objet"
+                },
+                {
+                  "label": "Tester une méthode qui fait appel à un timer"
+                },
+                {
+                  "label": "Savoir exécuter les tests unitaires existants sur mon poste de développement"
+                },
+                {
+                  "label": "Savoir exécuter les tests unitaires en intégration continue (Jenkins)"
+                },
+                {
+                  "label": "Savoir comment récupérer le taux de couverture de code par les tests unitaires"
+                },
+                {
+                  "label": "Comprendre l'intérêt des Tests Unitaires"
+                },
+                {
+                  "label": "Savoir ce qu'il faut tester et ce qu'il ne faut pas tester unitairement"
+                },
+                {
+                  "label": "Savoir choisir son jeu de données de test"
+                },
+                {
+                  "label": "Quel niveau global estimez-vous avoir sur la compétence transmise ?"
+                }
+              ]
+            }
+          },
+          "inscrit": false
+        },
+        {
+          "tipser": {
+            "id": "s00000",
+            "avatar": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png",
+            "firstName": "Jhon",
+            "lastName": "Jhon",
+            "popularity": 5
+          },
+          "followers": [{
+              "id": "s00001",
+              "firstName": "firstName",
+              "lastName": "lastName"
+            },
+            {
+              "id": "s00002",
+              "firstName": "firstName1",
+              "lastName": "lastName1"
+            }
+          ],
+          "level": 1,
+          "topic": "Jira",
+          "shortDescription": "Introduction à Jira",
           "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           "associatedPhoto": "https://www.alteliostechnologygroup.com/wp-content/uploads/2018/02/Fiche-me%CC%81tier-inge%CC%81-test.jpg",
           "associatedMedia": "MediaDeviceKind",
@@ -112,90 +224,72 @@
           ],
           "type": "closeCoaching",
           "date": "2019-09-05 10:00:00",
-          "inscrit": false
-        },
-        {
-          "tipser": {
-            "id": "s00000",
-            "avatar": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png",
-            "firstName": "firstName",
-            "lastName": "lastName",
-            "popularity": 5
+          "sessionEval": {
+            "id": "1",
+            "questionAnswers": {
+              "globalQuestionType": "starScored",
+              "globalDefaultValue": 1,
+              "globalAnswerList": ["newbie", "j'ai vu faire", "je pourrais le faire", "les yeux fermés"],
+              "questionList": [{
+                  "label": "Savoir mettre en place le framework de test (Karma, Jasmine, angular-cli)"
+                },
+                {
+                  "label": "Maitriser la structure d'un test unitaire avec karma (before, after, describe, it)"
+                },
+                {
+                  "label": "Utiliser les assertions de Jasmine"
+                },
+                {
+                  "label": "Déclarer le jeu de données"
+                },
+                {
+                  "label": "Tester l'existence d'une propriété du composant"
+                },
+                {
+                  "label": "Tester l'affichage par le DOM d'une propriété"
+                },
+                {
+                  "label": "Tester une fonction (exemple: un reducer)"
+                },
+                {
+                  "label": "Tester un service avec injection de dépendance"
+                },
+                {
+                  "label": "Tester une méthode privée"
+                },
+                {
+                  "label": "Tester une requête HTTP"
+                },
+                {
+                  "label": "Mocker la méthode d'un objet"
+                },
+                {
+                  "label": "Tester une méthode qui fait appel à un timer"
+                },
+                {
+                  "label": "Savoir exécuter les tests unitaires existants sur mon poste de développement"
+                },
+                {
+                  "label": "Savoir exécuter les tests unitaires en intégration continue (Jenkins)"
+                },
+                {
+                  "label": "Savoir comment récupérer le taux de couverture de code par les tests unitaires"
+                },
+                {
+                  "label": "Comprendre l'intérêt des Tests Unitaires"
+                },
+                {
+                  "label": "Savoir ce qu'il faut tester et ce qu'il ne faut pas tester unitairement"
+                },
+                {
+                  "label": "Savoir choisir son jeu de données de test"
+                },
+                {
+                  "label": "Quel niveau global estimez-vous avoir sur la compétence transmise ?"
+                }
+              ]
+            }
           },
-          "followers": [{
-              "id": "s00001",
-              "firstName": "firstName",
-              "lastName": "lastName"
-            },
-            {
-              "id": "s00002",
-              "firstName": "firstName1",
-              "lastName": "lastName1"
-            }
-          ],
-          "shortDescription": "Bien démarrer avec Confluence ",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "associatedPhoto": "http://seekvectorlogo.com/wp-content/uploads/2019/04/confluence-vector-logo.png",
-          "associatedMedia": "MediaDeviceKind",
-          "maxFollowers": 4,
-          "minFollowers": 3,
-          "learners": [{
-              "name": "Doe",
-              "firstname": "Jhon",
-              "img": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png",
-              "job": "dev"
-            },
-            {
-              "name": "Smith",
-              "firstname": "Jhon",
-              "img": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png",
-              "job": "chef de projet"
-            }
-          ],
-          "type": "closeCoaching",
-          "date": "2019-09-01 10:00:00",
-          "inscrit": false
-        },
-        {
-          "tipser": {
-            "id": "s00000",
-            "avatar": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png",
-            "firstName": "firstName",
-            "lastName": "lastName",
-            "popularity": 5
-          },
-          "followers": [{
-              "id": "s00001",
-              "firstName": "firstName",
-              "lastName": "lastName"
-            },
-            {
-              "id": "s00002",
-              "firstName": "firstName1",
-              "lastName": "lastName1"
-            }
-          ],
-          "shortDescription": "Bien démarrer avec Confluence ",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "associatedPhoto": "http://seekvectorlogo.com/wp-content/uploads/2019/04/confluence-vector-logo.png",
-          "associatedMedia": "MediaDeviceKind",
-          "maxFollowers": 4,
-          "minFollowers": 3,
-          "learners": [{
-              "name": "Doe",
-              "firstname": "Jhon",
-              "img": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png",
-              "job": "dev"
-            },
-            {
-              "name": "Smith",
-              "firstname": "Jhon",
-              "img": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png",
-              "job": "chef de projet"
-            }
-          ],
-          "type": "closeCoaching",
-          "date": "2019-09-16 10:00:00",
           "inscrit": false
         }
       ]
