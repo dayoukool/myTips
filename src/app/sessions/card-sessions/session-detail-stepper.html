@@ -1,4 +1,4 @@
-<div class="alternative" cdkFocusInitial>
+<div class="alternative modalSession" cdkFocusInitial>
   <div class="my-1" *ngIf="data.session.inscrit == true">
     <div>
       <div class="col-6 offset-3 titre">
@@ -90,14 +90,12 @@
         </form>
       </mat-step>
       <mat-step>
-        <form >
           <ng-template matStepLabel>Remplir le test</ng-template>
-          <app-dynamic-form [questions]="questions"></app-dynamic-form>
+          <app-dynamic-form [questions]="data.questions"></app-dynamic-form>
           <div>
             <button mat-raised-button class="col-1 offset-1" (click)="stepper.reset()">Reset</button>
             <button mat-raised-button matStepperNext>Suivant</button>
           </div>
-        </form>
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>Fini</ng-template>

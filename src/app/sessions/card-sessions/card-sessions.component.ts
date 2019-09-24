@@ -26,7 +26,7 @@ export class SessionDetail {
 })
 export class CardSessionsComponent implements OnInit {
   @Input() session: Session;
-  public questions:  QuestionBase<any>[];
+  public questions: QuestionBase<any>[];
   public learners;
   constructor(private sessionService: SessionService, public dialog: MatDialog, private questionService: QuestionService) {
   }
@@ -35,7 +35,7 @@ export class CardSessionsComponent implements OnInit {
     console.log('session =', this.session);
     const dialogRef = this.dialog.open(SessionDetail, {
       width: '75%',
-      height: '60%',
+      height: '65%',
       data: {
         session: this.session,
         learners: this.learners,
@@ -51,7 +51,7 @@ export class CardSessionsComponent implements OnInit {
         console.log('la modal a été fermé et tu es désinscrit');
         this.session.inscrit = result;
       } else {
-        console.log('tu as fermé la modal sans cliqué sur un bouton, rien n\'a changé');
+        console.log('tu as fermé la modal sans cliquer sur un bouton, rien n\'a changé');
       }
 
     });
