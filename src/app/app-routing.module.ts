@@ -11,6 +11,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SujetComponent } from './sujet/sujet.component';
 import { ModuleLearningComponent } from './module-learning/module-learning.component';
 import { DetailModuleComponent } from './module-learning/detail-module/detail-module.component';
+import { DemandeSessionsComponent } from './demande-sessions/demande-sessions.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,11 @@ const routes: Routes = [
   {
     path: 'profil',
     component: ProfilComponent
+    // canLoad: [AuthGuard]
+  },
+  {
+    path: 'demandes',
+    component: DemandeSessionsComponent
     // canLoad: [AuthGuard]
   },
   {

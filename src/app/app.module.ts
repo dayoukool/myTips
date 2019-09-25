@@ -48,6 +48,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ModuleLearningComponent } from './module-learning/module-learning.component';
 import { CardModuleComponent } from './card-module/card-module.component';
 import { DetailModuleComponent } from './module-learning/detail-module/detail-module.component';
+import { DemandeSessionsComponent } from './demande-sessions/demande-sessions.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -77,7 +80,8 @@ registerLocaleData(localeFr, 'fr');
     SujetComponent,
     ModuleLearningComponent,
     CardModuleComponent,
-    DetailModuleComponent
+    DetailModuleComponent,
+    DemandeSessionsComponent
   ],
   imports: [
     MaterialModule,
@@ -101,7 +105,9 @@ registerLocaleData(localeFr, 'fr');
     MatNativeDateModule,
     MatAutocompleteModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   entryComponents: [
     SessionDetail
