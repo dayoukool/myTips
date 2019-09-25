@@ -50,7 +50,7 @@ import { CardModuleComponent } from './card-module/card-module.component';
 import { DetailModuleComponent } from './module-learning/detail-module/detail-module.component';
 import { DemandeSessionsComponent } from './demande-sessions/demande-sessions.component';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material';
+import { MatPaginatorModule, MatSortModule } from '@angular/material';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -107,7 +107,8 @@ registerLocaleData(localeFr, 'fr');
     MatDialogModule,
     MatTooltipModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule
   ],
   entryComponents: [
     SessionDetail

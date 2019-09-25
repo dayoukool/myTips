@@ -1,12 +1,12 @@
 <div class="alternative demandeSessions">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-8 offset-2 position-sticky">
+      <div class="col-md-8 offset-2">
         <mat-form-field>
           <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
         </mat-form-field>
       </div>
-      <div class="col-md-8 offset-2 mat-elevation-z8">
+      <div class="col-md-8 offset-2 mat-elevation-z8 table">
         <mat-table [dataSource]="demandeDeSessionsArray" matSort>
           <ng-container matColumnDef="Date">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Date de la demande </mat-header-cell>
