@@ -3,11 +3,6 @@
     <h6>{{session.date | date:'HH:mm, EEEE d MMMM y':undefined :"fr"}}</h6>
 
   </div>
-  <div *ngIf="session.inscrit"  class="col-1">
-    <i class="material-icons" matTooltip="Vous êtes inscrit">
-      face
-    </i>
-  </div>
   <div class="col" *ngIf="session.inscrit, else inscription">
     <button mat-raised-button matTooltip="Exporter vers Outlook" onclick=""><img src="assets\images\outlookPetit.png" alt="logo Outlook"></button>
     <button mat-raised-button color="accent" (click)="openDialog()">Se désinscrire</button>
