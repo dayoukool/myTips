@@ -1,7 +1,10 @@
 <div class="alternative demandeSessions">
+
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-8 offset-2">
+        <h3>Liste des demandes de création de sessions :</h3>
+        <br>
         <mat-form-field>
           <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
         </mat-form-field>
@@ -41,7 +44,7 @@
           <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
         <mat-paginator class="position-sticky" [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons>
-            </mat-paginator>
+        </mat-paginator>
       </div>
     </div>
   </div>

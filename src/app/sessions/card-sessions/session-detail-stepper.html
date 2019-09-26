@@ -1,5 +1,5 @@
-<div class="alternative modalSession" cdkFocusInitial>
-  <div class="my-1" *ngIf="data.session.inscrit == true">
+<div class="alternative" cdkFocusInitial>
+  <div *ngIf="data.session.inscrit == true">
     <div>
       <div class="col-6 offset-3 titre">
         <h4>{{data.session.date | date:'HH:mm, EEEE d MMMM y':undefined :"fr"}}</h4>
@@ -13,7 +13,7 @@
             </p>
             <h6>La session sera animée par: {{data.session.tipser.firstName}} {{data.session.tipser.lastName}} <img
                 style="width:60px;height:60px;" mat-card-avatar src="{{data.session.tipser.avatar}}"></h6>
-            <button mat-raised-button color="blue" onclick="">Exporter vers Outlook</button>
+                <button mat-raised-button onclick=""> <img src="assets\images\outlook.png" alt="logo Outlook"> Exporter</button>
           </mat-card-content>
         </div>
         <div class="col-2">
@@ -50,7 +50,7 @@
 
 
 
-  <div class="my-1" *ngIf="data.session.inscrit == false">
+  <div *ngIf="data.session.inscrit == false">
     <mat-horizontal-stepper [linear]="isLinear" labelPosition="bottom" #stepper>
       <mat-step>
         <ng-template matStepLabel>Description</ng-template>
@@ -84,22 +84,24 @@
               </mat-list>
             </div>
           </div>
-          <div>
-            <button mat-raised-button matStepperNext>Suivant</button>
+          <div class="row">
+            <div class="col-10"></div>
+            <button mat-raised-button matStepperNext class="col-1"  color="primary">Suivant</button>
           </div>
         </form>
       </mat-step>
       <mat-step>
-          <ng-template matStepLabel>Remplir le test</ng-template>
-          <app-dynamic-form [questions]="data.questions"></app-dynamic-form>
-          <div>
-            <button mat-raised-button class="col-1 offset-1" (click)="stepper.reset()">Reset</button>
-            <button mat-raised-button matStepperNext>Suivant</button>
-          </div>
+        <ng-template matStepLabel>Remplir le test</ng-template>
+        <app-dynamic-form [questions]="data.questions"></app-dynamic-form>
+        <div class="row">
+          <button mat-raised-button class="col-1" (click)="stepper.reset()">Reset</button>
+          <div class="col-9"></div>
+          <button mat-raised-button matStepperNext class="col-1" color="primary">Suivant</button>
+        </div>
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>Fini</ng-template>
-        <div class="continer">
+        <div class="">
           <div class="row">
             Plus qu'une étape! <br>
             Vous pouvez maintenant exporter la session pour l'inclure dans votre agenda et finaliser l'inscription en
@@ -107,16 +109,16 @@
             sur le bouton s'inscrire.
           </div>
           <div class="row">
-            <button mat-raised-button class="col-md-2 offset-md-10" onclick="">Exporter vers Outlook</button>
+            <button mat-raised-button class="col-md-2 offset-md-10" onclick=""> <img src="assets\images\outlook.png" alt="logo Outlook"> Exporter</button>
           </div>
           <br>
           <div class="row">
-              <button mat-raised-button matStepperPrevious class="col-1">Retour au test</button>
-              <button mat-raised-button class="col-1 offset-1" [mat-dialog-close]="true" color="primary">S'inscrire</button>
+            <button mat-raised-button matStepperPrevious class="col-1">Retour au test</button>
+            <div class="col-9"></div>
+            <button mat-raised-button class="col-1" [mat-dialog-close]="true"
+              color="primary">S'inscrire</button>
           </div>
         </div>
       </mat-step>
     </mat-horizontal-stepper>
-
-
   </div>

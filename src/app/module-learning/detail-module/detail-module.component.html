@@ -1,8 +1,9 @@
 <div class=" alternative detail-Module">
   <div class="container-fluid">
-    <button mat-raised-button class="col-1" onclick="history.go(-1)" color="primary">Retour</button>
     <button mat-button [routerLink]="['/sujets']">{{Module.sujet}}</button>
-    <button mat-button onclick="history.go(-1)"><ngb-rating max=3 [readonly]="true" [(rate)]="Module.level"></ngb-rating></button>
+    <button mat-button onclick="history.go(-1)">
+      <ngb-rating max=3 [readonly]="true" [(rate)]="Module.level"></ngb-rating>
+    </button>
   </div>
   <div class="container">
     <div class="row">
@@ -23,9 +24,9 @@
         <div class="">
           <div class="sessions">
             <div class="">
-              <div *ngIf="Module.sessions != 0; else elseTemplate">
+              <div>
                 <h4>Liste des sessions</h4>
-                <div class="row">
+                <div class="row" *ngIf="Module.sessions != 0; else createSession">
                   <mat-form-field class="col">
                     <input matInput [matDatepicker]="debut" placeholder="Date de début" [formControl]="date_debut">
                     <mat-datepicker-toggle matSuffix [for]="debut"></mat-datepicker-toggle>
@@ -36,7 +37,7 @@
                     <mat-datepicker-toggle matSuffix [for]="fin"></mat-datepicker-toggle>
                     <mat-datepicker #fin></mat-datepicker>
                   </mat-form-field>
-                  <mat-list class="listSessions">
+                  <mat-list class="listSessions container">
                     <mat-list-item *ngFor="let session of Module.sessions, last as last">
                       <!-- <mat-list-item *ngFor="let session of (Module.sessions| filterDatePipe: date_debut.value: date_fin.value), last as last"> -->
                       <app-card-sessions [session]="session" class="col"></app-card-sessions>
@@ -51,8 +52,10 @@
       </div>
     </div>
   </div>
-  <ng-template #elseTemplate>
-    <div>
-      il n'existe pas encore de session pour ce module.
-    </div>
+  <button mat-raised-button class="col-1 retour" onclick="history.go(-1)" color="primary">Retour</button>
+
+  <ng-template #createSession>
+    <div class="alert alert-danger">Désolé, Il n'existe pas de sessions pour ce module. Demander la création d'une
+      session.</div>
+    <button mat-raised-button color="accent" matTooltip=" Demander la création d'une session">Demander</button>
   </ng-template>

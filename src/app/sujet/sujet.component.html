@@ -11,23 +11,22 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <h1>Offres learning Factory:</h1>
-      <br>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Offres learning Factory:</h1>
+        <br>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class=" col-sm-3 offset-1" *ngFor="let item of (Sujets | topicFilters : sujetCtrl.value)">
-      <button mat-raised-button matTooltip=" Cliquez moi!" (click)="goToModule(item.sujet)">
-        <img src="{{item.img}}" class="images" alt="Photo of sujet">
-        <div>
-          <h4>{{item.sujet}}</h4>
-          <p>
-            Description du sujet
-          </p>
-        </div>
-      </button>
+    <div class="row">
+      <div class=" col-sm-3 offset-1" *ngFor="let item of (Sujets | topicFilters : sujetCtrl.value)">
+        <button mat-raised-button matTooltip=" Cliquez moi!" (click)="goToModule(item.sujet)">
+          <img src="{{item.img}}" class="images" alt="Photo of sujet">
+          <div>
+            <h4>{{item.sujet}}</h4>
+          </div>
+        </button>
+      </div>
     </div>
   </div>
 

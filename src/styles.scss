@@ -1,11 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
 //@import '~css-star-rating/scss/star-rating';
-@import '~ngx-bar-rating/themes/br-default-theme' ;
+@import '~ngx-bar-rating/themes/br-default-theme';
 @import '~ngx-bar-rating/themes/br-movie-theme';
 @import '~ngx-bar-rating/themes/br-vertical-theme';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* WebKit and Blink */
+::-webkit-scrollbar {
+  width: 6px;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.5);
+}
