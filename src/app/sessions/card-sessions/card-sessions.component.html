@@ -6,11 +6,11 @@
     <button mat-raised-button class="col-1" *ngIf="session.inscrit" matTooltip="Exporter vers Outlook" onclick=""><img
       src="assets\images\outlookPetit.png" alt="logo Outlook"></button>
     <div *ngIf="session.inscrit, else inscription">
-      <button mat-raised-button class="col" color="accent" (click)="openDialog()">Se désinscrire</button>
+      <button mat-raised-button matTooltip="Se désinscrire" class="col" color="accent" (click)="openDialog()">Se désinscrire</button>
     </div>
   </div>
 </div>
 <ng-template #inscription class="col">
-  <button mat-raised-button color="primary" (click)="openDialog()">Plus
+  <button mat-raised-button matTooltip="Vers l'incripstion" color="primary" (click)="openDialog()">Plus
     d'informtaions</button>
 </ng-template>
