@@ -11,6 +11,9 @@ export class FilterDatePipePipe implements PipeTransform {
   public slides: any;
   public minValue: Date;
   public maxValue: Date;
+  public minValueNumber: Number;
+  public maxValueNumber: Number;
+  
 
   constructor() {
 
@@ -21,6 +24,8 @@ export class FilterDatePipePipe implements PipeTransform {
     console.log('minValue :');
     console.log(minValue);
     console.log(maxValue);
+    this.maxValueNumber = Date.parse(maxValue.toString());
+    this.minValueNumber = Date.parse(minValue.toString());
     if (!Slides) {
       console.log('on filtre pas');
       return Slides;
@@ -31,8 +36,9 @@ export class FilterDatePipePipe implements PipeTransform {
       console.log(el.date);
       console.log(new Date(el.date));
       el.date = new Date(el.date);
-      console.log(el.date <= this.maxValue && el.date >= this.minValue);
-      return el.date <= this.maxValue && el.date >= this.minValue;
+      console.log(Date.parse(el.date.toString()));
+      console.log(Date.parse(el.date.toString()) <= this.maxValueNumber && Date.parse(el.date.toString()) >= this.minValueNumber);
+      return Date.parse(el.date.toString()) <= this.maxValueNumber && Date.parse(el.date.toString()) >= this.minValueNumber;
     }
     );
     console.log(Slides);

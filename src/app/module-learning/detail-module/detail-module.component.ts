@@ -25,13 +25,16 @@ export class DetailModuleComponent implements OnInit {
   public Modules: Module[];
   public idModule: number;
   public Module: Module;
+  public DateFin = new Date();
   date_debut = new FormControl(new Date());
-  date_fin = new FormControl(new Date());
+  date_fin = new FormControl(new Date(this.DateFin.setDate((new Date()).getDate() + 50)));
 
 
   constructor(private questionService: QuestionService, public moduleService: ModuleService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    console.log(this.date_debut);
+    console.log(this.date_fin);
     this.Modules = this.moduleService.getModule();
     // console.log(this.Modules);
     this.idModule = this.activatedRoute.snapshot.params.id;
