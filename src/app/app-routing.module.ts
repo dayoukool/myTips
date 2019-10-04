@@ -12,8 +12,13 @@ import { SujetComponent } from './sujet/sujet.component';
 import { ModuleLearningComponent } from './module-learning/module-learning.component';
 import { DetailModuleComponent } from './module-learning/detail-module/detail-module.component';
 import { DemandeSessionsComponent } from './demande-sessions/demande-sessions.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
 
 const routes: Routes = [
+
+  { path: 'auth/signup', component: SignupComponent },
+  { path: 'auth/signin', component: SigninComponent },
   {
     path: '',
     redirectTo: 'sujets',

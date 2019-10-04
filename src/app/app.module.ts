@@ -52,6 +52,8 @@ import { DemandeSessionsComponent } from './demande-sessions/demande-sessions.co
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule, MatSortModule } from '@angular/material';
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
+import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 
 registerLocaleData(localeFr, 'fr');
@@ -83,7 +85,9 @@ registerLocaleData(localeFr, 'fr');
     ModuleLearningComponent,
     CardModuleComponent,
     DetailModuleComponent,
-    DemandeSessionsComponent
+    DemandeSessionsComponent,
+    SigninComponent,
+    SignupComponent
   ],
   imports: [
     MaterialModule,
