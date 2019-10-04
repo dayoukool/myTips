@@ -5,7 +5,7 @@ import { QuestionService } from 'src/app/dynamicForms/question.service';
 import { ModuleService } from '../module.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
-import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS, } from '@angular/material/core';
 import { Session } from '@core/models/session.model';
 
 
@@ -14,9 +14,7 @@ import { Session } from '@core/models/session.model';
   selector: 'app-detail-module',
   templateUrl: './detail-module.component.html',
   styleUrls: ['./detail-module.component.sass'],
-  providers: [QuestionService,
-    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' }
-  ]
+  providers: [QuestionService ]
 })
 
 export class DetailModuleComponent implements OnInit {

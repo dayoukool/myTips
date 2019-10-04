@@ -51,7 +51,7 @@
     <mat-step [stepControl]="fourthFormGroup">
       <form [formGroup]="fourthFormGroup">
         <ng-template matStepLabel>Niveau de difficulté</ng-template>
-        <ngb-rating max=5 [(rate)]="currentRate" formControlName="fourthCtrl" required></ngb-rating><span>:
+        <ngb-rating max=3 [(rate)]="currentRate" formControlName="fourthCtrl" required></ngb-rating><span>:
           {{currentRate}}</span>
         <br>
         <div>

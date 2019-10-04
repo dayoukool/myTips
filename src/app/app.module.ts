@@ -51,6 +51,8 @@ import { DetailModuleComponent } from './module-learning/detail-module/detail-mo
 import { DemandeSessionsComponent } from './demande-sessions/demande-sessions.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule, MatSortModule } from '@angular/material';
+import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
+
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -113,7 +115,9 @@ registerLocaleData(localeFr, 'fr');
   entryComponents: [
     SessionDetail
   ],
-  providers: [MatNativeDateModule, MatDatepickerModule, { provide: MAT_DATE_LOCALE, useValue: 'fr' }],
+  providers: [MatNativeDateModule, MatDatepickerModule, { provide: MAT_DATE_LOCALE, useValue: 'fr' }, 
+  { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+  { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
