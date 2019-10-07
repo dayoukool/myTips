@@ -51,9 +51,10 @@ import { DetailModuleComponent } from './module-learning/detail-module/detail-mo
 import { DemandeSessionsComponent } from './demande-sessions/demande-sessions.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule, MatSortModule } from '@angular/material';
-import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
+import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 registerLocaleData(localeFr, 'fr');
@@ -114,14 +115,15 @@ registerLocaleData(localeFr, 'fr');
     MatTooltipModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatSnackBarModule
   ],
   entryComponents: [
     SessionDetail
   ],
-  providers: [MatNativeDateModule, MatDatepickerModule, { provide: MAT_DATE_LOCALE, useValue: 'fr' }, 
-  { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
-  { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS }],
+  providers: [MatNativeDateModule, MatDatepickerModule, { provide: MAT_DATE_LOCALE, useValue: 'fr' },
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

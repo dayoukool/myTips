@@ -43,6 +43,7 @@
     "python": "0.0.4",
     "rxjs": "6.5.2",
     "slick-carousel": "^1.8.1",
+    "snackbar": "^1.1.0",
     "tslib": "^1.10.0",
     "zone.js": "0.9.1"
   },
