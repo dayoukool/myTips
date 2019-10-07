@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './auth/auth.guard';
 import { SessionSummaryComponent } from './sessions/sessionSummary/session-summary.component';
 import { SessionsComponent } from './sessions/sessions.component';
 import { ProfilComponent } from './profil/profil.component';
@@ -14,6 +13,7 @@ import { DetailModuleComponent } from './module-learning/detail-module/detail-mo
 import { DemandeSessionsComponent } from './demande-sessions/demande-sessions.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
+import { AuthGuardService } from './auth/auth-guard.service';
 
 const routes: Routes = [
 
@@ -27,10 +27,12 @@ const routes: Routes = [
 
   {
     path: 'sujets',
+    canActivate: [AuthGuardService],
     component: SujetComponent,
   },
   {
     path: 'sujets/:sujet',
+    canActivate: [AuthGuardService],
     component: ModuleLearningComponent,
 
 
@@ -38,10 +40,12 @@ const routes: Routes = [
   },
   {
     path: 'sujets/:sujet/detail/:id',
+    canActivate: [AuthGuardService],
     component: DetailModuleComponent
   },
   {
     path: 'sessions',
+    canActivate: [AuthGuardService],
     component: SessionsComponent,
     children: [
       {
@@ -54,26 +58,31 @@ const routes: Routes = [
   },
   {
     path: 'profil',
+    canActivate: [AuthGuardService],
     component: ProfilComponent
     // canLoad: [AuthGuard]
   },
   {
     path: 'demandes',
+    canActivate: [AuthGuardService],
     component: DemandeSessionsComponent
     // canLoad: [AuthGuard]
   },
   {
     path: 'createProfil',
+    canActivate: [AuthGuardService],
     component: CreateProfilComponent
     // canLoad: [AuthGuard]
   },
   {
     path: 'createSession',
+    canActivate: [AuthGuardService],
     component: CreateSessionComponent
     // canLoad: [AuthGuard]
   },
   {
     path: 'mySession',
+    canActivate: [AuthGuardService],
     component: MySessionComponent
     // canLoad: [AuthGuard]
   },

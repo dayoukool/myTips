@@ -1,9 +1,10 @@
 <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div>
-<div [formGroup]="form" class="example-container">  
-  <div [ngSwitch]="question.controlType">
-    <span class="example-container" *ngSwitchCase="'starrating'">
-      <p class="centered">{{question.label}}</p>
-      <bar-rating [formControlName]="question.key" [id]="question.key" [(rate)]="rate" [max]="question.max" [theme]="'vertical'" [showText]="true" [titles]="question.options"></bar-rating>
+<div [formGroup]="form" class="">  
+  <div [ngSwitch]="question.controlType" class="">
+    <span class="row" *ngSwitchCase="'starrating'">
+      <p class="col-8 centered">{{question.label}}</p>
+      <div class="col-2" ></div>
+      <bar-rating class="col-2" [formControlName]="question.key" [id]="question.key" [(rate)]="rate" [max]="question.max" [theme]="'vertical'" [showText]="true" [titles]="question.options"></bar-rating>
     </span>
     <mat-form-field *ngSwitchCase="'textbox'" appearance="outline">
       <mat-label [attr.for]="question.key" mat-label>{{question.label}}</mat-label>

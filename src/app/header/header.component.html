@@ -22,8 +22,15 @@
         <mat-icon>person</mat-icon>
       </button>
       <mat-menu #profil="matMenu">
-        <button mat-menu-item routerLink="profil">Modifier son profil <mat-icon>create</mat-icon></button>
-        <button mat-menu-item>Déconnexion <mat-icon>close</mat-icon></button>
+        <button mat-menu-item routerLink="profil" *ngIf="isAuth">Modifier son profil <mat-icon>create</mat-icon>
+        </button>
+        <button mat-menu-item routerLink="auth/signup" *ngIf="!isAuth">
+          Créer un compte <mat-icon>add_circle</mat-icon>
+        </button>
+        <button mat-menu-item routerLink="auth/signin" *ngIf="!isAuth">
+          Connexion <mat-icon>computer</mat-icon>
+        </button>
+        <button mat-menu-item (click)="onSignOut()" *ngIf="isAuth">Déconnexion <mat-icon>close</mat-icon></button>
       </mat-menu>
     </div>
   </mat-toolbar>
