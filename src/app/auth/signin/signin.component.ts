@@ -10,24 +10,25 @@ import { Router } from '@angular/router';
 })
 export class SigninComponent implements OnInit {
 
-  private email = new FormControl('', [Validators.required, Validators.email]);
-  private password = new FormControl('', [Validators.required, Validators.pattern(/[0-9a-zA-Z]{6,}/)]);
+
   signinForm: FormGroup;
   errorMessage: string;
-  getErrorMessage() {
-    return this.email.hasError('required') ? 'Champ vide' :
-      this.email.hasError('email') ? 'l\'addresse n\'est pas au bon format' :
-        '';
-  }
+  hide = true;
+
+
   constructor(private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router) { }
 
   ngOnInit() {
-    
+    this.signinForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.pattern(/[0-9a-zA-Z]{6,}/)]]
+    });
   }
 
 
+ 
 
   onSubmit() {
     const email = this.signinForm.get('email').value;
