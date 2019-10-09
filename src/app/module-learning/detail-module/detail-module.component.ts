@@ -20,6 +20,7 @@ import { Session } from '@core/models/session.model';
 export class DetailModuleComponent implements OnInit {
   @Input() session: Session;
   public questions: QuestionBase<any>[];
+  Sachant = false;
   public Modules: Module[];
   public idModule: number;
   public Module: Module;

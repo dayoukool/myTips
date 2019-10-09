@@ -1,12 +1,13 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col">
-      <h6>{{session.date | date:'HH:mm, EEEE d MMMM y':undefined :"fr"}}</h6>
-    </div>
+
+    <h6 class="col">{{session.date | date:'HH:mm, EEEE d MMMM y':undefined :"fr"}}</h6>
+
     <button mat-raised-button class="col-1" *ngIf="session.inscrit" matTooltip="Exporter vers Outlook" onclick=""><img
-      src="assets\images\outlookPetit.png" alt="logo Outlook"></button>
+        src="assets\images\outlookPetit.png" alt="logo Outlook"></button>
     <div *ngIf="session.inscrit, else inscription">
-      <button mat-raised-button matTooltip="Se désinscrire" class="col" color="accent" (click)="openDialog()">Se désinscrire</button>
+      <button mat-raised-button matTooltip="Se désinscrire" class="col" color="accent" (click)="openDialog()">Se
+        désinscrire</button>
     </div>
   </div>
 </div>

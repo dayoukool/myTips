@@ -10,22 +10,22 @@ import * as firebase from 'firebase';
 })
 export class SujetService {
 
-    sujets: Sujet[] =[];
+    sujets: Sujet[] = [];
     sujetsSubject = new Subject<Sujet[]>();
 
     emiSujets() {
       this.sujetsSubject.next(this.sujets);
     }
 
-    saveSujets(){
+    saveSujets() {
       firebase.database().ref('/sujets').set(this.sujets);
     }
-    getSujets(){
+    getSujets() {
       firebase.database().ref('/sujets')
         .on('value', (data: DataSnapshot) => {
             this.sujets = data.val() ? data.val() : [];
             this.emiSujets();
-        })
+        });
     }
 
     getSingleSujet(id: number) {

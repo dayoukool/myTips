@@ -50,7 +50,7 @@ import { CardModuleComponent } from './card-module/card-module.component';
 import { DetailModuleComponent } from './module-learning/detail-module/detail-module.component';
 import { DemandeSessionsComponent } from './demande-sessions/demande-sessions.component';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatPaginatorModule, MatSortModule, MatSlideToggleModule } from '@angular/material';
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -116,7 +116,8 @@ registerLocaleData(localeFr, 'fr');
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSlideToggleModule
   ],
   entryComponents: [
     SessionDetail

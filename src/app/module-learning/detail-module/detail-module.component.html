@@ -5,31 +5,8 @@
       <ngb-rating max=3 [readonly]="true" [(rate)]="Module.level"></ngb-rating>
     </button>
   </div>
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
-      <div class="col" label="sachants">
-        <div class="">
-          <div class="sessions">
-            <div class="">
-              <div>
-                <h4>Liste des sachants</h4>
-                <div class="row">
-                  <mat-list class="listParticipants container">
-                    <mat-list-item *ngFor="let i of [].constructor(5); last as last">
-                      <img style="height:100%"
-                        src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png"
-                        alt="Photo de profil">
-                      <h2 matLine>Jhon Jhon</h2>
-                      <p matLine>Sachant</p>
-                      <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
-                    </mat-list-item>
-                  </mat-list>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="col" label="Description">
         <h1 class="titre">{{Module.titre}}</h1>
         <div class="container">
@@ -40,38 +17,80 @@
             <div class="description col-md-8 offset-2  text-justify">
               {{Module.description}}
             </div>
+
           </div>
         </div>
+
       </div>
       <div class="col" label="Sessions">
-        <div class="">
-          <div class="sessions">
+
+        <mat-tab-group mat-stretch-tabs >
+          <mat-tab>
+            <ng-template mat-tab-label>
+              Liste des sessions
+            </ng-template>
             <div class="">
-              <div>
-                <h4>Liste des sessions</h4>
-                <div class="row" *ngIf="Module.sessions != 0; else createSession">
-                  <mat-form-field class="col">
-                    <input matInput [matDatepicker]="debut" placeholder="Date de début" [formControl]="date_debut">
-                    <mat-datepicker-toggle matSuffix [for]="debut"></mat-datepicker-toggle>
-                    <mat-datepicker #debut></mat-datepicker>
-                  </mat-form-field>
-                  <mat-form-field class="col">
-                    <input matInput [matDatepicker]="fin" placeholder="Date de fin" [formControl]="date_fin">
-                    <mat-datepicker-toggle matSuffix [for]="fin"></mat-datepicker-toggle>
-                    <mat-datepicker #fin></mat-datepicker>
-                  </mat-form-field>
-                  <mat-list class="listSessions container">
-                    <mat-list-item
-                      *ngFor="let session of (Module.sessions| filterDatePipe: date_debut.value: date_fin.value), last as last">
-                      <app-card-sessions [session]="session" class="col"></app-card-sessions>
-                      <mat-divider *ngIf="!last"></mat-divider>
-                    </mat-list-item>
-                  </mat-list>
+              <div class="sessions">
+                <div class="container">
+                  <div>
+
+                    <div class="row" *ngIf="Module.sessions != 0; else createSession">
+                      <mat-form-field class="col">
+                        <input matInput [matDatepicker]="debut" placeholder="Date de début" [formControl]="date_debut">
+                        <mat-datepicker-toggle matSuffix [for]="debut"></mat-datepicker-toggle>
+                        <mat-datepicker #debut></mat-datepicker>
+                      </mat-form-field>
+                      <mat-form-field class="col">
+                        <input matInput [matDatepicker]="fin" placeholder="Date de fin" [formControl]="date_fin">
+                        <mat-datepicker-toggle matSuffix [for]="fin"></mat-datepicker-toggle>
+                        <mat-datepicker #fin></mat-datepicker>
+                      </mat-form-field>
+                      <mat-list class="listSessions container">
+                        <mat-list-item
+                          *ngFor="let session of (Module.sessions| filterDatePipe: date_debut.value: date_fin.value), last as last">
+                          <app-card-sessions [session]="session" class="col"></app-card-sessions>
+                          <mat-divider *ngIf="!last"></mat-divider>
+                        </mat-list-item>
+                      </mat-list>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              Liste des sachants
+            </ng-template>
+            <div class="">
+              <div class="sessions">
+                <div class="container">
+                  <div>
+
+                    <div class="row">
+                      <mat-list class="listParticipants container">
+                        <mat-list-item *ngFor="let i of [].constructor(5); last as last">
+                          <img style="height:100%"
+                            src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/ce54bf11889067.562541ef7cde4.png"
+                            alt="Photo de profil">
+                          <h2 matLine>Jhon Jhon</h2>
+                          <p matLine>Sachant</p>
+                          <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+                        </mat-list-item>
+                      </mat-list>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+
+
+        </mat-tab-group>
+
+
+
+
       </div>
     </div>
   </div>
