@@ -26,13 +26,17 @@
       </div>
     </div>
   </div>
-  <div class="col-md-1 retour">
+  <div class="col-md-1 retour" *ngIf="Modules.length != 0">
     <button mat-raised-button [routerLink]="['../']" color="primary">Retour</button>
   </div>
   <ng-template #elseTemplate>
-    <div>
-      il n'existe pas encore de module pour ce sujet.
-    </div>
+    
+        <mat-card class=" text-center col-2 offset-5  noModule">
+          il n'existe pas encore de module pour ce sujet.
+          <div>
+            <button mat-raised-button [routerLink]="['../']" color="primary">Retour</button>
+          </div>
+        </mat-card>
   </ng-template>
 
 
