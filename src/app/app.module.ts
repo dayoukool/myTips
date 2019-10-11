@@ -1,8 +1,11 @@
+import { FirebaseConfig } from './../environments/firebase.config';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BarRatingModule } from "ngx-bar-rating";
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+
 import { MaterialModule } from './material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -55,7 +58,13 @@ import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-mo
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
+
+import * as firebase from 'firebase';
+
+
+firebase.initializeApp(FirebaseConfig.firebase);
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -117,7 +126,9 @@ registerLocaleData(localeFr, 'fr');
     MatPaginatorModule,
     MatSortModule,
     MatSnackBarModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   entryComponents: [
     SessionDetail
