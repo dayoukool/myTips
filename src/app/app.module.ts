@@ -62,6 +62,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 
 import * as firebase from 'firebase';
+import { EditSujetComponent } from './edit-sujet/edit-sujet.component';
 
 
 firebase.initializeApp(FirebaseConfig.firebase);
@@ -97,7 +98,8 @@ registerLocaleData(localeFr, 'fr');
     DetailModuleComponent,
     DemandeSessionsComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    EditSujetComponent
   ],
   imports: [
     MaterialModule,

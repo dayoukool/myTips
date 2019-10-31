@@ -14,6 +14,7 @@ import { DemandeSessionsComponent } from './demande-sessions/demande-sessions.co
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AuthGuardService } from './auth/auth-guard.service';
+import { EditSujetComponent } from './edit-sujet/edit-sujet.component';
 
 const routes: Routes = [
 
@@ -42,6 +43,12 @@ const routes: Routes = [
     path: 'sujets/:sujet/detail/:id',
     canActivate: [AuthGuardService],
     component: DetailModuleComponent
+  },
+  {
+    path: 'administration/sujets',
+    canActivate: [AuthGuardService],
+    component: EditSujetComponent
+    // canLoad: [AuthGuard]
   },
   {
     path: 'sessions',
