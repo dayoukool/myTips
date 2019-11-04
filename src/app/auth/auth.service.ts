@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -22,12 +22,12 @@ export class AuthService {
       .auth
       .createUserWithEmailAndPassword(email, password)
       .then(res => {
-        console.log('Successfully signed up!', res);
+        console.log('Bravo le compte a été créé, connectez-vous!', res);
         this.router.navigate(['auth/signin']);
       })
       .catch(error => {
-        console.log('Something is wrong:', error.message);
-      });    
+        console.log('Erreur:', error.message);
+      });
   }
 
   /* Sign in */
@@ -36,11 +36,11 @@ export class AuthService {
       .auth
       .signInWithEmailAndPassword(email, password)
       .then(res => {
-        console.log('Successfully signed in!');
+        console.log('Vous êtes connecté');
         this.router.navigate(['/sujets']);
       })
       .catch(err => {
-        console.log('Something is wrong:',err.message);
+        console.log('Erreur:', err.message);
       });
   }
 
@@ -49,6 +49,6 @@ export class AuthService {
     this.angularFireAuth
       .auth
       .signOut();
-  }  
+  }
 
 }
