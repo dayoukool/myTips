@@ -28,19 +28,13 @@ export class SigninComponent implements OnInit {
   }
 
 
- 
+
 
   onSubmit() {
     const email = this.signinForm.get('email').value;
     const password = this.signinForm.get('password').value;
 
-    this.authService.signInUser(email, password).then(
-      () => {
-        this.router.navigate(['/sujets']);
-      },
-      (error) => {
-        this.errorMessage = error;
-      }
-    );
+    this.authService.SignIn(email, password);
+
   }
 }

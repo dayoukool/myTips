@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-
-import * as firebase from 'firebase';
+import {AngularFireAuth} from '@angular/fire/auth';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 
@@ -9,30 +10,45 @@ import * as firebase from 'firebase';
 })
 export class AuthService {
 
-  createNewUser(email: string, password: string) {
-    return new Promise(
-      (resolve, reject) => {
-        firebase.auth().createUserWithEmailAndPassword(email, password).then(
-          () => {
-            resolve();
-          },
-          (error) => {
-            reject(error);
-          } 
-        );
-      }
-    );
+  userData: Observable<firebase.User>;
+
+  constructor(private angularFireAuth: AngularFireAuth, private router: Router) {
+    this.userData = angularFireAuth.authState;
   }
-  signInUser(email: string, password: string) {
-    return new Promise<any>(
-      (resolve, reject) => {
-        firebase.auth().signInWithEmailAndPassword(email, password).then(
-          res => resolve(res),
-          err => reject(err))
-      }
-    );
+
+  /* Sign up */
+  SignUp(email: string, password: string) {
+    this.angularFireAuth
+      .auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(res => {
+        console.log('Successfully signed up!', res);
+        this.router.navigate(['auth/signin']);
+      })
+      .catch(error => {
+        console.log('Something is wrong:', error.message);
+      });    
   }
-  signOutUser() {
-    firebase.auth().signOut();
+
+  /* Sign in */
+  SignIn(email: string, password: string) {
+    this.angularFireAuth
+      .auth
+      .signInWithEmailAndPassword(email, password)
+      .then(res => {
+        console.log('Successfully signed in!');
+        this.router.navigate(['/sujets']);
+      })
+      .catch(err => {
+        console.log('Something is wrong:',err.message);
+      });
   }
+
+  /* Sign out */
+  SignOut() {
+    this.angularFireAuth
+      .auth
+      .signOut();
+  }  
+
 }
