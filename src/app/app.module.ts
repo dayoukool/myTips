@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { FirebaseConfig } from './../environments/firebase.config';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -59,13 +60,10 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-
-
-import * as firebase from 'firebase';
 import { EditSujetComponent } from './edit-sujet/edit-sujet.component';
+import { AngularFireModule } from '@angular/fire/firebase.app.module';
 
 
-firebase.initializeApp(FirebaseConfig.firebase);
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -105,6 +103,7 @@ registerLocaleData(localeFr, 'fr');
     MaterialModule,
     BrowserModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
     BrowserAnimationsModule,
     StarRatingModule.forRoot(),
     ReactiveFormsModule,
