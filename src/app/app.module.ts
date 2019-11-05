@@ -1,3 +1,4 @@
+import { AngularFirestore, FirestoreSettingsToken } from '@angular/fire/firestore';
 
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -106,7 +107,7 @@ registerLocaleData(localeFr, 'fr');
     MaterialModule,
     BrowserModule,
     AppRoutingModule,
-   
+
     BrowserAnimationsModule,
     StarRatingModule.forRoot(),
     ReactiveFormsModule,
@@ -137,7 +138,8 @@ registerLocaleData(localeFr, 'fr');
   entryComponents: [
     SessionDetail
   ],
-  providers: [MatNativeDateModule, MatDatepickerModule, { provide: MAT_DATE_LOCALE, useValue: 'fr' },
+  providers: [MatNativeDateModule, MatDatepickerModule, AngularFirestore, { provide: FirestoreSettingsToken, useValue: {} }, 
+    { provide: MAT_DATE_LOCALE, useValue: 'fr' },
     { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
     { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS }],
   bootstrap: [AppComponent]

@@ -25,7 +25,7 @@ export class EditSujetComponent implements OnInit {
 
   ngOnInit() {
     this.idDoc = 'H5OgSEhduQvPi0JvrBQ7';
-    this.sujet = this.SujetService.getSujet(this.idDoc);
+    this.sujet = this.SujetService.getSingleSujet(this.idDoc);
     console.log('le sujet est:', this.sujet);
   }
 

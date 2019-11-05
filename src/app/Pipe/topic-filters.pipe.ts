@@ -23,7 +23,7 @@ export class TopicFiltersPipe implements PipeTransform {
    * @param Topic  Sujet sélectionné par l'utilisateur de type string
    * @returns Renvoie un tableau de Sujet
    */
-  transform(Slides: Sujet[], Topic: string): Sujet[] {
+  transform(Slides: any, Topic: string): Sujet[] {
     console.log('Slides :');
     console.log(Slides);
     console.log('topic :');
@@ -34,8 +34,8 @@ export class TopicFiltersPipe implements PipeTransform {
     }
 
     console.log('on filtre');
-    console.log(Slides.filter(el => el.sujet === Topic));
-    return Slides.filter(el => el.sujet === Topic);
+    console.log(Slides.filter(el => el.name === Topic));
+    return Slides.filter(el => el.name === Topic);
   }
 
 }

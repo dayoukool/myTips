@@ -1,27 +1,36 @@
 import { Injectable } from '@angular/core';
 
-import * as firebase from 'firebase';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Sujet } from '@core/models/sujet.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class SujetService {
 
-  constructor() { }
+  sujetRef: AngularFirestoreCollection<Sujet> = null;
 
-  public getSujet(idDoc: string): any {
-    const sujet = firebase.firestore().collection('topics').doc(idDoc).get().then(doc => {
-      if (!doc.exists) {
-        console.log('No such document!');
-      } else {
-        console.log('Document data:', doc.data());
-      }
-    })
-      .catch(err => {
-        console.log('Error getting document', err);
-      });
-    return sujet;
+  constructor(private db: AngularFirestore) {
+    this.sujetRef = db.collection('topics');
+  }
+
+  createSujet(sujet: Sujet) {
+    this.sujetRef.add({ ...sujet });
+  }
+
+  updateSujet(id: string, value: any): Promise<void> {
+    return this.sujetRef.doc(id).update(value);
+  }
+
+  deleteSujet(id: string): Promise<void> {
+    return this.sujetRef.doc(id).delete();
+  }
+
+  getSingleSujet(id: string) { }
+
+  getAllSujet(): AngularFirestoreCollection<Sujet> {
+    return this.sujetRef;
   }
 
 }

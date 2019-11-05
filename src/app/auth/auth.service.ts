@@ -50,5 +50,4 @@ export class AuthService {
       .auth
       .signOut();
   }
-
 }
