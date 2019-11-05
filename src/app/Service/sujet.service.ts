@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Sujet } from '@core/models/sujet.model';
 
 
@@ -9,28 +9,31 @@ import { Sujet } from '@core/models/sujet.model';
 })
 export class SujetService {
 
-  sujetRef: AngularFirestoreCollection<Sujet> = null;
+  sujetsRef: AngularFirestoreCollection<Sujet> = null;
+  sujetRef: AngularFirestoreDocument<Sujet>;
 
   constructor(private db: AngularFirestore) {
-    this.sujetRef = db.collection('topics');
+    this.sujetsRef = db.collection('topics');
   }
 
   createSujet(sujet: Sujet) {
-    this.sujetRef.add({ ...sujet });
+    this.sujetsRef.add({ ...sujet });
   }
 
   updateSujet(id: string, value: any): Promise<void> {
-    return this.sujetRef.doc(id).update(value);
+    return this.sujetsRef.doc(id).update(value);
   }
 
   deleteSujet(id: string): Promise<void> {
-    return this.sujetRef.doc(id).delete();
+    return this.sujetsRef.doc(id).delete();
   }
 
-  getSingleSujet(id: string) { }
+  getSingleSujet(id: string) {
+    return this.sujetsRef.doc(id);
+  }
 
   getAllSujet(): AngularFirestoreCollection<Sujet> {
-    return this.sujetRef;
+    return this.sujetsRef;
   }
 
 }

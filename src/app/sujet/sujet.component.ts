@@ -20,7 +20,6 @@ export class SujetComponent implements OnInit {
     this.router.navigate(['sujets/', sujet]);
   }
   getAllSujet() {
-    console.log('on est passé par ici', this.sujets);
     this.sujetService.getAllSujet().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
@@ -29,13 +28,11 @@ export class SujetComponent implements OnInit {
       )
     ).subscribe(sujets => {
       this.sujets = sujets;
-      console.log('et là sa marche', this.sujets);
     });
   }
 
   ngOnInit() {
     this.getAllSujet();
-    console.log('peut-être par là', this.sujets);
   }
 
 
