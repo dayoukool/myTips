@@ -3,7 +3,7 @@ import { Sujet } from '../core/models/sujet.model';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { reject } from 'q';
-import { mapTo } from 'rxjs/operators';
+import { mapTo, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-edit-sujet',
@@ -25,16 +25,13 @@ export class EditSujetComponent implements OnInit {
   }
 
   getSingleSujet(idDoc) {
-    this.sujetService.getSingleSujet(idDoc).ref
-      .get().then(function (doc) {
-        if (doc.exists) {
-          console.log('Document data:', doc.data());
-        } else {
-          console.log('No such document!');
-        }
-      }).catch(function (error) {
-        console.log('Error getting document:', error);
-      });
+    this.sujetService.getSingleSujet(idDoc).snapshotChanges().pipe(map(c =>
+          ({ id: c.payload.id, ...c.payload.data() })
+        )
+      
+    ).subscribe(sujet => {
+      this.sujet = sujet;
+    });
   }
   ngOnInit() {
     this.idDoc = 'H5OgSEhduQvPi0JvrBQ7';
