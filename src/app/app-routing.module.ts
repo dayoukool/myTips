@@ -16,6 +16,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { EditSujetComponent } from './edit-sujet/edit-sujet.component';
+import { AdministrationComponent } from './administration/administration.component';
 
 const routes: Routes = [
 
@@ -44,6 +45,12 @@ const routes: Routes = [
     path: 'sujets/:sujet/detail/:id',
     canActivate: [AuthGuardService],
     component: DetailModuleComponent
+  },
+  {
+    path: 'administration',
+    canActivate: [AuthGuardService],
+    component: AdministrationComponent,
+    // canLoad: [AuthGuard]
   },
   {
     path: 'administration/sujets',

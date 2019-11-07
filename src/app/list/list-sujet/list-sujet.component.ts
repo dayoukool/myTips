@@ -1,10 +1,11 @@
 import { SujetService } from './../../Service/sujet.service';
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, Inject } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Sujet } from '@core/models/sujet.model';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 
 
 const frenchRangeLabel = (page: number, pageSize: number, length: number) => {
@@ -21,6 +22,21 @@ const frenchRangeLabel = (page: number, pageSize: number, length: number) => {
 
   return `${startIndex + 1} - ${endIndex} sur ${length}`;
 }
+
+@Component({
+  selector: 'SujetDetail',
+  templateUrl: './sujet-detail.html',
+  styleUrls: ['./list-sujet.component.sass']
+})
+export class SujetDetail {
+
+  constructor(public dialogRef: MatDialogRef<SujetDetail>, @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}
+
 @Component({
   selector: 'app-list-sujet',
   templateUrl: './list-sujet.component.html',
@@ -37,11 +53,12 @@ export class ListSujetComponent implements AfterViewInit {
     'name',
     'Action'
   ];
+  
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private sujetService: SujetService) { }
+  constructor(private sujetService: SujetService, public dialog: MatDialog) { }
 
   ngAfterViewInit() {
     this.sujetService.getSujets().subscribe(data => {
@@ -64,5 +81,15 @@ export class ListSujetComponent implements AfterViewInit {
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
+  openDialog(element: Sujet) {
 
+    const dialogRef = this.dialog.open(SujetDetail, {
+      width: '75%',
+      height: '65%',
+      data: {
+        name: element.name,
+        img: element.img,
+      }
+    });
+  }
 }

@@ -1,0 +1,16 @@
+
+  <div class="alternative" cdkFocusInitial>
+    <div class="my-1">
+      <div>
+        <app-edit-sujet></app-edit-sujet>
+  
+        <div mat-dialog-actions class="col-2 offset-5 controlBouton">
+          <button mat-raised-button (click)="onNoClick()">Retour</button>
+          <button mat-raised-button  [mat-dialog-close]="true"
+            color="primary">Modifier</button>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+  
