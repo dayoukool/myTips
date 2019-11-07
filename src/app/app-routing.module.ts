@@ -1,3 +1,4 @@
+import { ListSujetComponent } from '../app/list/list-sujet/list-sujet.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SessionSummaryComponent } from './sessions/sessionSummary/session-summary.component';
@@ -47,22 +48,15 @@ const routes: Routes = [
   {
     path: 'administration/sujets',
     canActivate: [AuthGuardService],
-    component: EditSujetComponent
+    component: ListSujetComponent,
     // canLoad: [AuthGuard]
-  },
-  {
-    path: 'sessions',
+  }
+  , {
+    path: 'administration/sujets/edit',
     canActivate: [AuthGuardService],
-    component: SessionsComponent,
-    children: [
-      {
-        path: 'detailView',
-        component: SessionSummaryComponent
-        // canLoad: [AuthGuard]
-      },
-    ]
-    // canLoad: [AuthGuard]
+    component: EditSujetComponent,
   },
+
   {
     path: 'profil',
     canActivate: [AuthGuardService],

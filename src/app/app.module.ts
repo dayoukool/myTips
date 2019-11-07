@@ -65,6 +65,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from './../environments/environment';
 
 import { EditSujetComponent } from './edit-sujet/edit-sujet.component';
+import { ListSujetComponent } from './list/list-sujet/list-sujet.component';
 
 
 
@@ -101,7 +102,8 @@ registerLocaleData(localeFr, 'fr');
     DemandeSessionsComponent,
     SigninComponent,
     SignupComponent,
-    EditSujetComponent
+    EditSujetComponent,
+    ListSujetComponent
   ],
   imports: [
     MaterialModule,

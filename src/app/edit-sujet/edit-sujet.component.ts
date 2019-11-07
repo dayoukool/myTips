@@ -1,9 +1,7 @@
 import { SujetService } from '../Service/sujet.service';
-import { Sujet } from '../core/models/sujet.model';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { reject } from 'q';
-import { mapTo, map } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-sujet',
@@ -20,25 +18,31 @@ export class EditSujetComponent implements OnInit {
     return this.name.hasError('required') ? 'Champ vide' :
       '';
   }
-  constructor(public sujetService: SujetService) {
+  constructor(public sujetService: SujetService, private snackBar: MatSnackBar) {
 
   }
 
-  getSingleSujet(idDoc) {
-    this.sujetService.getSingleSujet(idDoc).snapshotChanges().pipe(map(c =>
-          ({ id: c.payload.id, ...c.payload.data() })
-        )
-      
-    ).subscribe(sujet => {
-      this.sujet = sujet;
-    });
-  }
+
   ngOnInit() {
     this.idDoc = 'H5OgSEhduQvPi0JvrBQ7';
-    this.sujet = this.getSingleSujet(this.idDoc);
-    console.log('le sujet est:', this.sujet);
+    this.sujet = this.sujetService.getSingleSujet(this.idDoc).subscribe(sujet => {
+      this.sujet = sujet;
+    });
+    
   }
 
-
-
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+  updateSujet(sujetId, type, value) {
+    this.sujetService.updateSujet(sujetId, type, value).then(() => {
+      this.openSnackBar('Modification Réussie', 'Fermer');
+    },
+      (error) => {
+        this.openSnackBar(' Erreur lors de la sauvegarde', 'Fermer');
+      });
+  }
 }
+

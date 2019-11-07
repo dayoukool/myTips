@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Sujet } from '@core/models/sujet.model';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -20,8 +21,13 @@ export class SujetService {
     this.sujetsRef.add({ ...sujet });
   }
 
-  updateSujet(id: string, value: any): Promise<void> {
-    return this.sujetsRef.doc(id).update(value);
+  updateSujet(id: string, type: string, value: any): Promise<void> {
+    if (type === 'name') {
+      return this.sujetsRef.doc(id).update({ name: value });
+    }
+    if (type === 'img') {
+      return this.sujetsRef.doc(id).update({ img: value });
+    }
   }
 
   deleteSujet(id: string): Promise<void> {
@@ -29,7 +35,9 @@ export class SujetService {
   }
 
   getSingleSujet(id: string) {
-    return this.sujetsRef.doc(id);
+    return this.sujetsRef.doc(id).snapshotChanges().pipe(map(c =>
+      ({ id: c.payload.id, ...c.payload.data() }))
+    );
   }
 
   getAllSujet(): AngularFirestoreCollection<Sujet> {
