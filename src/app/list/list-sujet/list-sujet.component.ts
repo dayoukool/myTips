@@ -1,16 +1,10 @@
 import { SujetService } from './../../Service/sujet.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
-
-export interface PeriodicElement {
-  id: string;
-  img: string;
-  name: string;
-  Action: any;
-}
+import { Sujet } from '@core/models/sujet.model';
 
 
 const frenchRangeLabel = (page: number, pageSize: number, length: number) => {
@@ -34,50 +28,41 @@ const frenchRangeLabel = (page: number, pageSize: number, length: number) => {
 })
 
 
-export class ListSujetComponent implements OnInit {
+export class ListSujetComponent implements AfterViewInit {
 
-  displayedColumns: string[] = ['Img', 'Sujet', 'Action'];
-  sujetArray: any;
-  public sujets: any;
-  constructor(public sujetService: SujetService) { }
+
+  dataSource = new MatTableDataSource<Sujet>();
+  displayedColumns = [
+    'Img',
+    'name',
+    'Action'
+  ];
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  getAllSujet() {
-    return this.sujetService.getAllSujet().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
-        )
-      )
-    ).subscribe(sujets => {
-      this.sujets = sujets;
-      console.log(this.sujets);
-      this.sujetArray = new MatTableDataSource<PeriodicElement>(this.sujets);
-      this.sujetArray.paginator = this.paginator;
-      this.sujetArray.sort = this.sort;
-      this.sujetArray.paginator._intl.itemsPerPageLabel = 'Résultats par pages';
-      this.sujetArray.paginator._intl.nextPageLabel = 'Page suivante';
-      this.sujetArray.paginator._intl.previousPageLabel = 'Page précédente';
-      this.sujetArray.paginator._intl.firstPageLabel = 'Première page';
-      this.sujetArray.paginator._intl.lastPageLabel = 'Dernière page';
-      this.sujetArray.paginator._intl.getRangeLabel = frenchRangeLabel;
+  constructor(private sujetService: SujetService) { }
 
+  ngAfterViewInit() {
+    this.sujetService.getSujets().subscribe(data => {
+      this.dataSource.data = data;
+      console.log(this.dataSource.data);
     });
-  }
-  ngOnInit() {
-    this.getAllSujet();
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator._intl.itemsPerPageLabel = 'Résultats par pages';
+    this.dataSource.paginator._intl.nextPageLabel = 'Page suivante';
+    this.dataSource.paginator._intl.previousPageLabel = 'Page précédente';
+    this.dataSource.paginator._intl.firstPageLabel = 'Première page';
+    this.dataSource.paginator._intl.lastPageLabel = 'Dernière page';
+    this.dataSource.paginator._intl.getRangeLabel = frenchRangeLabel;
 
   }
-
-
 
   applyFilter(filterValue: string) {
-    this.sujetArray.filter = filterValue.trim().toLowerCase();
-
-    if (this.sujetArray.paginator) {
-      this.sujetArray.paginator.firstPage();
-    }
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
   }
+
 }

@@ -20,13 +20,7 @@ export class SujetComponent implements OnInit {
     this.router.navigate(['sujets/', sujet]);
   }
   getAllSujet() {
-    this.sujetService.getAllSujet().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
-        )
-      )
-    ).subscribe(sujets => {
+    this.sujetService.getSujets().subscribe(sujets => {
       this.sujets = sujets;
     });
   }

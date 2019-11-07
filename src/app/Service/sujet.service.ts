@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Sujet } from '@core/models/sujet.model';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
 
 
 @Injectable({
@@ -12,6 +13,7 @@ export class SujetService {
 
   sujetsRef: AngularFirestoreCollection<Sujet> = null;
   sujetRef: AngularFirestoreDocument<Sujet>;
+  sujetTable: Observable<Sujet[]>;
 
   constructor(private db: AngularFirestore) {
     this.sujetsRef = db.collection('topics');
@@ -44,4 +46,13 @@ export class SujetService {
     return this.sujetsRef;
   }
 
+  getSujets() {
+    return this.sujetTable = this.getAllSujet().snapshotChanges().pipe(map(sujets => {
+      return sujets.map(s => {
+        const data = s.payload.doc.data() as Sujet;
+        const id = s.payload.doc.id;
+        return {id, ...data};
+      });
+    }));
+  }
 }
