@@ -2,7 +2,6 @@ import { Deserializable } from './deserializable.model';
 
 
 export class Sujet {
-    public id: string;
     public name: string;
     public img: string;
 

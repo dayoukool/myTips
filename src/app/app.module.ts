@@ -65,7 +65,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from './../environments/environment';
 
 import { EditSujetComponent } from './edit-sujet/edit-sujet.component';
-import { ListSujetComponent, SujetDetail } from './list/list-sujet/list-sujet.component';
+import { ListSujetComponent, SujetDetail, SujetCreate } from './list/list-sujet/list-sujet.component';
 import { AdministrationComponent } from './administration/administration.component';
 
 
@@ -106,7 +106,8 @@ registerLocaleData(localeFr, 'fr');
     EditSujetComponent,
     ListSujetComponent,
     AdministrationComponent,
-    SujetDetail
+    SujetDetail,
+    SujetCreate
   ],
   imports: [
     MaterialModule,
@@ -142,7 +143,8 @@ registerLocaleData(localeFr, 'fr');
   ],
   entryComponents: [
     SessionDetail,
-    SujetDetail
+    SujetDetail,
+    SujetCreate
   ],
   providers: [MatNativeDateModule, MatDatepickerModule, AngularFirestore, { provide: FirestoreSettingsToken, useValue: {} }, 
     { provide: MAT_DATE_LOCALE, useValue: 'fr' },

@@ -10,7 +10,7 @@ import { Validators, FormControl } from '@angular/forms';
 
 
 const frenchRangeLabel = (page: number, pageSize: number, length: number) => {
-  if (length == 0 || pageSize == 0) { return `0 van ${length}`; }
+  if (length === 0 || pageSize === 0) { return `0 van ${length}`; }
 
   length = Math.max(length, 0);
 
@@ -79,14 +79,30 @@ export class ListSujetComponent implements AfterViewInit {
       });
   }
 
-
+  openDialogCreate() {
+    const dialogRef = this.dialog.open(SujetCreate,
+      {
+        width: '75%',
+        height: '65%',
+        data: {
+          img: '../../assets/images/default-image.jpg',
+        }
+      });
+    dialogRef.afterClosed().subscribe(sujet => {
+      if (!sujet) {
+        console.log('On arrête tout');
+      } else {
+        this.sujetService.createSujet(sujet[1], sujet[0]);
+      }
+    });
+  }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
-  openDialog(element: Sujet) {
+  openDialogUpdate(element) {
 
     const dialogRef = this.dialog.open(SujetDetail, {
       width: '75%',
@@ -98,11 +114,15 @@ export class ListSujetComponent implements AfterViewInit {
       }
     });
     dialogRef.afterClosed().subscribe(sujet => {
-      console.log(sujet);
-      this.updateSujet(sujet[0].id, 'name', sujet[1]);
+      if (!sujet) {
+        console.log('On arrête tout');
+      } else {
+        this.updateSujet(sujet[0].id, 'name', sujet[1]);
+      }
     });
   }
 }
+
 
 @Component({
   selector: 'SujetDetail',
@@ -110,6 +130,24 @@ export class ListSujetComponent implements AfterViewInit {
   styleUrls: ['./list-sujet.component.sass']
 })
 export class SujetDetail {
+
+  private name = new FormControl('', [Validators.required]);
+  constructor(public dialogRef: MatDialogRef<SujetDetail>, @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  getErrorMessage() {
+    return this.name.hasError('required') ? 'Champ vide' :
+      '';
+  }
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}
+@Component({
+  selector: 'SujetCreate',
+  templateUrl: './sujet-create.html',
+  styleUrls: ['./list-sujet.component.sass']
+})
+export class SujetCreate {
 
   private name = new FormControl('', [Validators.required]);
   constructor(public dialogRef: MatDialogRef<SujetDetail>, @Inject(MAT_DIALOG_DATA) public data: any) { }

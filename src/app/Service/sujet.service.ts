@@ -19,8 +19,11 @@ export class SujetService {
     this.sujetsRef = db.collection('topics');
   }
 
-  createSujet(sujet: Sujet) {
-    this.sujetsRef.add({ ...sujet });
+  createSujet(sujet: string, img: string, ) {
+    this.sujetsRef.add({
+      name: sujet,
+      img: img,
+    });
   }
 
   updateSujet(id: string, type: string, value: any): Promise<void> {
@@ -51,7 +54,7 @@ export class SujetService {
       return sujets.map(s => {
         const data = s.payload.doc.data() as Sujet;
         const id = s.payload.doc.id;
-        return {id, ...data};
+        return { id, ...data };
       });
     }));
   }
