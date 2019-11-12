@@ -67,6 +67,7 @@ import { environment } from './../environments/environment';
 import { EditSujetComponent } from './edit-sujet/edit-sujet.component';
 import { ListSujetComponent, SujetDetail, SujetCreate } from './list/list-sujet/list-sujet.component';
 import { AdministrationComponent } from './administration/administration.component';
+import { ListModuleComponent } from './list/list-module/list-module.component';
 
 
 
@@ -107,7 +108,8 @@ registerLocaleData(localeFr, 'fr');
     ListSujetComponent,
     AdministrationComponent,
     SujetDetail,
-    SujetCreate
+    SujetCreate,
+    ListModuleComponent
   ],
   imports: [
     MaterialModule,

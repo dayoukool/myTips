@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Sujet } from '@core/models/sujet.model';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Module } from '@core/models/module.model';
-import { ModuleService } from './module.service';
+import { ModuleService } from '../Service/module.service';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -10,25 +11,26 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './module-learning.component.html',
   styleUrls: ['./module-learning.component.sass']
 })
-export class ModuleLearningComponent implements OnInit {
+export class ModuleLearningComponent implements AfterViewInit {
   public Modules: Module[];
-  public sujet: string;
+  public sujetName: string;
+  public sujet: any;
   levels = new FormControl();
   levelList: number[] = [1, 2, 3];
 
   constructor(public moduleService: ModuleService, private activatedRoute: ActivatedRoute) { }
 
-  selectModule(sujet: string): Module[] {
-    return this.Modules.filter(el => el.sujet === sujet);
 
-  }
+  ngAfterViewInit() {
 
-  ngOnInit() {
-    this.Modules = this.moduleService.getModule();
-    this.sujet = this.activatedRoute.snapshot.params.sujet;
-    console.log(this.sujet);
-    this.Modules = this.selectModule(this.sujet);
-    console.log(this.Modules);
-    console.log(this.levelList);
+    this.sujetName = this.activatedRoute.snapshot.params.sujet;
+    this.moduleService.getID(this.sujetName).subscribe(sujet => {
+      this.sujet = sujet;
+      console.log(this.sujet[0].id);
+      this.moduleService.getModules(this.sujet[0].id).subscribe(modules => {
+        this.Modules = modules;
+        console.log(this.Modules);
+      });
+    });
   }
 }

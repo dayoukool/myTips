@@ -9,11 +9,11 @@ export class ModuleService {
 
   constructor() { }
 
-  public getModule(): Module[] {
-    let retModule: Module[] = [];
-    moduleData.modules.forEach(mod => {
-      retModule.push(new Module().deserialize(mod));
-    });
-    return retModule;
-  }
+  // public getModule(): Module[] {
+  //   let retModule: Module[] = [];
+  //   moduleData.modules.forEach(mod => {
+  //     retModule.push(new Module().deserialize(mod));
+  //   });
+  //   return retModule;
+  // }
 }

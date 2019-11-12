@@ -1,3 +1,4 @@
+import { Module } from './../core/models/module.model';
 import { Injectable } from '@angular/core';
 
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
@@ -19,10 +20,11 @@ export class SujetService {
     this.sujetsRef = db.collection('topics');
   }
 
-  createSujet(sujet: string, img: string, ) {
+  createSujet(sujet: string, img: string, modules: Module[]) {
     this.sujetsRef.add({
       name: sujet,
       img: img,
+      modules: modules,
     });
   }
 
@@ -54,6 +56,7 @@ export class SujetService {
       return sujets.map(s => {
         const data = s.payload.doc.data() as Sujet;
         const id = s.payload.doc.id;
+        console.log(data);
         return { id, ...data };
       });
     }));

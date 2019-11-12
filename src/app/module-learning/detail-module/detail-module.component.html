@@ -1,21 +1,21 @@
 <div class=" alternative detail-Module">
   <div class="container-fluid">
-    <button mat-button [routerLink]="['/sujets']">{{Module.sujet}} ></button>
+    <button mat-button [routerLink]="['/sujets']">{{sujet[0].name}} ></button>
     <button mat-button onclick="history.go(-1)">
-      <ngb-rating max=3 [readonly]="true" [(rate)]="Module.level"></ngb-rating>
+      <ngb-rating max=3 [readonly]="true" [(rate)]="module.level"></ngb-rating>
     </button>
   </div>
   <div class="container">
     <div class="row">
       <div class="col" label="Description">
-        <h1 class="titre">{{Module.titre}}</h1>
+        <h1 class="titre">{{module.titre}}</h1>
         <div class="container">
           <div class="row">
             <div class="col-md-12 img">
-              <img class="img-fluid" src="{{Module.img}}" alt="image session">
+              <img class="img-fluid" src="{{sujet[0].img}}" alt="image session">
             </div>
             <div class="description col-md-8 offset-2  text-justify">
-              {{Module.description}}
+              {{module.description}}
             </div>
 
           </div>
@@ -34,7 +34,7 @@
                 <div class="container">
                   <div>
 
-                    <div class="row" *ngIf="Module.sessions != 0; else createSession">
+                    <!-- <div class="row" *ngIf="Module.sessions != 0; else createSession">
                       <mat-form-field class="col">
                         <input matInput [matDatepicker]="debut" placeholder="Date de début" [formControl]="date_debut">
                         <mat-datepicker-toggle matSuffix [for]="debut"></mat-datepicker-toggle>
@@ -52,7 +52,7 @@
                           <mat-divider *ngIf="!last"></mat-divider>
                         </mat-list-item>
                       </mat-list>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>

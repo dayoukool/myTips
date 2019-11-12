@@ -17,6 +17,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { EditSujetComponent } from './edit-sujet/edit-sujet.component';
 import { AdministrationComponent } from './administration/administration.component';
+import { ListModuleComponent } from './list/list-module/list-module.component';
 
 const routes: Routes = [
 
@@ -59,9 +60,9 @@ const routes: Routes = [
     // canLoad: [AuthGuard]
   }
   , {
-    path: 'administration/sujets/edit',
+    path: 'administration/modules',
     canActivate: [AuthGuardService],
-    component: EditSujetComponent,
+    component: ListModuleComponent,
   },
 
   {
