@@ -1,0 +1,87 @@
+<mat-vertical-stepper linear #stepper class="alternative">
+
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Titre du module</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Titre" required formControlName="titre">
+      </mat-form-field>
+      <mat-error *ngIf="firstFormGroup.invalid">{{getErrorMessage()}}</mat-error>
+      <div>
+        <button mat-raised-button (click)="onNoClick()">Annuler</button>
+        <button mat-button matStepperNext>Suivant</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Niveau</ng-template>
+      <mat-form-field>
+        <mat-label>Niveau</mat-label>
+        <mat-select formControlName="level" [(ngModel)]="currentlevel" required>
+
+          <mat-select-trigger color="primary">
+            <ngb-rating max=3 [readonly]="true" [(rate)]="currentlevel"></ngb-rating>
+          </mat-select-trigger>
+
+          <mat-option *ngFor="let level of levelList" [value]="level">
+            <ngb-rating max=3 [readonly]="true" [(rate)]="level"></ngb-rating>
+          </mat-option>
+
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Retour</button>
+        <button mat-button matStepperNext>Suivant</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Sujet du module</ng-template>
+      <mat-form-field>
+        <mat-label>Sujet</mat-label>
+        <mat-select formControlName="sujet" required>
+          <mat-option *ngFor="let sujet of sujets" [value]="sujet.name">
+            <img class="example-option-img" aria-hidden [src]="sujet.img" height="25">
+            {{sujet.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Retour</button>
+        <button mat-button matStepperNext>Suivant</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step [stepControl]="forthFormGroup">
+    <form [formGroup]="forthFormGroup">
+      <ng-template matStepLabel>Desfcription du module</ng-template>
+      <mat-form-field>
+        <textarea matInput placeholder="Description" formControlName="description" required></textarea>
+        <mat-error *ngIf="forthFormGroup.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Retour</button>
+        <button mat-button matStepperNext>Suivant</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Valider la création du module</ng-template>
+    <div>
+      <button mat-button matStepperPrevious>Retour</button>
+      <div mat-dialog-actions class="col-2 offset-5 controlBouton">
+        <button mat-raised-button
+          [mat-dialog-close]="[firstFormGroup.value,secondFormGroup.value,thirdFormGroup.value,forthFormGroup.value]"
+          color="primary">Créer</button>
+      </div>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>

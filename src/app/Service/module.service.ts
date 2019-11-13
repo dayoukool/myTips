@@ -1,7 +1,7 @@
 import { Module } from '@core/models/Module.model';
 import { Injectable } from '@angular/core';
 
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, AngularFirestoreCollectionGroup } from '@angular/fire/firestore';
 import { Sujet } from '@core/models/sujet.model';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
@@ -15,15 +15,17 @@ export class ModuleService {
   modulesRef: AngularFirestoreCollection<Module> = null;
   moduleRef: AngularFirestoreDocument<Module>;
   moduleTable: Observable<Module[]>;
+  moduleAdmin: AngularFirestoreCollectionGroup<Module>;
 
   constructor(private db: AngularFirestore) {
     this.modulesRef = db.collection('topics');
   }
 
-  createSujet(titre: string, level: number, description: string) {
-    this.modulesRef.add({
+  createModule(titre: string, sujet: string, level: number, description: string, id: string) {
+    this.db.collection('topics').doc(id).collection('/modules').add({
       titre: titre,
       level: level,
+      sujet: sujet,
       description: description,
     });
   }
@@ -62,6 +64,14 @@ export class ModuleService {
   }
   getModules(id: string) {
     return this.moduleTable = this.getAllModule(id).snapshotChanges().pipe(map(modules => modules.map(m => {
+      const data = m.payload.doc.data() as Module;
+      const id = m.payload.doc.id;
+      console.log('getmodules ce que l\'on obitent à la fin', id, data);
+      return { id, ...data };
+    })));
+  }
+  getEveryModule() {
+    return this.db.collectionGroup('modules').snapshotChanges().pipe(map(modules => modules.map(m => {
       const data = m.payload.doc.data() as Module;
       const id = m.payload.doc.id;
       console.log('getmodules ce que l\'on obitent à la fin', id, data);

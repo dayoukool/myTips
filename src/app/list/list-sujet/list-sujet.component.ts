@@ -92,7 +92,7 @@ export class ListSujetComponent implements AfterViewInit {
       if (!sujet) {
         console.log('On arrête tout');
       } else {
-        this.sujetService.createSujet(sujet[1], sujet[0]);
+        this.sujetService.createSujet(sujet[1], sujet[0], null);
       }
     });
   }

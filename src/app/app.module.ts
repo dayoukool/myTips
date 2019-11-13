@@ -67,7 +67,7 @@ import { environment } from './../environments/environment';
 import { EditSujetComponent } from './edit-sujet/edit-sujet.component';
 import { ListSujetComponent, SujetDetail, SujetCreate } from './list/list-sujet/list-sujet.component';
 import { AdministrationComponent } from './administration/administration.component';
-import { ListModuleComponent } from './list/list-module/list-module.component';
+import { ListModuleComponent, ModuleDetail, ModuleCreate } from './list/list-module/list-module.component';
 
 
 
@@ -109,13 +109,14 @@ registerLocaleData(localeFr, 'fr');
     AdministrationComponent,
     SujetDetail,
     SujetCreate,
-    ListModuleComponent
+    ListModuleComponent,
+    ModuleCreate,
+    ModuleDetail
   ],
   imports: [
     MaterialModule,
     BrowserModule,
     AppRoutingModule,
-
     BrowserAnimationsModule,
     StarRatingModule.forRoot(),
     ReactiveFormsModule,
@@ -146,7 +147,9 @@ registerLocaleData(localeFr, 'fr');
   entryComponents: [
     SessionDetail,
     SujetDetail,
-    SujetCreate
+    SujetCreate,
+    ModuleDetail,
+    ModuleCreate
   ],
   providers: [MatNativeDateModule, MatDatepickerModule, AngularFirestore, { provide: FirestoreSettingsToken, useValue: {} }, 
     { provide: MAT_DATE_LOCALE, useValue: 'fr' },
