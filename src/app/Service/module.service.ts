@@ -32,19 +32,19 @@ export class ModuleService {
 
   updateModule(oldId: string, newId: string, idDoc: string, titre: string, description: string, level: number, sujet: string): Promise<void> {
     if (titre !== "") {
-      this.modulesRef.doc(oldId).collection('modules').doc(idDoc).update({ titre: titre });
+      return this.modulesRef.doc(oldId).collection('modules').doc(idDoc).update({ titre: titre });
     }
     if (description !== "") {
-      this.modulesRef.doc(oldId).collection('modules').doc(idDoc).update({ description: description });
+      return this.modulesRef.doc(oldId).collection('modules').doc(idDoc).update({ description: description });
     }
     if (level !== null) {
-      this.modulesRef.doc(oldId).collection('modules').doc(idDoc).update({ level: level });
+      return this.modulesRef.doc(oldId).collection('modules').doc(idDoc).update({ level: level });
     }
     if (sujet !== null) {
       this.createModule(titre, sujet, level, description, newId);
-      this.deleteModule(oldId, idDoc);
+      return this.deleteModule(oldId, idDoc);
     }
-    return;
+    ;
   }
 
   deleteModule(id: string, idDoc: string): Promise<void> {
