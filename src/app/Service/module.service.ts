@@ -50,7 +50,7 @@ export class ModuleService {
   }
 
   getAllModule(id: string): AngularFirestoreCollection<Module> {
-    return this.modulesRef.doc(id).collection('modules');
+    return this.modulesRef.doc(id).collection('modules', ref => ref.orderBy('level'));
   }
 
   getID(name: string) {
@@ -71,7 +71,7 @@ export class ModuleService {
     })));
   }
   getEveryModule() {
-    return this.db.collectionGroup('modules', ref=> ref.orderBy('level')).snapshotChanges().pipe(map(modules => modules.map(m => {
+    return this.db.collectionGroup('modules', ref => ref.orderBy('level')).snapshotChanges().pipe(map(modules => modules.map(m => {
       const data = m.payload.doc.data() as Module;
       const id = m.payload.doc.id;
       console.log('getmodules ce que l\'on obitent à la fin', id, data);

@@ -131,7 +131,7 @@ export class ListModuleComponent implements AfterViewInit {
       if (!m) {
         console.log('On arrête tout');
       } else {
-        this.updateSujet(m[0].id, 'name', m[1]);
+      //   this.updateSujet(m[0].id, 'name', m[1]);
       }
     });
   }
