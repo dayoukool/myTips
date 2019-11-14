@@ -1,53 +1,63 @@
 <div class="alternative demandeSessions">
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-8 offset-2">
-          <h3>Liste des Modules :</h3>
-          <button mat-raised-button [routerLink]="['../']" color="primary">Retour</button>
-          <br>
-          <div class="row">
-            <mat-form-field class="col-md-3">
-              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher">
-            </mat-form-field>
-            <div class="col-md-8"></div>
-            <button mat-fab  aria-label="Ajouter un Module" matTooltip="Créer un Module" (click)="openDialogCreate()">
-              <mat-icon>add</mat-icon>
-            </button>
-          </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8 offset-2">
+        <h3>Liste des Modules :</h3>
+        <button mat-raised-button [routerLink]="['../']" color="primary">Retour</button>
+        <br>
+        <div class="row">
+          <mat-form-field class="col-md-3">
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher">
+          </mat-form-field>
+          <div class="col-md-8"></div>
+          <button mat-fab aria-label="Ajouter un Module" matTooltip="Créer un Module" (click)="openDialogCreate()">
+            <mat-icon>add</mat-icon>
+          </button>
         </div>
-        <div class="col-md-8 offset-2 mat-elevation-z8 table">
-          <mat-table [dataSource]="dataSource" matSort>
-            <ng-container matColumnDef="level">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Niveau </mat-header-cell>
-              <mat-cell *matCellDef="let element" > <ngb-rating max=3 [readonly]="true" [(rate)]="element.level"></ngb-rating> </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="titre">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Titre </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.titre}} </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="sujet">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Sujet </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.sujet}} </mat-cell>
-              </ng-container>
-              <ng-container matColumnDef="description">
-                <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
-              </ng-container>
-            <ng-container matColumnDef="Action">
-              <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
-              <mat-cell *matCellDef="let element"><button mat-raised-button matTooltip=" Cliquez moi!"
-                  (click)="openDialogUpdate(element)">Modifier</button>
-                <button mat-raised-button color="warn" matTooltip=" Cliquez moi!"
-                  (click)="goToCreate()">Désactiver</button></mat-cell>
-            </ng-container>
-            <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-          </mat-table>
-          <mat-paginator class="position-sticky" [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons>
-          </mat-paginator>
-        </div>
+      </div>
+      <div class="col-md-8 offset-2 mat-elevation-z8 table">
+        <mat-table [dataSource]="dataSource" matSort>
+          <ng-container matColumnDef="level">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Niveau </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <ngb-rating max=3 [readonly]="true" [(rate)]="element.level"></ngb-rating>
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="titre">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Titre </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.titre}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="sujet">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Sujet </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.sujet}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-description>
+                    ici il y aura une version courte de la description
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                {{element.description}}
+              </mat-expansion-panel>
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Action">
+            <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+            <mat-cell *matCellDef="let element"><button mat-raised-button matTooltip=" Cliquez moi!"
+                (click)="openDialogUpdate(element)">Modifier</button>
+              <button mat-raised-button color="warn" matTooltip=" Cliquez moi!"
+                (click)="goToCreate()">Désactiver</button></mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <mat-paginator class="position-sticky" [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons>
+        </mat-paginator>
       </div>
     </div>
   </div>
-  
+</div>

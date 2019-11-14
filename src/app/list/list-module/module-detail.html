@@ -1,37 +1,54 @@
 <div class="alternative" cdkFocusInitial>
-    <div class="my-1">
-      <div>
-        <div class="container alternative">
-          <div class="row">
-            <div class="col-md-4 offset-md-2">
-              <img mat-card-lg-image src="{{data.img}}">
+  <div class="my-1">
+    <div class="module-modal">
+      <div class="container alternative">
+        <div class="row">
+          <div class="col-md-5">
+            <div>
+              <mat-form-field>
+                <input matInput placeholder="Titre" value="{{data.titre}}" required [formControl]="titre">
+                <mat-error *ngIf="titre.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
               <br>
+              <mat-form-field>
+                <mat-label>Niveau</mat-label>
+                <mat-select placeholder="Niveau" [formControl]="levels" [(ngModel)]="data.level">
+                  <mat-select-trigger color="primary">
+                    <ngb-rating max=3 [readonly]="true" [(rate)]="levels.value"></ngb-rating>
+                  </mat-select-trigger>
+                  <mat-option *ngFor="let level of levelList" [value]="level">
+                    <ngb-rating max=3 [readonly]="true" [(rate)]="level"></ngb-rating>
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
               <br>
-              <form>
-                <div class="form-group">
-                  <label for="exampleFormControlFile1">Logo du sujet</label>
-                  <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                </div>
-              </form>
+              <mat-form-field>
+                <mat-label>Sujet</mat-label>
+                <mat-select [formControl]="sujet">
+                  <mat-option *ngFor="let sujet of sujets" [value]="sujet.name">
+                    <img class="example-option-img" aria-hidden [src]="sujet.img" height="25">
+                    {{sujet.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
             </div>
-            <div class="col-md-3 offset-md-3">
-              <br>
-              <mat-list>
-                <mat-list-item>
-                  <mat-form-field>
-                    <input matInput placeholder="Titre" value="{{data.name}}" required [formControl]="name">
-                    <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
-                  </mat-form-field>
-                </mat-list-item>
-              </mat-list>
+          </div>
+          <div class="col-md-5 offset-md-2">
+            <div>
+              <mat-form-field>
+                <textarea matInput placeholder="Titre" value="{{data.description}}" required [formControl]="description"
+                  cdkTextareaAutosize></textarea>
+                <mat-error *ngIf="description.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
             </div>
           </div>
         </div>
-        <div mat-dialog-actions class="col-2 offset-5 controlBouton">
-          <button mat-raised-button (click)="onNoClick()">Retour</button>
-          <button mat-raised-button [mat-dialog-close]="[data,name.value]" color="primary" [disabled]="!name.valid">Modifier</button>
-        </div>
       </div>
     </div>
+    <div mat-dialog-actions class="col-2 offset-5 controlBouton">
+      <button mat-raised-button (click)="onNoClick()">Retour</button>
+      <button mat-raised-button [mat-dialog-close]="[titre.value, description.value,levels.value,sujet.value,data.id,data.idOldSujet]"
+        color="primary" [disabled]="!titre.valid">Modifier</button>
+    </div>
   </div>
-  
+</div>

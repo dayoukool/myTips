@@ -60,6 +60,7 @@ export class ListModuleComponent implements AfterViewInit {
       this.dataSource.data = data;
       console.log(this.dataSource.data);
     });
+
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.dataSource.paginator._intl.itemsPerPageLabel = 'Résultats par pages';
@@ -76,8 +77,8 @@ export class ListModuleComponent implements AfterViewInit {
       duration: 2000,
     });
   }
-  updateModule(sujetId, type, value) {
-    this.sujetService.updateSujet(sujetId, type, value).then(() => {
+  updateModule(oldId: string, newId: string, idDoc: string, titre: string, description: string, level: number, sujet: string) {
+    this.moduleService.updateModule(oldId, newId, idDoc, titre, description, level, sujet).then(() => {
       this.openSnackBar('Modification Réussie', 'Fermer');
     },
       (error) => {
@@ -122,8 +123,11 @@ export class ListModuleComponent implements AfterViewInit {
       width: '75%',
       height: '65%',
       data: {
-        name: element.name,
-        img: element.img,
+        level: element.level,
+        titre: element.titre,
+        description: element.description,
+        sujet: element.sujet,
+        idOldSujet: '',
         id: element.id,
       }
     });
@@ -131,7 +135,17 @@ export class ListModuleComponent implements AfterViewInit {
       if (!m) {
         console.log('On arrête tout');
       } else {
-      //   this.updateSujet(m[0].id, 'name', m[1]);
+        console.log(m);
+        if (m[3] !== null) {
+          this.moduleService.getID(m[3]).subscribe(sujet => {
+            this.sujet = sujet;
+            console.log(this.sujet[0].id);
+            this.updateModule(m[5], this.sujet[0].id, m[4], m[0], m[1], m[2], m[3]);
+          });
+        } else {
+          this.updateModule(m[5], null, m[4], m[0], m[1], m[2], m[3]);
+        }
+
       }
     });
   }
@@ -145,17 +159,37 @@ export class ListModuleComponent implements AfterViewInit {
 })
 export class ModuleDetail {
 
-  private name = new FormControl('', [Validators.required]);
-  constructor(public dialogRef: MatDialogRef<ModuleDetail>, @Inject(MAT_DIALOG_DATA) public data: any) { }
+  private titre = new FormControl('', [Validators.required]);
+  private description = new FormControl('', [Validators.required]);
+  private levels = new FormControl();
+  private sujet = new FormControl();
+  sujets: any;
+  levelList: number[] = [1, 2, 3];
 
+  constructor(public dialogRef: MatDialogRef<ModuleDetail>, @Inject(MAT_DIALOG_DATA)
+  public data: any, public sujetService: SujetService, public moduleService: ModuleService) {
+
+    this.getAllSujet();
+    this.moduleService.getID(data.sujet).subscribe(sujet => {
+      data.idOldSujet = sujet[0].id;
+    });
+  }
+
+  getAllSujet() {
+    this.sujetService.getSujets().subscribe(sujets => {
+      this.sujets = sujets;
+    });
+  }
   getErrorMessage() {
-    return this.name.hasError('required') ? 'Champ vide' :
-      '';
+    return this.titre.hasError('required') ? 'Champ vide' :
+      this.description.hasError('required') ? 'Champ vide' :
+        '';
   }
   onNoClick(): void {
     this.dialogRef.close();
   }
 }
+
 @Component({
   selector: 'ModuleCreate',
   templateUrl: './module-create.html',

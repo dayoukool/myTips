@@ -1,4 +1,4 @@
-import { Module } from '@core/models/Module.model';
+import { Module } from './../core/models/module.model';
 import { Injectable } from '@angular/core';
 
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, AngularFirestoreCollectionGroup } from '@angular/fire/firestore';
@@ -30,13 +30,21 @@ export class ModuleService {
     });
   }
 
-  updatemModule(id: string, idDoc: string, type: string, value: any): Promise<void> {
-    if (type === 'name') {
-      return this.modulesRef.doc(id).collection('modules').doc(idDoc).update({ name: value });
+  updateModule(oldId: string, newId: string, idDoc: string, titre: string, description: string, level: number, sujet: string): Promise<void> {
+    if (titre !== "") {
+      this.modulesRef.doc(oldId).collection('modules').doc(idDoc).update({ titre: titre });
     }
-    if (type === 'img') {
-      return this.modulesRef.doc(id).collection('modules').doc(idDoc).update({ img: value });
+    if (description !== "") {
+      this.modulesRef.doc(oldId).collection('modules').doc(idDoc).update({ description: description });
     }
+    if (level !== null) {
+      this.modulesRef.doc(oldId).collection('modules').doc(idDoc).update({ level: level });
+    }
+    if (sujet !== null) {
+      this.createModule(titre, sujet, level, description, newId);
+      this.deleteModule(oldId, idDoc);
+    }
+    return;
   }
 
   deleteModule(id: string, idDoc: string): Promise<void> {
@@ -50,7 +58,7 @@ export class ModuleService {
   }
 
   getAllModule(id: string): AngularFirestoreCollection<Module> {
-    return this.modulesRef.doc(id).collection('modules', ref => ref.orderBy('level'));
+    return this.modulesRef.doc(id).collection('modules', ref => ref.orderBy('level').orderBy('sujet'));
   }
 
   getID(name: string) {
@@ -71,11 +79,13 @@ export class ModuleService {
     })));
   }
   getEveryModule() {
-    return this.db.collectionGroup('modules', ref => ref.orderBy('level')).snapshotChanges().pipe(map(modules => modules.map(m => {
+    return this.db.collectionGroup('modules', ref => ref.orderBy('sujet').orderBy('level')).snapshotChanges().pipe(map(modules => modules.map(m => {
       const data = m.payload.doc.data() as Module;
       const id = m.payload.doc.id;
       console.log('getmodules ce que l\'on obitent à la fin', id, data);
       return { id, ...data };
     })));
   }
+
+
 }

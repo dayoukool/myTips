@@ -58,7 +58,7 @@ import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-mo
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -143,6 +143,7 @@ registerLocaleData(localeFr, 'fr');
     MatSlideToggleModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
+    MatExpansionModule
   ],
   entryComponents: [
     SessionDetail,
@@ -151,7 +152,7 @@ registerLocaleData(localeFr, 'fr');
     ModuleDetail,
     ModuleCreate
   ],
-  providers: [MatNativeDateModule, MatDatepickerModule, AngularFirestore, { provide: FirestoreSettingsToken, useValue: {} }, 
+  providers: [MatNativeDateModule, MatDatepickerModule, AngularFirestore, { provide: FirestoreSettingsToken, useValue: {} },
     { provide: MAT_DATE_LOCALE, useValue: 'fr' },
     { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
     { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS }],
