@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
-import { SessionService } from '../session.service';
+import { SessionService } from '../../Service/session.service';
 import { Session } from 'src/app/core/models/session.model';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { QuestionService } from 'src/app/dynamicForms/question.service';
@@ -58,8 +58,8 @@ export class CardSessionsComponent implements OnInit {
   }
   ngOnInit() {
     console.log("card = ", this.session);
-    this.learners = this.session.learners;
-    this.questions = this.questionService.getQuestions(this.session);
+    // this.learners = this.session.learners;
+    // this.questions = this.questionService.getQuestions(this.session);
   }
 
 }

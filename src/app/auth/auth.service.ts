@@ -18,7 +18,7 @@ export class AuthService {
 
   /* Sign up */
   SignUp(email: string, password: string) {
-    this.angularFireAuth
+    return this.angularFireAuth
       .auth
       .createUserWithEmailAndPassword(email, password)
       .then(res => {
@@ -32,16 +32,10 @@ export class AuthService {
 
   /* Sign in */
   SignIn(email: string, password: string) {
-    this.angularFireAuth
+    return this.angularFireAuth
       .auth
-      .signInWithEmailAndPassword(email, password)
-      .then(res => {
-        console.log('Vous êtes connecté');
-        this.router.navigate(['/sujets']);
-      })
-      .catch(err => {
-        console.log('Erreur:', err.message);
-      });
+      .signInWithEmailAndPassword(email, password);
+      
   }
 
   /* Sign out */

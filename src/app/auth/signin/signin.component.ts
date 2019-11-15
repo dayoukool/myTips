@@ -34,7 +34,20 @@ export class SigninComponent implements OnInit {
     const email = this.signinForm.get('email').value;
     const password = this.signinForm.get('password').value;
 
-    this.authService.SignIn(email, password);
-
+    this.authService.SignIn(email, password).then(res => {
+      console.log('Vous êtes connecté');
+      this.router.navigate(['/sujets']);
+    })
+      .catch(err => {
+        console.log('Erreur:', err.message, err.code);
+        if(err.code ==='auth/user-not-found'){
+          this.errorMessage ='L\'email n\existe pas';
+        }
+        if(err.code ==='auth/wrong-password'){
+          this.errorMessage ='Mot de passe incorrect';
+        }
+        return this.errorMessage;
+      });
+    console.log(this.errorMessage);
   }
 }

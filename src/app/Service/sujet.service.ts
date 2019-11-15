@@ -17,7 +17,7 @@ export class SujetService {
   sujetTable: Observable<Sujet[]>;
 
   constructor(private db: AngularFirestore) {
-    this.sujetsRef = db.collection('topics');
+    this.sujetsRef = db.collection('topics', ref=>ref.orderBy('name'));
   }
 
   createSujet(sujet: string, img: string, modules: Module[]) {
