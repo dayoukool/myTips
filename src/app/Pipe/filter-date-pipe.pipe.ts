@@ -16,23 +16,17 @@ export class FilterDatePipePipe implements PipeTransform {
   }
   transform(Slides: any, minValue: Date, maxValue: Date): any {
 
-    this.maxValueNumber = Date.parse(maxValue.toString());
+    this.maxValueNumber = Date.parse(maxValue.toString()) + 86400000;
     this.minValueNumber = Date.parse(minValue.toString());
     if (!Slides) {
-      console.log('on filtre pas');
-      console.log('ancien tableau:', Slides);
       return Slides;
 
     } else {
-      console.log('on filtre');
-      console.log(this.maxValueNumber);
-      console.log(this.minValueNumber);
       Slides = Slides.filter((el) => {
         el.date = el.dateDeb.seconds * 1000;
         return el.date <= this.maxValueNumber && el.date >= this.minValueNumber;
       }
       );
-      console.log('nouveau tableau:', Slides);
       return Slides;
     }
   }
