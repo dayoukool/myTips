@@ -25,7 +25,7 @@ export class SessionDetail {
   styleUrls: ['./card-sessions.component.sass']
 })
 export class CardSessionsComponent implements OnInit {
-  @Input() session: Session;
+  @Input() session: any;
   public questions: QuestionBase<any>[];
   public learners;
   constructor(private sessionService: SessionService, public dialog: MatDialog, private questionService: QuestionService) {
@@ -57,7 +57,7 @@ export class CardSessionsComponent implements OnInit {
     });
   }
   ngOnInit() {
-    console.log("card = ", this.session);
+    console.log("card = ", this.session.dateDeb.seconds);
     // this.learners = this.session.learners;
     // this.questions = this.questionService.getQuestions(this.session);
   }

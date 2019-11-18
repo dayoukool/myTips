@@ -53,7 +53,7 @@ export class DetailModuleComponent implements OnInit {
       this.moduleService.getSingleModule(this.sujet[0].id, this.idModule).subscribe(Module => {
         this.module = Module;
         this.sessionService.getSessions(this.sujet[0].id, this.module.id).subscribe(Session => {
-          this.sessions = Session
+          this.sessions = Session;
           console.log('module :', this.module, 'sessions', this.sessions);
         });
       });

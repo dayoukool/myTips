@@ -5,31 +5,36 @@ import { Session } from '../core/models/session.model';
   name: 'filterDatePipe'
 })
 export class FilterDatePipePipe implements PipeTransform {
-  public session: Session[];
   public slides: any;
   public minValue: Date;
   public maxValue: Date;
   public minValueNumber: Number;
   public maxValueNumber: Number;
 
-
   constructor() {
 
   }
-  transform(Slides: Session[], minValue: Date, maxValue: Date): any {
-    
+  transform(Slides: any, minValue: Date, maxValue: Date): any {
+
     this.maxValueNumber = Date.parse(maxValue.toString());
     this.minValueNumber = Date.parse(minValue.toString());
     if (!Slides) {
+      console.log('on filtre pas');
+      console.log('ancien tableau:', Slides);
+      return Slides;
+
+    } else {
+      console.log('on filtre');
+      console.log(this.maxValueNumber);
+      console.log(this.minValueNumber);
+      Slides = Slides.filter((el) => {
+        el.date = el.dateDeb.seconds * 1000;
+        return el.date <= this.maxValueNumber && el.date >= this.minValueNumber;
+      }
+      );
+      console.log('nouveau tableau:', Slides);
       return Slides;
     }
-    Slides = Slides.filter((el) => {
-      el.date = new Date(el.date);
-      return Date.parse(el.date.toString()) <= this.maxValueNumber && Date.parse(el.date.toString()) >= this.minValueNumber;
-    }
-    );
-    
-    return Slides;
   }
 
 }

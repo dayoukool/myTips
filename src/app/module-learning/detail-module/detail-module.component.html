@@ -46,10 +46,8 @@
                         <mat-datepicker #fin></mat-datepicker>
                       </mat-form-field>
                       <mat-list class="listSessions container">
-                        <!-- <mat-list-item
-                          *ngFor="let session of (Module.sessions| filterDatePipe: date_debut.value: date_fin.value), last as last"> -->
                         <mat-list-item
-                          *ngFor="let session of sessions, last as last">
+                          *ngFor="let session of (sessions| filterDatePipe: date_debut.value: date_fin.value), last as last">
                           <app-card-sessions [session]="session" class="col"></app-card-sessions>
                           <mat-divider *ngIf="!last"></mat-divider>
                         </mat-list-item>
