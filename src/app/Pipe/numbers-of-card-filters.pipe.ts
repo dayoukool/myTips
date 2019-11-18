@@ -1,13 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SessionsComponent } from 'src/app/sessions/sessions.component';
-import { SessionService } from 'src/app/sessions/session.service';
 import { Session } from '../core/models/session.model';
 
 @Pipe({
   name: 'numbersOfCardFilters'
 })
 export class NumbersOfCardFiltersPipe implements PipeTransform {
- public slides: any;
+  public slides: any;
 
 
   chunk(arr, chunkSize) {
@@ -23,13 +21,13 @@ export class NumbersOfCardFiltersPipe implements PipeTransform {
     console.log(Slides);
     console.log('number');
     console.log(numberOfCard);
-      if (!Slides || !numberOfCard  ){
-        console.log('on filtre pas');
-        return this.slides=this.chunk(Slides,3);
-      }
+    if (!Slides || !numberOfCard) {
+      console.log('on filtre pas');
+      return this.slides = this.chunk(Slides, 3);
+    }
 
-      console.log(numberOfCard);
-    return Slides=this.chunk(Slides,numberOfCard);
+    console.log(numberOfCard);
+    return Slides = this.chunk(Slides, numberOfCard);
   }
 
 }

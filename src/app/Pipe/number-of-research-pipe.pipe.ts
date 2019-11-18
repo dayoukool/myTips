@@ -1,6 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SessionsComponent } from 'src/app/sessions/sessions.component';
-import { SessionService } from 'src/app/sessions/session.service';
 import { Session } from '../core/models/session.model';
 
 @Pipe({
@@ -14,7 +12,7 @@ export class NumberOfResearchPipePipe implements PipeTransform {
 
 
 
-  constructor(private Sessions: SessionsComponent, private sessionService: SessionService) {
+  constructor() {
 
   }
   transform(Slides: Session[]): any {

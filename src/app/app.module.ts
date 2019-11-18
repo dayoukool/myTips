@@ -9,13 +9,11 @@ import { BarRatingModule } from "ngx-bar-rating";
 import { MaterialModule } from './material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SessionSummaryComponent } from './sessions/sessionSummary/session-summary.component';
 import { SessionDetailComponent } from './sessions/sessionSummary/sessionDetail/session-detail.component';
 import { SessionLearnersSummaryComponent } from './sessions/sessionSummary/sessionLearners/session-learners-summary.component';
 import { StarRatingModule } from 'angular-star-rating';
 import { DynamicFormComponent } from './dynamicForms/dynamic-form.component';
 import { DynamicFormQuestionComponent } from './dynamicForms/dynamic-form-question.component';
-import { SessionsComponent } from './sessions/sessions.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
@@ -76,12 +74,10 @@ registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [
     AppComponent,
-    SessionSummaryComponent,
     SessionDetailComponent,
     SessionLearnersSummaryComponent,
     DynamicFormComponent,
     DynamicFormQuestionComponent,
-    SessionsComponent,
     HeaderComponent,
     FilterComponent,
     TopicFiltersPipe,

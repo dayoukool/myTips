@@ -1,3 +1,4 @@
+import { SessionService } from 'src/app/Service/session.service';
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Module } from '@core/models/module.model';
 import { QuestionBase } from 'src/app/dynamicForms/question-base';
@@ -22,6 +23,7 @@ export class DetailModuleComponent implements OnInit {
   public questions: QuestionBase<any>[];
   Sachant = false;
   public Modules: Module[];
+  public sessions: any;
   public idModule: string;
   public module: any;
   public DateFin = new Date();
@@ -30,7 +32,8 @@ export class DetailModuleComponent implements OnInit {
   public sujetName: string;
   public sujet: any;
 
-  constructor(private questionService: QuestionService, public moduleService: ModuleService, private activatedRoute: ActivatedRoute) { }
+  constructor(private questionService: QuestionService, public moduleService: ModuleService,
+    private activatedRoute: ActivatedRoute, private sessionService: SessionService) { }
 
   ngOnInit() {
     // console.log(this.date_debut);
@@ -49,7 +52,10 @@ export class DetailModuleComponent implements OnInit {
       console.log(this.sujet[0].id);
       this.moduleService.getSingleModule(this.sujet[0].id, this.idModule).subscribe(Module => {
         this.module = Module;
-        console.log(this.module);
+        this.sessionService.getSessions(this.sujet[0].id, this.module.id).subscribe(Session => {
+          this.sessions = Session
+          console.log('module :', this.module, 'sessions', this.sessions);
+        });
       });
     });
   }

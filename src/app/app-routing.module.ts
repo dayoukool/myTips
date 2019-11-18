@@ -1,8 +1,6 @@
 import { ListSujetComponent } from '../app/list/list-sujet/list-sujet.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SessionSummaryComponent } from './sessions/sessionSummary/session-summary.component';
-import { SessionsComponent } from './sessions/sessions.component';
 import { ProfilComponent } from './profil/profil.component';
 import { CreateProfilComponent } from './create-profil/create-profil.component';
 import { CreateSessionComponent } from './create-session/create-session.component';
