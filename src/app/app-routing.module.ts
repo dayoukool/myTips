@@ -16,6 +16,7 @@ import { AuthGuardService } from './auth/auth-guard.service';
 import { EditSujetComponent } from './edit-sujet/edit-sujet.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { ListModuleComponent } from './list/list-module/list-module.component';
+import { ListSessionComponent } from './list/list-session/list-session.component';
 
 const routes: Routes = [
 
@@ -62,7 +63,11 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
     component: ListModuleComponent,
   },
-
+  {
+    path: 'administration/sessions',
+    canActivate: [AuthGuardService],
+    component: ListSessionComponent,
+  },
   {
     path: 'profil',
     canActivate: [AuthGuardService],

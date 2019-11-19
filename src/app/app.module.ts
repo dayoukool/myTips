@@ -66,6 +66,7 @@ import { EditSujetComponent } from './edit-sujet/edit-sujet.component';
 import { ListSujetComponent, SujetDetail, SujetCreate } from './list/list-sujet/list-sujet.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { ListModuleComponent, ModuleDetail, ModuleCreate } from './list/list-module/list-module.component';
+import { ListSessionComponent, SessionCreate } from './list/list-session/list-session.component';
 
 
 
@@ -107,7 +108,10 @@ registerLocaleData(localeFr, 'fr');
     SujetCreate,
     ListModuleComponent,
     ModuleCreate,
-    ModuleDetail
+    ModuleDetail,
+    ListSessionComponent,
+    SessionDetail,
+    SessionCreate
   ],
   imports: [
     MaterialModule,
@@ -142,6 +146,7 @@ registerLocaleData(localeFr, 'fr');
     MatExpansionModule
   ],
   entryComponents: [
+    SessionCreate,
     SessionDetail,
     SujetDetail,
     SujetCreate,

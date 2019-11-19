@@ -36,15 +36,7 @@ export class DetailModuleComponent implements OnInit {
     private activatedRoute: ActivatedRoute, private sessionService: SessionService) { }
 
   ngOnInit() {
-    // console.log(this.date_debut);
-    // console.log(this.date_fin);
-    // this.Modules = this.moduleService.getModule();
-    // // console.log(this.Modules);
-    // this.idModule = this.activatedRoute.snapshot.params.id;
-    // // console.log(this.idModule);
-    // this.Module = this.selectModuleById(this.idModule);
-    // console.log(this.Module);
-    // this.questions = this.questionService.getQuestions(this.Module);
+
     this.sujetName = this.activatedRoute.snapshot.params.sujet;
     this.idModule = this.activatedRoute.snapshot.params.id;
     this.moduleService.getID(this.sujetName).subscribe(sujet => {
@@ -59,11 +51,4 @@ export class DetailModuleComponent implements OnInit {
       });
     });
   }
-
-
-  // selectModuleById(id: number): Module {
-  //   // console.log(this.Modules.find(mod => mod.id == id));
-  //   return this.Modules.find(el => el.id == id);
-
-  // }
 }

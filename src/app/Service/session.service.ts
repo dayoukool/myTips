@@ -6,6 +6,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument,
 import { Sujet } from '@core/models/sujet.model';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
+import { Timestamp } from 'rxjs/internal/operators/timestamp';
 
 
 @Injectable({
@@ -42,13 +43,58 @@ export class SessionService {
     })));
   }
   getEverySession() {
-    return this.db.collectionGroup('modules', ref => ref.orderBy('sujet').orderBy('level'))
+    return this.db.collectionGroup('sessions', ref => ref.orderBy('dateDeb'))
       .snapshotChanges().pipe(map(modules => modules.map(m => {
         const data = m.payload.doc.data() as Session;
         const id = m.payload.doc.id;
         console.log('getmodules ce que l\'on obitent à la fin', id, data);
         return { id, ...data };
       })));
+  }
+  getSachant(idSachant: string) {
+    console.log('sachant', idSachant);
+    return this.db.collection('users').doc(idSachant).snapshotChanges().pipe(map(sachant => {
+      const data = sachant.payload.data();
+      return { data };
+    }
+    ));
+  }
+
+  getUsers(idArray: []) {
+
+  }
+
+  createSession(dateDeb: string, dateFin: string, sachant: string, followers: [], description: string, idSujet: string, idModule: string) {
+    this.db.collection('topics').doc(idSujet).collection('modules').doc(idModule).collection('sessions').add({
+      dateDeb: dateDeb,
+      dateFin: dateFin,
+      sachant: sachant,
+      description: description,
+      followers: followers,
+    });
+  }
+  deleteSession(idSujet: string, idModule: string, idDoc: string): Promise<void> {
+    return this.db.collection('topics').doc(idSujet).collection('modules').doc(idModule).collection('modules').doc(idDoc).delete();
+  }
+
+  updateSession(idSujet: string, NewIdSujet: string, oldIdModule: string, newIdModule: string, idDoc: string, dateDeb: any, description: string, dateFin: any, sachant: string, followers: []): Promise<void> {
+    if (dateDeb !== "") {
+      return this.db.collection('topics').doc(idSujet).collection('modules').doc(oldIdModule).collection('modules').doc(idDoc).update({ dateDeb: dateDeb });
+    }
+    if (description !== "") {
+      return this.db.collection('topics').doc(idSujet).collection('modules').doc(oldIdModule).collection('modules').doc(idDoc).update({ description: description });
+    }
+    if (sachant !== "") {
+      return this.db.collection('topics').doc(idSujet).collection('modules').doc(oldIdModule).collection('modules').doc(idDoc).update({ sachant: sachant });
+    }
+    if (dateFin !== null) {
+      return this.db.collection('topics').doc(idSujet).collection('modules').doc(oldIdModule).collection('modules').doc(idDoc).update({ dateFin: dateFin });
+    }
+    if (module !== null) {
+      this.createSession(dateDeb, dateFin, sachant, followers, description, NewIdSujet, newIdModule);
+      return this.deleteSession(idSujet, oldIdModule, idDoc);
+    }
+    ;
   }
 
 }

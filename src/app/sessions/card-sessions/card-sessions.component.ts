@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Input, Inject, AfterViewInit } from '@angular/core';
 import { SessionService } from '../../Service/session.service';
 import { Session } from 'src/app/core/models/session.model';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -12,8 +12,17 @@ import { QuestionBase } from '../../dynamicForms/question-base';
   styleUrls: ['./card-sessions.component.sass']
 })
 export class SessionDetail {
+  public sachant: any;
 
-  constructor(public dialogRef: MatDialogRef<SessionDetail>, @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(public dialogRef: MatDialogRef<SessionDetail>, @Inject(MAT_DIALOG_DATA) public data: any, public sessionService: SessionService) {
+
+    console.log(data.session.sachant);
+    this.sessionService.getSachant(data.session.sachant).subscribe(Sachant => {
+      this.sachant = Sachant.data;
+      console.log(this.sachant);
+    }
+    );
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -24,7 +33,7 @@ export class SessionDetail {
   templateUrl: './card-sessions.component.html',
   styleUrls: ['./card-sessions.component.sass']
 })
-export class CardSessionsComponent implements OnInit {
+export class CardSessionsComponent implements AfterViewInit {
   @Input() session: any;
   public questions: QuestionBase<any>[];
   public learners;
@@ -38,8 +47,6 @@ export class CardSessionsComponent implements OnInit {
       height: '65%',
       data: {
         session: this.session,
-        learners: this.learners,
-        questions: this.questions,
 
       }
     });
@@ -56,7 +63,7 @@ export class CardSessionsComponent implements OnInit {
 
     });
   }
-  ngOnInit() {
+  ngAfterViewInit() {
     console.log("card = ", this.session.dateDeb.seconds);
     // this.learners = this.session.learners;
     // this.questions = this.questionService.getQuestions(this.session);

@@ -1,0 +1,81 @@
+<div class="alternative demandeSessions">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8 offset-2">
+        <h3>Liste des Sessions :</h3>
+        <button mat-raised-button [routerLink]="['../']" color="primary">Retour</button>
+        <br>
+        <div class="row">
+          <mat-form-field class="col-md-3">
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher">
+          </mat-form-field>
+          <div class="col-md-8"></div>
+          <button mat-fab aria-label="Ajouter un Module" matTooltip="Créer une Session" (click)="openDialogCreate()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-8 offset-2 mat-elevation-z8 table">
+        <mat-table [dataSource]="dataSource" matSort>
+          <ng-container matColumnDef="level">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Niveau </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <ngb-rating max=3 [readonly]="true" [(rate)]="element.level"></ngb-rating>
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="debut">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Date de début </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{element.dateDeb.seconds * 1000 | date:'HH:mm, EEEE d MMMM y':undefined :"fr"}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="fin">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Fin estimée </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{element.dateFin.seconds * 1000 | date:'HH:mm, EEEE d MMMM y':undefined :"fr"}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-description>
+                    version courte de la description
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                {{element.description}}
+              </mat-expansion-panel>
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="sachant">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Sachant </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.sachant}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="type">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Type </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Action">
+            <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <div *ngIf="element.type == 'créée'">
+                  <button mat-raised-button matTooltip=" Cliquez moi!"
+                  (click)="openDialogUpdate(element)">Modifier</button>
+                <button mat-raised-button color="warn" matTooltip=" Cliquez moi!"
+                  (click)="goToCreate()">Désactiver</button></div>
+              <div *ngIf="element.type == 'demandée'">
+                  <button mat-raised-button matTooltip=" Cliquez moi!"
+                  (click)="openDialogUpdate(element)">Valider</button>
+                <button mat-raised-button color="warn" matTooltip=" Cliquez moi!"
+                  (click)="goToDelete()">Supprimer</button></div>
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+        <mat-paginator class="position-sticky" [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons>
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

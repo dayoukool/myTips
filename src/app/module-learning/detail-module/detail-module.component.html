@@ -84,20 +84,26 @@
               </div>
             </div>
           </mat-tab>
-
-
         </mat-tab-group>
-
-
-
-
       </div>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="alert alert-info">Aucun horraies ne vous convient, demander la création d'une session.</div>
+        <div class="col"></div>
+      </div>
+    <div class="row">
+      <div class="col"></div>
+      <button mat-raised-button class="col-md-1" color="accent"
+      matTooltip=" Demander la création d'une session">Demander</button>
+      <div class="col"></div>
     </div>
   </div>
   <button mat-raised-button class="col-1 retour" onclick="history.go(-1)" color="primary">Retour</button>
 
+
   <ng-template #createSession>
     <div class="alert alert-danger">Désolé, Il n'existe pas de sessions pour ce module. Demander la création d'une
       session.</div>
-    <button mat-raised-button color="accent" matTooltip=" Demander la création d'une session">Demander</button>
+
   </ng-template>
