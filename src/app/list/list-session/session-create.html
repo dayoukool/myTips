@@ -1,0 +1,95 @@
+<mat-vertical-stepper linear #stepper class="alternative">
+
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Début</ng-template>
+      <mat-form-field>
+        <input matInput [matDatepicker]="debut" placeholder="Date de début" formControlName="date_debut">
+        <mat-datepicker-toggle matSuffix [for]="debut"></mat-datepicker-toggle>
+        <mat-datepicker #debut></mat-datepicker>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Heure</mat-label>
+        <mat-select formControlName="heure" required >
+          <mat-option *ngFor="let hour of hours" [value]="hour">
+            {{hour}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Minutes</mat-label>
+        <mat-select formControlName="minute" required>
+          <mat-option *ngFor="let minute of minutes" [value]="minute">
+            {{minute}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+            <mat-label>Durée estimée (en heure)</mat-label>
+            <mat-select formControlName="duree" required>
+              <mat-option *ngFor="let duree of durees" [value]="duree">
+                {{duree}}H
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      <div>
+        <button mat-raised-button (click)="onNoClick()">Annuler</button>
+        <button mat-button matStepperNext>Suivant</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Sujet & Module</ng-template>
+      <mat-form-field>
+        <mat-label>Sujet</mat-label>
+        <mat-select formControlName="sujet" required [(ngModel)]="moduleSujet">
+          <mat-option *ngFor="let sujet of sujets" [value]="sujet.name">
+            <img class="example-option-img" aria-hidden [src]="sujet.img" height="25">
+            {{sujet.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Module</mat-label>
+        <mat-select formControlName="module" required>
+          <mat-option *ngFor="let module of (modules| createModulePipe : moduleSujet)" [value]="module.id">
+            {{module.titre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Retour</button>
+        <button mat-button matStepperNext>Suivant</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step [stepControl]="forthFormGroup">
+    <form [formGroup]="forthFormGroup">
+      <ng-template matStepLabel>Desfcription de la session</ng-template>
+      <mat-form-field>
+        <textarea matInput placeholder="Description" formControlName="description" required></textarea>
+        <mat-error *ngIf="forthFormGroup.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Retour</button>
+        <button mat-button matStepperNext>Suivant</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Valider la création de la session</ng-template>
+    <div>
+      <button mat-button matStepperPrevious>Retour</button>
+      <div mat-dialog-actions class="col-2 offset-5 controlBouton">
+        <button mat-raised-button
+          [mat-dialog-close]="[firstFormGroup.value,thirdFormGroup.value,forthFormGroup.value]"
+          color="primary">Créer</button>
+      </div>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>

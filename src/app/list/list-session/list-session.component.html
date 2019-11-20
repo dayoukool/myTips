@@ -18,10 +18,10 @@
       </div>
       <div class="col-md-8 offset-2 mat-elevation-z8 table">
         <mat-table [dataSource]="dataSource" matSort>
-          <ng-container matColumnDef="level">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Niveau </mat-header-cell>
+          <ng-container matColumnDef="module">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Module </mat-header-cell>
             <mat-cell *matCellDef="let element">
-              <ngb-rating max=3 [readonly]="true" [(rate)]="element.level"></ngb-rating>
+              {{element.module[1]}}
             </mat-cell>
           </ng-container>
           <ng-container matColumnDef="debut">
@@ -49,7 +49,7 @@
           </ng-container>
           <ng-container matColumnDef="sachant">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Sachant </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.sachant}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.sachant[2]}} </mat-cell>
           </ng-container>
           <ng-container matColumnDef="type">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Type </mat-header-cell>

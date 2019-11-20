@@ -6,11 +6,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
-import { Sujet } from '@core/models/sujet.model';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog, MatSnackBar } from '@angular/material';
 import { Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms';
-import { Module } from '@core/models/module.model';
-import { Session } from '@core/models/session.model';
+import * as firebase from 'firebase';
+
 
 
 
@@ -43,7 +42,7 @@ export class ListSessionComponent implements AfterViewInit {
 
   dataSource = new MatTableDataSource<any>();
   displayedColumns = [
-    'level',
+    'module',
     'debut',
     'fin',
     'description',
@@ -57,7 +56,8 @@ export class ListSessionComponent implements AfterViewInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private sujetService: SujetService, private moduleService: ModuleService, public dialog: MatDialog, private snackBar: MatSnackBar, private sessionService: SessionService) { }
+  constructor(private sujetService: SujetService, private moduleService: ModuleService,
+    public dialog: MatDialog, private snackBar: MatSnackBar, private sessionService: SessionService) { }
 
   ngAfterViewInit() {
     this.sessionService.getEverySession().subscribe(data => {
@@ -73,7 +73,6 @@ export class ListSessionComponent implements AfterViewInit {
     this.dataSource.paginator._intl.firstPageLabel = 'Première page';
     this.dataSource.paginator._intl.lastPageLabel = 'Dernière page';
     this.dataSource.paginator._intl.getRangeLabel = frenchRangeLabel;
-
   }
 
   openSnackBar(message: string, action: string) {
@@ -81,16 +80,17 @@ export class ListSessionComponent implements AfterViewInit {
       duration: 2000,
     });
   }
-  updateSession(oldId: string, newId: string, idDoc: string, titre: string, description: string, level: number, sujet: string) {
-    this.sessionService.updateSession(oldId, newId, idDoc, titre, description, level, sujet).then(() => {
+  updateSession(idSujet: string, NewIdSujet: string, oldIdModule: string, newIdModule: string, idDoc: string, dateDeb: any, description: string, dateFin: any, sachant: string, followers: []) {
+    this.sessionService.updateSession(idSujet, NewIdSujet, oldIdModule, newIdModule, idDoc, dateDeb, description, dateFin, sachant, followers).then(() => {
       this.openSnackBar('Modification Réussie', 'Fermer');
     },
       (error) => {
         this.openSnackBar(' Erreur lors de la sauvegarde', 'Fermer');
       });
   }
-  createModule(titre: string, level: number, sujet: string, description: string, id: string) {
-    this.moduleService.createModule(titre, sujet, level, description, id);
+  createSession(dateDeb: number, dateFin: number, sachant: any, followers: [], description: string, idSujet: string, idModule: string) {
+
+    this.sessionService.createSession(dateDeb, dateFin, sachant, followers, description, idSujet, idModule);
   }
 
   openDialogCreate() {
@@ -102,14 +102,17 @@ export class ListSessionComponent implements AfterViewInit {
         }
       });
     dialogRef.afterClosed().subscribe(m => {
+      console.log(m, m[0].date_debut._d);
       if (!m) {
         console.log('On arrête tout');
       } else {
-        console.log('titre', m[0].titre, 'level', m[1].level, 'sujet', m[2].sujet, 'description', m[3].description);
+        console.log(m);
+        const dateDeb = Date.parse(m[0].date_debut._d) + m[0].heure * 60 * 60 + m[0].minute * 60;
+        const dateFin = dateDeb + m[0].duree * 60 * 60;
         this.moduleService.getID(m[2].sujet).subscribe(sujet => {
           this.sujet = sujet;
           console.log(this.sujet[0].id);
-          this.createModule(m[0].titre, m[1].level, m[2].sujet, m[3].description, this.sujet[0].id);
+          this.createSession(dateDeb, dateFin, [], [], m[3].description, this.sujet[0].id, m[1].module);
         });
 
       }
@@ -203,23 +206,29 @@ export class SessionCreate {
 
 
   firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   forthFormGroup: FormGroup;
   modules: any;
+  sujets: any;
+
   levelList: number[] = [1, 2, 3];
+  hours: number[] = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
+  minutes: number[] = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
+  durees: number[] = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8];
 
-
-  constructor(public dialogRef: MatDialogRef<SessionDetail>, @Inject(MAT_DIALOG_DATA) public data: any, public sujetService: SujetService, public moduleService: ModuleService, private _formBuilder: FormBuilder) {
-    this.getAllSessions();
+  constructor(public dialogRef: MatDialogRef<SessionDetail>, @Inject(MAT_DIALOG_DATA) public data: any,
+    public sujetService: SujetService, public moduleService: ModuleService, private _formBuilder: FormBuilder) {
+    this.getAllSujet();
+    this.getAllModules()
     this.firstFormGroup = this._formBuilder.group({
-      titre: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      level: ['', Validators.required]
+      date_debut: ['', Validators.required],
+      heure: ['', Validators.required],
+      minute: ['', Validators.required],
+      duree: ['', Validators.required]
     });
     this.thirdFormGroup = this._formBuilder.group({
-      sujet: ['', Validators.required]
+      sujet: ['', Validators.required],
+      module: ['', Validators.required]
     });
     this.forthFormGroup = this._formBuilder.group({
       description: ['', Validators.required]
@@ -228,14 +237,19 @@ export class SessionCreate {
   }
   getErrorMessage() {
     return this.firstFormGroup.hasError('required') ? 'Champ vide' :
-      this.secondFormGroup.hasError('required') ? 'Champ vide' :
-        this.thirdFormGroup.hasError('required') ? 'Champ vide' :
-          this.forthFormGroup.hasError('required') ? 'Champ vide' :
-            '';
+      this.thirdFormGroup.hasError('required') ? 'Champ vide' :
+        this.forthFormGroup.hasError('required') ? 'Champ vide' :
+          '';
   }
-  getAllSessions() {
-    this.moduleService.getEveryModule().subscribe(sujets => {
-      this.sesions = sessions;
+  getAllSujet() {
+    this.sujetService.getSujets().subscribe(sujets => {
+      this.sujets = sujets;
+      this.getAllModules();
+    });
+  }
+  getAllModules() {
+    this.moduleService.getEveryModule().subscribe(modules => {
+      this.modules = modules;
     });
   }
 

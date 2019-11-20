@@ -67,6 +67,7 @@ import { ListSujetComponent, SujetDetail, SujetCreate } from './list/list-sujet/
 import { AdministrationComponent } from './administration/administration.component';
 import { ListModuleComponent, ModuleDetail, ModuleCreate } from './list/list-module/list-module.component';
 import { ListSessionComponent, SessionCreate } from './list/list-session/list-session.component';
+import { CreateModulePipePipe } from './Pipe/create-module-pipe.pipe';
 
 
 
@@ -111,7 +112,8 @@ registerLocaleData(localeFr, 'fr');
     ModuleDetail,
     ListSessionComponent,
     SessionDetail,
-    SessionCreate
+    SessionCreate,
+    CreateModulePipePipe
   ],
   imports: [
     MaterialModule,
