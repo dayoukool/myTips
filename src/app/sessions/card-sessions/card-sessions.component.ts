@@ -17,7 +17,7 @@ export class SessionDetail {
   constructor(public dialogRef: MatDialogRef<SessionDetail>, @Inject(MAT_DIALOG_DATA) public data: any, public sessionService: SessionService) {
 
     console.log(data.session.sachant);
-    this.sessionService.getSachant(data.session.sachant).subscribe(Sachant => {
+    this.sessionService.getSachant(data.session.sachant[0]).subscribe(Sachant => {
       this.sachant = Sachant.data;
       console.log(this.sachant);
     }

@@ -71,6 +71,7 @@ export class SessionService {
       sachant: sachant,
       description: description,
       followers: followers,
+      module:[idModule,''],
       type: 'créée'
     });
   }
@@ -78,7 +79,7 @@ export class SessionService {
     return this.db.collection('topics').doc(idSujet).collection('modules').doc(idModule).collection('modules').doc(idDoc).delete();
   }
 
-  updateSession(idSujet: string, NewIdSujet: string, oldIdModule: string, newIdModule: string, idDoc: string, dateDeb: any, description: string, dateFin: any, sachant: string, followers: []): Promise<void> {
+  updateSession(idSujet: string, NewIdSujet: string, oldIdModule: string, newIdModule: string, idDoc: string, dateDeb: any, description: string, dateFin: any, sachant: [], followers: []): Promise<void> {
     if (dateDeb !== "") {
       return this.db.collection('topics').doc(idSujet).collection('modules').doc(oldIdModule).collection('modules').doc(idDoc).update({ dateDeb: dateDeb });
     }
