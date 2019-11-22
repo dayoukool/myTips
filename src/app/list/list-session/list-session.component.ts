@@ -80,7 +80,7 @@ export class ListSessionComponent implements AfterViewInit {
       duration: 2000,
     });
   }
-  updateSession(idSujet: string, NewIdSujet: string, oldIdModule: string, newIdModule: string, idDoc: string, dateDeb: any, description: string, dateFin: any, sachant: string, followers: []) {
+  updateSession(idSujet: string, NewIdSujet: string, oldIdModule: string, newIdModule: string, idDoc: string, dateDeb: any, description: string, dateFin: any, sachant: [], followers: []) {
     this.sessionService.updateSession(idSujet, NewIdSujet, oldIdModule, newIdModule, idDoc, dateDeb, description, dateFin, sachant, followers).then(() => {
       this.openSnackBar('Modification Réussie', 'Fermer');
     },
