@@ -107,7 +107,7 @@ export class ListSessionComponent implements AfterViewInit {
         console.log('On arrête tout');
       } else {
         console.log(m);
-        const dateDeb = Date.parse(m[0].date_debut._d) + m[0].heure * 60 * 60 + m[0].minute * 60;
+        const dateDeb = Date.parse(m[0].date_debut._d) / 1000 + m[0].heure * 60 * 60 + m[0].minute * 60;
         const dateFin = dateDeb + m[0].duree * 60 * 60;
         this.moduleService.getID(m[1].sujet).subscribe(sujet => {
           this.sujet = sujet;

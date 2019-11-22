@@ -7,6 +7,7 @@ import { Sujet } from '@core/models/sujet.model';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import { Timestamp } from 'rxjs/internal/operators/timestamp';
+import * as firebase from 'firebase';
 
 
 @Injectable({
@@ -66,12 +67,12 @@ export class SessionService {
 
   createSession(dateDeb: number, dateFin: number, sachant: [], followers: [], description: string, idSujet: string, idModule: string) {
     this.db.collection('topics').doc(idSujet).collection('modules').doc(idModule).collection('sessions').add({
-      dateDeb: dateDeb,
-      dateFin: dateFin,
+      dateDeb: new firebase.firestore.Timestamp(dateDeb, 0),
+      dateFin: new firebase.firestore.Timestamp(dateFin, 0),
       sachant: sachant,
       description: description,
       followers: followers,
-      module:[idModule,''],
+      module: [idModule, ''],
       type: 'créée'
     });
   }
