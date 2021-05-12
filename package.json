@@ -31,7 +31,7 @@
     "angular-bootstrap-md": "^7.5.4",
     "angular-star-rating": "^4.0.0-beta.3",
     "bootstrap": "^4.3.1",
-    "chart.js": "^2.5.0",
+    "chart.js": "^2.9.4",
     "core-js": "^3.1.4",
     "css-star-rating": "^1.2.4",
     "firebase": "^7.2.3",
